@@ -1,12 +1,11 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectID } from 'mongodb';
-import { Course, Student } from '../../../lib/types';
+import { Student } from '../../../lib/types';
 import {
   ICtx,
   StudentsArgs,
   StudentArgs,
   StudentsData,
-  StudentData,
 } from './types';
 
 export const StudentsResolver: IResolvers = {
@@ -41,14 +40,10 @@ export const StudentsResolver: IResolvers = {
         throw new Error(`Something went wrong: ${err}`);
       }
     },
-    student: async (_, args: StudentArgs, ctx: ICtx): Promise<StudentData> => {
+    student: async (_, args: StudentArgs, ctx: ICtx): Promise<Student> => {
       try {
         const { id } = args;
         const { db } = ctx;
-        const data: StudentData = {
-          student: null,
-          courses: null,
-        };
 
         const student = await db.students.findOne({
           _id: new ObjectID(id),
@@ -58,32 +53,11 @@ export const StudentsResolver: IResolvers = {
           throw new Error('Student not found');
         }
 
-        const coursesCursor = await db.courses.find({
-          _id: { $in: student.courses },
-        });
+        return student;
 
-        if (!coursesCursor) {
-          throw new Error('Courses not found');
-        }
-
-        const courses = await coursesCursor.toArray();
-        data.student = student;
-        data.courses = courses;
-
-        return data;
       } catch (err) {
         throw new Error(`Something went wrong: ${err}`);
       }
-    },
-  },
-  Student: {
-    id: (student: Student): string => {
-      return student._id.toString();
-    },
-  },
-  Course: {
-    id: (course: Course): string => {
-      return course._id.toString();
     },
   },
 };

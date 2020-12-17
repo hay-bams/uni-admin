@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { ObjectID } from 'mongodb';
 import { Course, Database, Student } from '../../../lib/types';
 
 export interface ICtx {
@@ -13,9 +14,8 @@ export interface StudentsArgs {
   limit: number;
 }
 
-
 export interface StudentArgs {
-  id: string
+  id: string;
 }
 
 export interface StudentsData {
@@ -26,4 +26,13 @@ export interface StudentsData {
 export interface StudentData {
   student: Student | null;
   courses: Course[] | null;
+}
+
+// export interface CourseInput {
+//   courseId: string
+// }
+
+export interface addCourseArgs {
+  id: string,
+  input: string[]
 }

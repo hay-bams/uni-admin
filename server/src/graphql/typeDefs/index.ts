@@ -31,8 +31,12 @@ export const typeDefs = gql`
     courses: [Course!]!
   }
 
+  input CourseInput {
+    courseId: ID!
+  }
+
   type Query {
     students(all: String, limit: Int, page: Int): Students!
-    student(id: String): StudentData!
+    student(id: String!): Student!
   }
 `;
