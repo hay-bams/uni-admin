@@ -10,6 +10,7 @@ export const typeDefs = gql`
     email: String!
     country: String!
     avatar: String
+    courses: [Course!]!
   }
 
   type Students {
@@ -17,7 +18,21 @@ export const typeDefs = gql`
     results: [Student!]!
   }
 
+  type Course {
+    id: ID!
+    name: String!
+    category: String!
+    totalSeats: Int!
+    status: String!
+  }
+
+  type StudentData {
+    student: Student!
+    courses: [Course!]!
+  }
+
   type Query {
     students(all: String, limit: Int, page: Int): Students!
+    student(id: String): StudentData!
   }
 `;

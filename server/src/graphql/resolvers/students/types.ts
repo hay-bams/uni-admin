@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Database, Student } from '../../../lib/types';
+import { Course, Database, Student } from '../../../lib/types';
 
 export interface ICtx {
   db: Database;
@@ -7,13 +7,23 @@ export interface ICtx {
   res: Response;
 }
 
-export interface StudentArgs {
+export interface StudentsArgs {
   all: string;
   page: number;
   limit: number;
 }
 
-export interface StudentData {
+
+export interface StudentArgs {
+  id: string
+}
+
+export interface StudentsData {
   total: number;
   results: Student[];
+}
+
+export interface StudentData {
+  student: Student | null;
+  courses: Course[] | null;
 }

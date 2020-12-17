@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb'
-import { Database, Student } from '../lib/types';
+import { Course, Database, Student } from '../lib/types';
 
 export const connectDatabase = async (): Promise<Database> => {
   const client = await MongoClient.connect(`${process.env.MONGO_LOCAL_URI}`, {
@@ -9,6 +9,7 @@ export const connectDatabase = async (): Promise<Database> => {
   const db = client.db(process.env.DATABASE);
 
   return {
-    students: db.collection<Student>('student')
+    students: db.collection<Student>('student'),
+    courses: db.collection<Course>('course')
   };
 }; 

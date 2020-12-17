@@ -1,7 +1,15 @@
-import { Collection, ObjectID } from "mongodb";
+import { Collection, ObjectID } from 'mongodb';
+
+export interface Course {
+  _id: ObjectID;
+  name: string;
+  category: string;
+  totalSeats: number;
+  status: string;
+}
 
 export interface Student {
-  _id: ObjectID
+  _id: ObjectID;
   studentID: string;
   dob: string;
   status: string;
@@ -9,8 +17,10 @@ export interface Student {
   email: string;
   country: string;
   avatar: string | null;
+  courses: ObjectID[]
 }
 
 export interface Database {
-  students: Collection<Student>
+  students: Collection<Student>;
+  courses: Collection<Course>
 }
