@@ -5,3 +5,19 @@
   background: #fff;
 }
 
+
+/********APP HEADER**********/
+.app_header {
+  width: 100%;
+  border-bottom: 1px solid #e7eaec;
+  height: 65px;
+  padding-left: 50px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 10px 2px 15px 1px #e7eaec;
+}
+
+.app_header_logo {
+  color: #fff;
+}
+

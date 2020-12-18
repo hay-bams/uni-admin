@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd'
 import './styles/index.css';
 import reportWebVitals from './reportWebVitals';
-import { Admin, Home, NotFound } from './pages';
+import { Admin, AppHeader, Home, NotFound } from './pages';
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
@@ -17,6 +17,7 @@ const App = () => {
   return (
     <Router>
       <Layout className="app layout">
+      <AppHeader />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/admin" component={Admin} />
