@@ -11,13 +11,10 @@ export const curseExists = async (
 
   for (const course of courses) {
     map.set(course.toString(), course.toString());
-    //  if(mapget(cou)
   }
 
   for (const id of ids) {
     if (map.get(id)) {
-      console.log(map.get(id))
-
       const course = await db.courses.findOne({
         _id: new ObjectID(map.get(id))
       })
