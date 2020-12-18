@@ -1,0 +1,7 @@
+@import "~antd/dist/antd.css";
+
+.app {
+  min-height: 100vh;
+  background: #fff;
+}
+

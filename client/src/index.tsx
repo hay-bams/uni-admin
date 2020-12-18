@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import './index.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Layout } from 'antd'
+import './styles/index.css';
 import reportWebVitals from './reportWebVitals';
+import { Admin, Home, NotFound } from './pages';
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
@@ -10,10 +13,24 @@ const client = new ApolloClient({
   cache,
 });
 
+const App = () => {
+  return (
+    <Router>
+      <Layout className="app layout">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/admin" component={Admin} />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </Router>
+  );
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <div>Hello</div>
+      <App />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
