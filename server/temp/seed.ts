@@ -51,6 +51,18 @@ export const students: Student[] = [
     ],
     avatar: 'Some avatar',
   },
+
+  {
+    _id: new ObjectID('5fdb8cb5f8274fba911d67b9'),
+    studentID: 'ST17272',
+    dob: 'Sunday june 21 1992 23:22:01 GMT+0100',
+    status: 'active',
+    name: 'Ayo Tunde',
+    email: 'ayo@gmail.com',
+    country: 'Nigeria',
+    courses: [],
+    avatar: 'Some avatar',
+  },
 ];
 
 export const courses: Course[] = [

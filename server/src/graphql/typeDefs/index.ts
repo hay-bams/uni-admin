@@ -39,4 +39,8 @@ export const typeDefs = gql`
     students(all: String, limit: Int, page: Int): Students!
     student(id: String!): Student!
   }
+
+  type Mutation {
+    addCourses(studentId: String!, input: [ID!]!): Student
+  }
 `;

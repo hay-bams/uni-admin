@@ -33,6 +33,6 @@ export interface StudentData {
 // }
 
 export interface addCourseArgs {
-  id: string,
+  studentId: string,
   input: string[]
 }
