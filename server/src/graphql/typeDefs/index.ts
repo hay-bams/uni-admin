@@ -9,7 +9,6 @@ export const typeDefs = gql`
     name: String!
     email: String!
     country: String!
-    avatar: String
     courses: [Course!]!
   }
 

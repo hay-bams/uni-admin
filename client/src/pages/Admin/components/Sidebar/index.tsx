@@ -17,7 +17,7 @@ export const Sidebar = () => {
 
   return (
     <Sider
-      breakpoint="md"
+      breakpoint="lg"
       collapsible
       collapsed={collapsed}
       onCollapse={onCollapse}

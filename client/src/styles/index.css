@@ -25,3 +25,41 @@
 .admin_side_bar {
   margin-top: -1px;
 }
+
+
+.table_column.ant-table-cell {
+  /* width: auto; */
+}
+
+.table_container {
+  width: 100%;
+}
+
+.table_container .ant-table {
+  /* border: 2px solid red; */
+  /* width: 100%; */
+}
+
+.table_container .ant-table-tbody .ant-table-row {
+  /* width: 100%; */
+  border: 2px solid green;
+}
+
+@media only screen and (max-width: 400px) {
+  .table_container .ant-table {
+    width: 100%;
+
+    /* border: 2px solid red; *
+    /* font-size: 10px; */
+    /* font-size: 10px; */
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .table_container .ant-table table {
+    border-collapse: none;
+  }
+  .table_container .ant-table {
+    font-size: 10px;
+  }
+}

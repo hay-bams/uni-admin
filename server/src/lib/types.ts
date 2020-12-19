@@ -16,7 +16,6 @@ export interface Student {
   name: string;
   email: string;
   country: string;
-  avatar: string | null;
   courses: ObjectID[]
 }
 

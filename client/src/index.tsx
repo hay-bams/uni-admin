@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from 'antd'
+import { Layout } from 'antd';
 import './styles/index.css';
 import reportWebVitals from './reportWebVitals';
 import { Admin, AppHeader, Home, NotFound } from './pages';
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Router>
       <Layout className="app layout">
-      <AppHeader />
+        <AppHeader />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/admin" component={Admin} />

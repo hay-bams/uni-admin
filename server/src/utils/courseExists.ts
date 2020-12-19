@@ -9,6 +9,10 @@ export const curseExists = async (
   const courses = student.courses;
   const map = new Map();
 
+  if(!courses) {
+    return null
+  }
+
   for (const course of courses) {
     map.set(course.toString(), course.toString());
   }
