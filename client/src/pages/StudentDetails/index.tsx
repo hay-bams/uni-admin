@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
 import { Sidebar } from '../../lib/components/Sidebar';
-import { BreadCrumbNav } from '../../lib/BreadCrumbNav';
+import { BreadCrumbNav, CourseTableSkeleton } from '../../lib/components';
 import { Courses } from './components/Courses';
 import { RouteComponentProps } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -48,6 +48,12 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
     ) || null;
 
   if (StudentLoading) {
+  }
+
+  if(CoursesLoading) {
+    return (
+      <CourseTableSkeleton />
+    )
   }
 
   if (StudentError) {

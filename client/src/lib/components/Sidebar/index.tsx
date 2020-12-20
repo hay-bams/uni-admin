@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {
   UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  BookOutlined,
+  FolderAddOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Sider } = Layout;
 
@@ -32,16 +33,13 @@ export const Sidebar = () => {
         style={{ height: '100%', borderRight: 0 }}
       >
         <Menu.Item key="1" icon={<UserOutlined />}>
-          My Profile
+          <Link to="/students">All Students</Link>
         </Menu.Item>
-        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-          nav 2
+        <Menu.Item key="2" icon={<BookOutlined />}>
+          <Link to="/courses">All Courses</Link>
         </Menu.Item>
-        <Menu.Item key="3" icon={<UploadOutlined />}>
-          nav 3
-        </Menu.Item>
-        <Menu.Item key="4" icon={<UserOutlined />}>
-          nav 4
+        <Menu.Item key="3" icon={<FolderAddOutlined />}>
+          <Link to="/courses">Add New Course</Link>
         </Menu.Item>
       </Menu>
     </Sider>

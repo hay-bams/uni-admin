@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
 import { Sidebar } from '../../lib/components/Sidebar';
-import { BreadCrumbNav } from '../../lib/BreadCrumbNav';
+import { BreadCrumbNav } from '../../lib/components/BreadCrumbNav';
 import { Students } from './components/Students';
 import { useQuery } from '@apollo/client';
 import { STUDENTS } from '../../graphql';
@@ -9,6 +9,7 @@ import {
   StudentsVariables,
   Students as StudentsData,
 } from '../../graphql/queries/Students/__generated__/Students';
+import { StudentSkeleton } from '../../lib/components';
 
 const { Content } = Layout;
 
@@ -29,10 +30,11 @@ export const AllStudents = () => {
 
   const StudentsRender =
     data && data.students && data.students.results ? (
-      <Students students={data?.students.results} />
+      <Students loading={loading} students={data?.students.results} />
     ) : null;
 
   if (loading) {
+    return <StudentSkeleton />
   }
 
   if (error) {

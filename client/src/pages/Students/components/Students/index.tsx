@@ -6,11 +6,12 @@ import { Students_students, Students_students_results } from '../../../../graphq
 
 interface Props {
   students: Students_students['results'];
+  loading: boolean
 }
 
 const { Title } = Typography;
 
-export const Students = ({ students }: Props) => {
+export const Students = ({ students, loading }: Props) => {
   const columns = [
     {
       title: 'Name',
