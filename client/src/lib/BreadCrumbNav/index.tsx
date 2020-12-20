@@ -1,12 +1,17 @@
 import React from 'react'
 import { Breadcrumb } from 'antd'
 
-export const BreadCrumbNav = () => {
+interface Props {
+  paths: string[]
+}
+
+export const BreadCrumbNav = ({ paths }: Props ) => {
   return (
       <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>List</Breadcrumb.Item>
-        <Breadcrumb.Item>App</Breadcrumb.Item>
+        {paths.map((path) => (
+          <Breadcrumb.Item>{path}</Breadcrumb.Item>
+        ))}
+
       </Breadcrumb>
   )
 }

@@ -2,10 +2,10 @@ import React from 'react';
 import { Table, Button, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { Students_students_results } from '../../../../graphql/queries/Students/__generated__/Students';
+import { Students_students, Students_students_results } from '../../../../graphql/queries/Students/__generated__/Students';
 
 interface Props {
-  students: any;
+  students: Students_students['results'];
 }
 
 const { Title } = Typography;

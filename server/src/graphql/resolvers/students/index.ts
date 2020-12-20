@@ -1,9 +1,5 @@
 import { IResolvers } from 'apollo-server-express';
-import {
-  AggregationCursor,
-  FindAndModifyWriteOpResultObject,
-  ObjectID,
-} from 'mongodb';
+import { ObjectID } from 'mongodb';
 import { Student } from '../../../lib/types';
 import { curseExists } from '../../../utils/courseExists';
 import { formatId } from '../../../utils/formatId';
