@@ -6,7 +6,6 @@ import {
   StudentsArgs,
   StudentArgs,
   StudentsData,
-  addCourseArgs,
 } from './types';
 
 export const StudentsResolver: IResolvers = {
@@ -55,49 +54,6 @@ export const StudentsResolver: IResolvers = {
         }
 
         return student;
-      } catch (err) {
-        throw new Error(`Something went wrong: ${err}`);
-      }
-    },
-  },
-  Mutation: {
-    addCourses: async (_, args: addCourseArgs, ctx: ICtx): Promise<Student> => {
-      try {
-        const { studentId, input } = args;
-        const { db } = ctx;
-        let student = null
-
-        // const formatInput = formatId(input);
-
-        student = await db.students.findOne({
-          _id: new ObjectID(studentId)
-        })
-
-        if(!student) {
-          throw new Error('Student not found')
-        }
-
-        // const course = await curseExists(input, student, db)
-
-        // if(course) throw new Error(`This course: "${course.name}"  already exists`) 
-
-         student = await db.students.findOneAndUpdate(
-          {
-            _id: new ObjectID(studentId),
-          },
-          {
-            $push: {
-              courses: new ObjectID(input)
-            },
-          },
-          { returnOriginal: false }
-        );
-
-        if (!student.value) {
-          throw new Error('Courses could not be added');
-        }
-
-        return student.value;
       } catch (err) {
         throw new Error(`Something went wrong: ${err}`);
       }

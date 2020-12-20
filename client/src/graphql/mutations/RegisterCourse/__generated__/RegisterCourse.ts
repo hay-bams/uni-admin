@@ -4,19 +4,19 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: AddCourse
+// GraphQL mutation operation: RegisterCourse
 // ====================================================
 
-export interface AddCourse_addCourses {
+export interface RegisterCourse_registerCourse {
   __typename: "Student";
   id: string;
 }
 
-export interface AddCourse {
-  addCourses: AddCourse_addCourses | null;
+export interface RegisterCourse {
+  registerCourse: RegisterCourse_registerCourse | null;
 }
 
-export interface AddCourseVariables {
+export interface RegisterCourseVariables {
   studentId: string;
   input: string;
 }

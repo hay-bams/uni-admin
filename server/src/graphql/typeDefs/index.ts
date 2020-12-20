@@ -41,6 +41,6 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addCourses(studentId: String!, input: ID!): Student
+    registerCourse(studentId: String!, input: ID!): Student
   }
 `;

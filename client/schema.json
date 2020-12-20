@@ -519,7 +519,7 @@
         "description": null,
         "fields": [
           {
-            "name": "addCourses",
+            "name": "registerCourse",
             "description": null,
             "args": [
               {

@@ -4,8 +4,7 @@ import { Sidebar } from '../../lib/components/Sidebar';
 import {
   BreadCrumbNav,
   CourseTableSkeleton,
-  ErrorBanner,
-  StudentSkeleton,
+  ErrorBanner
 } from '../../lib/components';
 import { Courses } from './components/Courses';
 import { RouteComponentProps } from 'react-router-dom';

@@ -6,11 +6,11 @@ import {
 } from '../../../../graphql/queries/StudentDetails/__generated__/studentDetails';
 import { AllCourses_allCourses } from '../../../../graphql/queries/AllCourses/__generated__/AllCourses';
 import { useMutation } from '@apollo/client';
-import { ADD_COURSES } from '../../../../graphql';
+import { REGISTER_COURSE } from '../../../../graphql';
 import {
-  AddCourse as AddCourseData,
-  AddCourseVariables,
-} from '../../../../graphql/mutations/AddCourses/__generated__/AddCourse';
+  RegisterCourse as RegisterCourseData,
+  RegisterCourseVariables,
+} from '../../../../graphql/mutations/RegisterCourse/__generated__/RegisterCourse';
 import { displaySuccessNotification } from '../../../../utils';
 
 interface Props {
@@ -29,11 +29,11 @@ export const Courses = ({
   courseRefetch,
 }: Props) => {
   const [addCourse, { data, loading, error }] = useMutation<
-    AddCourseData,
-    AddCourseVariables
-  >(ADD_COURSES, {
+  RegisterCourseData,
+    RegisterCourseVariables
+  >(REGISTER_COURSE, {
     onCompleted: (data) => {
-      if (data.addCourses) {
+      if (data.registerCourse) {
         studentRefetch();
         courseRefetch();
         displaySuccessNotification('Course Registered Successfully');
