@@ -9,7 +9,7 @@ import {
   StudentsVariables,
   Students as StudentsData,
 } from '../../graphql/queries/Students/__generated__/Students';
-import { StudentSkeleton } from '../../lib/components';
+import { ErrorBanner, StudentSkeleton } from '../../lib/components';
 
 const { Content } = Layout;
 
@@ -34,17 +34,22 @@ export const AllStudents = () => {
     ) : null;
 
   if (loading) {
-    return <StudentSkeleton />
+    return <StudentSkeleton />;
   }
 
-  if (error) {
-  }
+  const ErrorBannerElement = error ? (
+    <>
+      <ErrorBanner description="Some error occured fetching the student lists. Please try again soon!" />{' '}
+      <StudentSkeleton turnSidebarOff={true} />
+    </>
+  ) : null;
   return (
     <Layout>
       <Sidebar />
       <Layout>
         <Content style={{ padding: '0 50px' }}>
           <BreadCrumbNav paths={['Home', 'All_Students']} />
+          {ErrorBannerElement}
           {StudentsRender}
         </Content>
       </Layout>

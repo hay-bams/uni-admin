@@ -1,7 +1,12 @@
 import React from 'react';
 import { Layout } from 'antd';
 import { Sidebar } from '../../lib/components/Sidebar';
-import { BreadCrumbNav, CourseTableSkeleton } from '../../lib/components';
+import {
+  BreadCrumbNav,
+  CourseTableSkeleton,
+  ErrorBanner,
+  StudentSkeleton,
+} from '../../lib/components';
 import { Courses } from './components/Courses';
 import { RouteComponentProps } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -23,7 +28,7 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
     data: StudentData,
     loading: StudentLoading,
     error: StudentError,
-    refetch: studentRefetch
+    refetch: studentRefetch,
   } = useQuery<StudentsDetailsData, studentDetailsVariables>(STUDENT_DETAILS, {
     variables: {
       id: match.params.id,
@@ -34,7 +39,7 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
     data: CoursesData,
     loading: CoursesLoading,
     error: CoursesError,
-    refetch: courseRefetch
+    refetch: courseRefetch,
   } = useQuery<AllCoursesData>(All_COURSES);
 
   const CoursesRender =
@@ -47,17 +52,17 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
       />
     ) || null;
 
-  if (StudentLoading) {
+  if (StudentLoading || CoursesLoading) {
+    return <CourseTableSkeleton />;
   }
 
-  if(CoursesLoading) {
-    return (
-      <CourseTableSkeleton />
-    )
-  }
-
-  if (StudentError) {
-  }
+  const ErrorBannerElement =
+    CoursesError || StudentError ? (
+      <>
+        <ErrorBanner description="Some error occured fetching the student lists. Please try again soon!" />{' '}
+        <CourseTableSkeleton turnSidebarOff={true} />
+      </>
+    ) : null;
 
   return (
     <Layout>
@@ -65,6 +70,7 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
       <Layout>
         <Content style={{ padding: '0 50px' }}>
           <BreadCrumbNav paths={['Home', 'All_Sudents', 'Student_Details']} />
+          {ErrorBannerElement}
           {CoursesRender}
         </Content>
       </Layout>

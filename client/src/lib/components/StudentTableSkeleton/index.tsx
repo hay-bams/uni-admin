@@ -3,9 +3,13 @@ import { Layout, Skeleton, Table } from 'antd';
 import { Sidebar } from '../Sidebar';
 import { BreadCrumbNav } from '../BreadCrumbNav';
 
+interface Props {
+  turnSidebarOff?: boolean
+}
+
 const { Content } = Layout;
 
-export const StudentSkeleton = () => {
+export const StudentSkeleton = ({ turnSidebarOff }: Props) => {
   const columns = [
     {
       title: 'Name',
@@ -101,10 +105,10 @@ export const StudentSkeleton = () => {
   ];
   return (
     <Layout>
-      <Sidebar />
+      {!turnSidebarOff ? <Sidebar /> : null}
       <Layout>
         <Content style={{ padding: '0 50px' }}>
-          <BreadCrumbNav paths={['Home', 'All_Students']} />
+        {!turnSidebarOff ? <BreadCrumbNav paths={['Home', 'All_Students']} /> : null}
           <Table
             columns={columns}
             pagination={false}

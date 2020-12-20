@@ -4,9 +4,13 @@ import { Sidebar } from '../Sidebar';
 import { BreadCrumbNav } from '../BreadCrumbNav';
 import Title from 'antd/lib/skeleton/Title';
 
+interface Props {
+  turnSidebarOff?: boolean
+}
+
 const { Content } = Layout;
 
-export const CourseTableSkeleton = () => {
+export const CourseTableSkeleton = ({ turnSidebarOff } : Props) => {
   const columns = [
     {
       title: 'Name',
@@ -78,10 +82,10 @@ export const CourseTableSkeleton = () => {
   ];
   return (
     <Layout>
-      <Sidebar />
+      {!turnSidebarOff ? <Sidebar /> : null}
       <Layout>
         <Content style={{ padding: '0 50px' }}>
-          <BreadCrumbNav paths={['Home', 'All_Sudents', 'Student_Details']} />
+        {!turnSidebarOff ? <BreadCrumbNav paths={['Home', 'All_Students']} /> : null}
           <div className="table_container">
             <Skeleton
               paragraph={{ rows: 0 }}
