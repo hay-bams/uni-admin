@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
-import { Sidebar } from './components/Sidebar';
-import { BreadCrumbNav } from './components/BreadCrumbNav';
-import { Students } from './components/Student';
+import { Sidebar } from '../../lib/components/Sidebar';
+import { BreadCrumbNav } from '../../lib/BreadCrumbNav';
+import { Students } from './components/Students';
 import { useQuery } from '@apollo/client';
-import { STUDENT } from '../../graphql';
+import { STUDENTS } from '../../graphql';
 import {
   StudentsVariables,
   Students as StudentsData,
-} from '../../graphql/queries/students/__generated__/Students';
+} from '../../graphql/queries/Students/__generated__/Students';
 
 const { Content } = Layout;
 
 const LIMIT = 2;
 
-export const Admin = () => {
+export const AllStudents = () => {
   const [page, _] = useState(1);
   const { data, loading, error } = useQuery<StudentsData, StudentsVariables>(
-    STUDENT,
+    STUDENTS,
     {
       variables: {
         all: 'all',

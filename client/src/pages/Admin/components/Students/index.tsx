@@ -1,12 +1,14 @@
 import React from 'react';
-import { Table, Button } from 'antd';
+import { Table, Button, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import moment from 'moment'
-import { Students_students_results } from '../../../../graphql/queries/students/__generated__/Students';
+import moment from 'moment';
+import { Students_students_results } from '../../../../graphql/queries/Students/__generated__/Students';
 
 interface Props {
   students: any;
 }
+
+const { Title } = Typography;
 
 export const Students = ({ students }: Props) => {
   const columns = [
@@ -16,14 +18,14 @@ export const Students = ({ students }: Props) => {
       className: 'table_column',
       width: 100,
       key: 'name',
-      fixed: "left" as "left"
+      fixed: 'left' as 'left',
     },
     {
       title: 'StudentID',
       dataIndex: 'studentID',
       className: 'table_column',
       width: 100,
-      key: 'studentId'
+      key: 'studentId',
     },
     {
       title: 'Email',
@@ -61,13 +63,14 @@ export const Students = ({ students }: Props) => {
     },
   ];
 
-  const data: any = students && students.map((student: Students_students_results) => ({
-        ...student,
-        dob: moment(student.dob).format('MMM Do YYYY'),
-        key: `${student.id}`,
-        view: 'view',
-      }
-  ));
+  const data: any =
+    students &&
+    students.map((student: Students_students_results) => ({
+      ...student,
+      dob: moment(student.dob).format('MMM Do YYYY'),
+      key: `${student.id}`,
+      view: 'view',
+    }));
 
   return (
     <div className="table_container">
@@ -76,6 +79,7 @@ export const Students = ({ students }: Props) => {
         dataSource={data}
         rowClassName="table_row"
         scroll={{ x: '50vw' }}
+        title={() => <Title level={3}>All Students</Title>}
       />
     </div>
   );

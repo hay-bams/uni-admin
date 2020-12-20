@@ -47,7 +47,7 @@ export const StudentsResolver: IResolvers = {
         throw new Error(`Something went wrong: ${err}`);
       }
     },
-    student: async (_, args: StudentArgs, ctx: ICtx): Promise<Student> => {
+    studentDetails: async (_, args: StudentArgs, ctx: ICtx): Promise<Student> => {
       try {
         const { id } = args;
         const { db } = ctx;

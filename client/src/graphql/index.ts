@@ -1,1 +1,1 @@
-export * from './queries/students'
+export * from './queries/Students'

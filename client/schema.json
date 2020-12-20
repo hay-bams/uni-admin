@@ -453,7 +453,7 @@
             "deprecationReason": null
           },
           {
-            "name": "student",
+            "name": "studentDetails",
             "description": null,
             "args": [
               {
@@ -464,7 +464,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "ID",
                     "ofType": null
                   }
                 },

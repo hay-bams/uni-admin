@@ -1,4 +1,4 @@
-export * from './Admin'
+export * from './Students'
 export * from './Home'
 export * from './NotFound'
 export * from './AppHeader'

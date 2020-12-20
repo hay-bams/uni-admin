@@ -36,7 +36,7 @@ export const typeDefs = gql`
 
   type Query {
     students(all: String, limit: Int, page: Int): Students!
-    student(id: String!): Student!
+    studentDetails(id: ID!): Student!
   }
 
   type Mutation {
