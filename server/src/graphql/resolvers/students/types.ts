@@ -28,11 +28,7 @@ export interface StudentData {
   courses: Course[] | null;
 }
 
-// export interface CourseInput {
-//   courseId: string
-// }
-
 export interface addCourseArgs {
   studentId: string,
-  input: string[]
+  input: string
 }

@@ -42,7 +42,7 @@ export const AllStudents = () => {
       <Sidebar />
       <Layout>
         <Content style={{ padding: '0 50px' }}>
-          <BreadCrumbNav paths={['Home', 'All_Students']}/>
+          <BreadCrumbNav paths={['Home', 'All_Students']} />
           {StudentsRender}
         </Content>
       </Layout>

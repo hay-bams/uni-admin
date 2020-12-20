@@ -23,6 +23,7 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
     data: StudentData,
     loading: StudentLoading,
     error: StudentError,
+    refetch: studentRefetch
   } = useQuery<StudentsDetailsData, studentDetailsVariables>(STUDENT_DETAILS, {
     variables: {
       id: match.params.id,
@@ -33,12 +34,15 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
     data: CoursesData,
     loading: CoursesLoading,
     error: CoursesError,
+    refetch: courseRefetch
   } = useQuery<AllCoursesData>(All_COURSES);
 
   const CoursesRender =
     (
       <Courses
         student={StudentData?.studentDetails}
+        studentRefetch={studentRefetch}
+        courseRefetch={courseRefetch}
         courses={CoursesData?.allCourses}
       />
     ) || null;

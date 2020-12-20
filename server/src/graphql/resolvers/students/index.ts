@@ -1,8 +1,6 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectID } from 'mongodb';
 import { Student } from '../../../lib/types';
-import { curseExists } from '../../../utils/courseExists';
-import { formatId } from '../../../utils/formatId';
 import {
   ICtx,
   StudentsArgs,
@@ -69,7 +67,7 @@ export const StudentsResolver: IResolvers = {
         const { db } = ctx;
         let student = null
 
-        const formatInput = formatId(input);
+        // const formatInput = formatId(input);
 
         student = await db.students.findOne({
           _id: new ObjectID(studentId)
@@ -79,9 +77,9 @@ export const StudentsResolver: IResolvers = {
           throw new Error('Student not found')
         }
 
-        const course = await curseExists(input, student, db)
+        // const course = await curseExists(input, student, db)
 
-        if(course) throw new Error(`This course: "${course.name}"  already exists`) 
+        // if(course) throw new Error(`This course: "${course.name}"  already exists`) 
 
          student = await db.students.findOneAndUpdate(
           {
@@ -89,9 +87,7 @@ export const StudentsResolver: IResolvers = {
           },
           {
             $push: {
-              courses: {
-                $each: formatInput,
-              },
+              courses: new ObjectID(input)
             },
           },
           { returnOriginal: false }

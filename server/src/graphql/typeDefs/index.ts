@@ -24,7 +24,7 @@ export const typeDefs = gql`
     totalSeats: Int!
     status: String!
   }
-  
+
   type StudentData {
     student: Student!
     courses: [Course!]!
@@ -41,6 +41,6 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addCourses(studentId: String!, input: [ID!]!): Student
+    addCourses(studentId: String!, input: ID!): Student
   }
 `;
