@@ -18,8 +18,7 @@ export const students: Student[] = [
       new ObjectID('5fdab398791e134a5466566f'),
       new ObjectID('5fdab4c4fe1aa062abc46096'),
       new ObjectID('5fdab4ccba6dcf525408412a'),
-    ],
-    avatar: 'Some avatar',
+    ]
   },
   {
     _id: new ObjectID('5fda72349baf026a892dc1a1'),
@@ -33,8 +32,7 @@ export const students: Student[] = [
       new ObjectID('5fdab398791e134a5466566f'),
       new ObjectID('5fdab4b5eed1fb397feaca14'),
       new ObjectID('5fdab4bd78cc9321b31faf35'),
-    ],
-    avatar: 'Some avatar',
+    ]
   },
   {
     _id: new ObjectID('5fda72349baf026a892dc1a2'),
@@ -48,8 +46,7 @@ export const students: Student[] = [
       new ObjectID('5fdab4c4fe1aa062abc46096'),
       new ObjectID('5fdab4ccba6dcf525408412a'),
       new ObjectID('5fdab398791e134a5466566f'),
-    ],
-    avatar: 'Some avatar',
+    ]
   },
 
   {
@@ -60,8 +57,7 @@ export const students: Student[] = [
     name: 'Ayo Tunde',
     email: 'ayo@gmail.com',
     country: 'Nigeria',
-    courses: [],
-    avatar: 'Some avatar',
+    courses: []
   },
 ];
 

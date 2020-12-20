@@ -1,6 +1,5 @@
 import { IResolvers } from "apollo-server-express";
-import { Course } from "../../../lib/types";
-import { ICtx } from "../students/types";
+import { Course, ICtx } from "../../../lib/types";
 
 export const CourseResolver: IResolvers = {
   Query: {

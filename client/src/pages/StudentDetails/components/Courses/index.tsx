@@ -5,42 +5,21 @@ import {
   studentDetails_studentDetails_courses,
 } from '../../../../graphql/queries/StudentDetails/__generated__/studentDetails';
 import { AllCourses_allCourses } from '../../../../graphql/queries/AllCourses/__generated__/AllCourses';
-import { useMutation } from '@apollo/client';
-import { REGISTER_COURSE } from '../../../../graphql';
-import {
-  RegisterCourse as RegisterCourseData,
-  RegisterCourseVariables,
-} from '../../../../graphql/mutations/RegisterCourse/__generated__/RegisterCourse';
-import { displaySuccessNotification } from '../../../../utils';
-
 interface Props {
   student?: studentDetails_studentDetails;
   courses?: AllCourses_allCourses[];
-  studentRefetch: any;
-  courseRefetch: any;
+  addCourse: any,
+  removeCourse: any
 }
 
 const { Title } = Typography;
 
 export const Courses = ({
   student,
-  studentRefetch,
   courses,
-  courseRefetch,
+  addCourse,
+  removeCourse
 }: Props) => {
-  const [addCourse, { data, loading, error }] = useMutation<
-  RegisterCourseData,
-    RegisterCourseVariables
-  >(REGISTER_COURSE, {
-    onCompleted: (data) => {
-      if (data.registerCourse) {
-        studentRefetch();
-        courseRefetch();
-        displaySuccessNotification('Course Registered Successfully');
-      }
-    },
-  });
-
   const registerCourse = (studentId: string, courseId: string) => {
     addCourse({
       variables: {
@@ -50,7 +29,14 @@ export const Courses = ({
     });
   };
 
-  const unregisterCourse  = (studentId: string, courseId: string) => {}
+  const unregisterCourse = (studentId: string, courseId: string) => {
+    removeCourse({
+      variables: {
+        studentId,
+        courseId,
+      },
+    });
+  };
 
   const columns = [
     {

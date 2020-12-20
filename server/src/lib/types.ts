@@ -23,3 +23,9 @@ export interface Database {
   students: Collection<Student>;
   courses: Collection<Course>
 }
+
+export interface ICtx {
+  db: Database;
+  req: Request;
+  res: Response;
+}

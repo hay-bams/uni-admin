@@ -28,6 +28,10 @@ export const AllStudents = () => {
     }
   );
 
+  // onPageChange = ()  => {
+
+  // }
+
   const StudentsRender =
     data && data.students && data.students.results ? (
       <Students loading={loading} students={data?.students.results} />

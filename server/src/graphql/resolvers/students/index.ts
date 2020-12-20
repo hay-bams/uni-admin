@@ -1,8 +1,7 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectID } from 'mongodb';
-import { Student } from '../../../lib/types';
+import { ICtx, Student } from '../../../lib/types';
 import {
-  ICtx,
   StudentsArgs,
   StudentArgs,
   StudentsData,

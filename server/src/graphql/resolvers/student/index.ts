@@ -1,31 +1,35 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectID } from 'mongodb';
-import { Course, Student } from '../../../lib/types';
-import { addCourseArgs, ICtx } from '../students/types';
+import { Course, ICtx, Student } from '../../../lib/types';
+import { registerCourseArgs, unregisterCourseArgs } from '../student/types';
 
 export const StudentResolver: IResolvers = {
   Mutation: {
-    registerCourse: async (_, args: addCourseArgs, ctx: ICtx): Promise<Student> => {
+    registerCourse: async (
+      _,
+      args: registerCourseArgs,
+      ctx: ICtx
+    ): Promise<Student> => {
       try {
         const { studentId, input } = args;
         const { db } = ctx;
-        let student = null
+        let student = null;
 
         student = await db.students.findOne({
-          _id: new ObjectID(studentId)
-        })
+          _id: new ObjectID(studentId),
+        });
 
-        if(!student) {
-          throw new Error('Student not found')
+        if (!student) {
+          throw new Error('Student not found');
         }
 
-         student = await db.students.findOneAndUpdate(
+        student = await db.students.findOneAndUpdate(
           {
             _id: new ObjectID(studentId),
           },
           {
             $push: {
-              courses: new ObjectID(input)
+              courses: new ObjectID(input),
             },
           },
           { returnOriginal: false }
@@ -41,6 +45,32 @@ export const StudentResolver: IResolvers = {
       }
     },
 
+    unregisterCourse: async (_, args: unregisterCourseArgs, ctx: ICtx): Promise<Student> => {
+      try {
+        const { db } = ctx;
+        const { studentId, courseId } = args;
+
+        const student = await db.students.findOneAndUpdate(
+          {
+            _id: new ObjectID(studentId),
+          },
+          {
+            $pull: {
+              courses: new ObjectID(courseId),
+            },
+          },
+          { returnOriginal: false }
+        );
+
+        if (!student.value) {
+          throw new Error('Courses could not be removed');
+        }
+
+        return student.value
+      } catch (err) {
+        throw new Error(`Something went wrong: ${err}`);
+      }
+    },
   },
   Student: {
     id: (student: Student): string => {

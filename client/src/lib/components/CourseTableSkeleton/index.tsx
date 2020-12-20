@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Layout, Row, Skeleton, Table } from 'antd';
 import { Sidebar } from '../Sidebar';
 import { BreadCrumbNav } from '../BreadCrumbNav';
-import Title from 'antd/lib/skeleton/Title';
 
 interface Props {
   turnSidebarOff?: boolean

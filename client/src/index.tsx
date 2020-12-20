@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout, Spin } from 'antd';
+import { Layout } from 'antd';
 import './styles/index.css';
 import reportWebVitals from './reportWebVitals';
 import { AllStudents, AppHeader, Home, NotFound, StudentDetails } from './pages';
-import { AppHeaderSkeleton } from './lib/components';
+// import { AppHeaderSkeleton } from './lib/components';
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
