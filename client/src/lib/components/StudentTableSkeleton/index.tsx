@@ -4,7 +4,7 @@ import { Sidebar } from '../Sidebar';
 import { BreadCrumbNav } from '../BreadCrumbNav';
 
 interface Props {
-  turnSidebarOff?: boolean
+  turnSidebarOff?: boolean;
 }
 
 const { Content } = Layout;
@@ -108,7 +108,14 @@ export const StudentSkeleton = ({ turnSidebarOff }: Props) => {
       {!turnSidebarOff ? <Sidebar /> : null}
       <Layout>
         <Content style={{ padding: '0 50px' }}>
-        {!turnSidebarOff ? <BreadCrumbNav paths={['Home', 'All_Students']} /> : null}
+          {!turnSidebarOff ? (
+            <BreadCrumbNav
+              paths={[
+                { title: 'Home', link: 'Home' },
+                { title: 'All-Students', link: '/students' },
+              ]}
+            />
+          ) : null}
           <Table
             columns={columns}
             pagination={false}

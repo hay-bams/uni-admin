@@ -127,7 +127,16 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
       <Sidebar />
       <Layout>
         <Content style={{ padding: '0 50px' }}>
-          <BreadCrumbNav paths={['Home', 'All_Sudents', 'Student_Details']} />
+          <BreadCrumbNav
+            paths={[
+              { title: 'Home', link: 'Home' },
+              { title: 'All-Students', link: '/students' },
+              {
+                title: 'Student-Details',
+                link: `/students/${StudentData?.studentDetails.id}`,
+              },
+            ]}
+          />
           {ErrorBannerElement}
           {RegisterErrorBanner}
           {UnregisterErrorBanner}

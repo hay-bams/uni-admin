@@ -16,7 +16,7 @@ const { Content } = Layout;
 const LIMIT = 2;
 
 export const AllStudents = () => {
-  const [page, _] = useState(1);
+  const [page, ] = useState(1);
   const { data, loading, error } = useQuery<StudentsData, StudentsVariables>(
     STUDENTS,
     {
@@ -28,13 +28,9 @@ export const AllStudents = () => {
     }
   );
 
-  // onPageChange = ()  => {
-
-  // }
-
   const StudentsRender =
     data && data.students && data.students.results ? (
-      <Students loading={loading} students={data?.students.results} />
+      <Students students={data?.students.results} />
     ) : null;
 
   if (loading) {
@@ -52,7 +48,12 @@ export const AllStudents = () => {
       <Sidebar />
       <Layout>
         <Content style={{ padding: '0 50px' }}>
-          <BreadCrumbNav paths={['Home', 'All_Students']} />
+          <BreadCrumbNav
+            paths={[
+              { title: 'Home', link: 'Home' },
+              { title: 'All-Students', link: '/students' },
+            ]}
+          />
           {ErrorBannerElement}
           {StudentsRender}
         </Content>

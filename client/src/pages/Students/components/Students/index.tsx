@@ -2,16 +2,18 @@ import React from 'react';
 import { Table, Button, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { Students_students, Students_students_results } from '../../../../graphql/queries/Students/__generated__/Students';
+import {
+  Students_students,
+  Students_students_results,
+} from '../../../../graphql/queries/Students/__generated__/Students';
 
 interface Props {
   students: Students_students['results'];
-  loading: boolean
 }
 
 const { Title } = Typography;
 
-export const Students = ({ students, loading }: Props) => {
+export const Students = ({ students }: Props) => {
   const columns = [
     {
       title: 'Name',
@@ -80,6 +82,7 @@ export const Students = ({ students, loading }: Props) => {
         dataSource={data}
         rowClassName="table_row"
         scroll={{ x: '50vw' }}
+        pagination = {{ pageSize: 2 }}
         title={() => <Title level={3}>All Students</Title>}
       />
     </div>
