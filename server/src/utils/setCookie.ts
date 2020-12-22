@@ -10,7 +10,7 @@ export const cookieOptions = {
 
 export const setCookie = (id: ObjectID | undefined, res: Response) => {
   if(id) {
-    res.cookie('user', id, {
+    res.cookie('admin', id, {
       ...cookieOptions,
       maxAge: 1000 * 60 * 60 * 24 * 365
     })

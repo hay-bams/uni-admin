@@ -1,6 +1,6 @@
 export * from './Students'
 export * from './StudentDetails'
-export * from './Home'
 export * from './NotFound'
 export * from './AppHeader'
 export * from './Login'
+export * from './Home'

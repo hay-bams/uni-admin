@@ -56,5 +56,6 @@ export const typeDefs = gql`
     registerCourse(studentId: String!, input: ID!): Student
     unregisterCourse(studentId: String!, courseId: String): Student
     login(input: LoginInput): User!
+    logout: User!
   }
 `;

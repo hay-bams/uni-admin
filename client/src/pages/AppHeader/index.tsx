@@ -1,7 +1,12 @@
 import React from 'react';
 import { Button, Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+
 import { Admin } from '../../lib/types';
+import { LOG_OUT } from '../../graphql';
+import { Logout as LogoutData } from '../../graphql/mutations/Logout/__generated__/Logout';
+import { displayErrorMessage, displaySuccessNotification } from '../../utils';
 
 interface Props {
   admin: Admin;
@@ -11,6 +16,24 @@ interface Props {
 const { Header } = Layout;
 
 export const AppHeader = ({ admin, setAdmin }: Props) => {
+  const [ logout ] = useMutation<LogoutData>(LOG_OUT, {
+    onCompleted: data => {
+      if(data && data.logout) {
+        setAdmin(data.logout)
+        displaySuccessNotification('You have successfully logout')
+      }
+    },
+    onError: () => {
+      displayErrorMessage(
+        "Sorry! We weren't able to log you out. Please try again later!"
+      );
+    }
+  });
+
+  const handleLogout = () => {
+    logout()
+  }
+
   return (
     <Header className="app_header">
       <Link to="/">
@@ -27,9 +50,9 @@ export const AppHeader = ({ admin, setAdmin }: Props) => {
             className="app_header_menu"
           >
             <Menu.Item key="7">
-              <Link to="/signin">
+              <div onClick={handleLogout}>
                 <Button type="primary">Sign Out</Button>
-              </Link>
+             </div>
             </Menu.Item>
           </Menu>
         </div>

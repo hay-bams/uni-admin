@@ -9,8 +9,6 @@ import {
 import { LOG_IN } from '../../graphql';
 import { LoginInput } from '../../graphql/globalTypes';
 import { useForm } from '../../lib/hooks/useForm';
-// import { User } from '../../lib/types';
-import { Login_login as User } from '../../graphql/mutations/Login/__generated__/Login'
 import { Redirect } from 'react-router-dom';
 import { displaySuccessNotification } from '../../utils';
 import { Spin, Layout } from 'antd';
@@ -65,7 +63,6 @@ export const Login = ({ setAdmin, admin }: Props) => {
   }
 
   if (loginData && loginData.login.id) {
-    const { id: userId } = loginData.login;
     return <Redirect to={`/students`} />;
   }
 

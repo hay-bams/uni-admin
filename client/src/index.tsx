@@ -16,6 +16,7 @@ import {
   Login,
   NotFound,
   StudentDetails,
+  Home
 } from './pages';
 import { Admin } from './lib/types';
 import {
@@ -32,21 +33,6 @@ const client = new ApolloClient({
   cache,
   credentials: 'include'
 });
-
-// const cache = new InMemoryCache();
-// // const client = new ApolloClient({
-// //   uri: 'http://localhost:9005/api',
-// //   credentials: 'same-origin',
-// //   cache,
-// // });
-
-// const client = new ApolloClient({
-//   cache,
-//   link: createHttpLink({
-//     credentials: 'include',
-//     uri: 'http://localhost:9005/api',
-//   }),
-// });
 
 const initialUser: Admin = {
   id: null,
@@ -97,6 +83,11 @@ const App = () => {
         {LoginErrorBanner}
         <Switch>
           {/* <Route exact path="/students" component={AllStudents} /> */}
+           <Route
+            exact
+            path="/"
+           component={Home}
+          />
           <Route
             exact
             path="/students"
