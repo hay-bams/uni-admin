@@ -1,6 +1,16 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
+  input CourseInput {
+    courseId: ID!
+  }
+
+  input LoginInput {
+    username: String
+    password: String
+    withCookie: Boolean!
+  }
+
   type Student {
     id: ID!
     studentID: String!
@@ -30,8 +40,10 @@ export const typeDefs = gql`
     courses: [Course!]!
   }
 
-  input CourseInput {
-    courseId: ID!
+  type User {
+    id: ID
+    username: String
+    madeRequest: Boolean
   }
 
   type Query {
@@ -43,5 +55,6 @@ export const typeDefs = gql`
   type Mutation {
     registerCourse(studentId: String!, input: ID!): Student
     unregisterCourse(studentId: String!, courseId: String): Student
+    login(input: LoginInput): User!
   }
 `;

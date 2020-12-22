@@ -1,20 +1,31 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config()
 
+import cookieParser from 'cookie-parser';
+import cors from 'cors'
 import express, { Application } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { typeDefs, resolvers } from './graphql';
 import { connectDatabase } from './database';
 
+const corsOptions = {
+  credentials: true,
+  origin: 'http://localhost:3000',
+}
+
 const mount = async (app: Application) => {
   const db = await connectDatabase();
+  console.log(process.env.SECRET)
+
+  app.use(cors(corsOptions))
+  app.use(cookieParser(process.env.SECRET))
 
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: ({ req, res }) => ({ db, req, res })
+    context: ({ req, res }) => ({ db, req, res }),
   });
-  server.applyMiddleware({ app, path: '/api' });
+  server.applyMiddleware({ app, path: '/api', cors: false });
 
   app.listen(process.env.PORT);
 

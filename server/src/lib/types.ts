@@ -1,4 +1,6 @@
+import { Request, Response } from 'express';
 import { Collection, ObjectID } from 'mongodb';
+import { User } from '../graphql/resolvers/login/types';
 
 export interface Course {
   _id: ObjectID;
@@ -20,6 +22,7 @@ export interface Student {
 }
 
 export interface Database {
+  users: Collection<User>;
   students: Collection<Student>;
   courses: Collection<Course>
 }

@@ -82,7 +82,7 @@ export const Students = ({ students }: Props) => {
         dataSource={data}
         rowClassName="table_row"
         scroll={{ x: '50vw' }}
-        pagination = {{ pageSize: 2 }}
+        pagination = {{ pageSize: 6 }}
         title={() => <Title level={3}>All Students</Title>}
       />
     </div>

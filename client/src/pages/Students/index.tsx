@@ -10,13 +10,19 @@ import {
   Students as StudentsData,
 } from '../../graphql/queries/Students/__generated__/Students';
 import { ErrorBanner, StudentSkeleton } from '../../lib/components';
+import { Admin } from '../../lib/types';
+import { Redirect } from 'react-router-dom';
+
+interface Props {
+  admin: Admin
+}
 
 const { Content } = Layout;
 
 const LIMIT = 2;
 
-export const AllStudents = () => {
-  const [page, ] = useState(1);
+export const AllStudents = ({ admin }: Props) => {
+  const [page] = useState(1);
   const { data, loading, error } = useQuery<StudentsData, StudentsVariables>(
     STUDENTS,
     {
@@ -27,6 +33,10 @@ export const AllStudents = () => {
       },
     }
   );
+
+  if(!admin.id) {
+    return <Redirect to="/login"/>
+  }
 
   const StudentsRender =
     data && data.students && data.students.results ? (

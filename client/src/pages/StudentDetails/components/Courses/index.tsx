@@ -9,7 +9,9 @@ interface Props {
   student?: studentDetails_studentDetails;
   courses?: AllCourses_allCourses[];
   addCourse: any,
-  removeCourse: any
+  removeCourse: any,
+  registerCourseLoading:  boolean,
+  unregisterCourseLoading: boolean
 }
 
 const { Title } = Typography;
@@ -18,7 +20,9 @@ export const Courses = ({
   student,
   courses,
   addCourse,
-  removeCourse
+  removeCourse,
+  registerCourseLoading,
+  unregisterCourseLoading
 }: Props) => {
   const registerCourse = (studentId: string, courseId: string) => {
     addCourse({
@@ -178,6 +182,7 @@ export const Courses = ({
             columns={registeredTableColumns}
             pagination={false}
             dataSource={registeredCourses}
+            loading={unregisterCourseLoading}
             rowClassName="table_row"
             scroll={{ x: '50vw', y: '50vh' }}
             className="registered_course_table"
@@ -190,6 +195,7 @@ export const Courses = ({
             columns={unregisteredTableColumns}
             pagination={false}
             dataSource={unregisteredCourses}
+            loading={registerCourseLoading}
             rowClassName="table_row"
             scroll={{ x: '50vw', y: '50vh' }}
             title={() => <Title level={5}>Unregistered Courses</Title>}

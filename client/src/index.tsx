@@ -1,41 +1,120 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useMutation,
+} from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from 'antd';
-import './styles/index.css';
+import { Layout, Spin } from 'antd';
+
 import reportWebVitals from './reportWebVitals';
-import { AllStudents, AppHeader, Home, NotFound, StudentDetails } from './pages';
-// import { AppHeaderSkeleton } from './lib/components';
+import {
+  AllStudents,
+  AppHeader,
+  Login,
+  NotFound,
+  StudentDetails,
+} from './pages';
+import { Admin } from './lib/types';
+import {
+  Login as LoginData,
+  LoginVariables,
+} from './graphql/mutations/Login/__generated__/Login';
+import { LOG_IN } from './graphql';
+import { AppHeaderSkeleton, ErrorBanner } from './lib/components';
+import './styles/index.css';
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  uri: 'http://localhost:9005/api',
+  uri: 'http://localhost:9000/api',
   cache,
+  credentials: 'include'
 });
 
+// const cache = new InMemoryCache();
+// // const client = new ApolloClient({
+// //   uri: 'http://localhost:9005/api',
+// //   credentials: 'same-origin',
+// //   cache,
+// // });
+
+// const client = new ApolloClient({
+//   cache,
+//   link: createHttpLink({
+//     credentials: 'include',
+//     uri: 'http://localhost:9005/api',
+//   }),
+// });
+
+const initialUser: Admin = {
+  id: null,
+  username: null,
+  madeRequest: false,
+};
+
 const App = () => {
+  const [login, { error }] = useMutation<LoginData, LoginVariables>(LOG_IN, {
+    onCompleted: (data) => {
+      if (data && data.login) {
+        setAdmin(data.login);
+      }
+    },
+  });
+
+  const [admin, setAdmin] = useState<Admin>(initialUser);
+  const loginRef = useRef(login);
+
+  useEffect(() => {
+    loginRef.current({ variables: { input: { withCookie: true } } });
+  }, []);
+
+  const LoginErrorBanner = error ? (
+    <ErrorBanner
+      message="Uh oh! Something went wrong :("
+      description={error?.message}
+    />
+  ) : null;
+
   // const [pageReload, setPageReload] = useState(true)
 
-  // if (pageReload) {
-  //   return (
-  //     <Layout>
-  //       <AppHeaderSkeleton />
-  //       <div className="launch-spinner">
-  //         <Spin tip="Launching Admin" size="large" />
-  //       </div>
-  //     </Layout>
-  //   );
-  // }
+  if (!admin.madeRequest && !error) {
+    return (
+      <Layout>
+        <AppHeaderSkeleton />
+        <div className="launch-spinner">
+          <Spin tip="Launching School Admin" size="large" />
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Router>
       <Layout className="app layout">
-        <AppHeader />
+        <AppHeader admin={admin} setAdmin={setAdmin} />
+        {LoginErrorBanner}
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/students" component={AllStudents} />
-          <Route exact path="/students/:id" component={StudentDetails} />
+          {/* <Route exact path="/students" component={AllStudents} /> */}
+          <Route
+            exact
+            path="/students"
+            render={(props) => <AllStudents {...props} admin={admin} />}
+          />
+          <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <Login {...props} setAdmin={setAdmin} admin={admin} />
+            )}
+          />
+          <Route
+            exact
+            path="/students/:id"
+            render={(props) => <StudentDetails {...props} admin={admin} />}
+          />
+          {/* <Route exact path="/students/:id" component={StudentDetails} /> */}
           <Route component={NotFound} />
         </Switch>
       </Layout>

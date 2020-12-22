@@ -7,7 +7,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export interface LoginInput {
+  username?: string | null;
+  password?: string | null;
+  withCookie: boolean;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
-export {}

@@ -7,7 +7,7 @@ import {
   ErrorBanner,
 } from '../../lib/components';
 import { Courses } from './components/Courses';
-import { RouteComponentProps } from 'react-router-dom';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { STUDENT_DETAILS, All_COURSES, REGISTER_COURSE } from '../../graphql';
 import {
@@ -25,14 +25,19 @@ import {
 } from '../../graphql/mutations/UnregisterCourse/__generated__/UnregisterCourse';
 import { displaySuccessNotification } from '../../utils';
 import { UNREGISTER_COURSE } from '../../graphql/mutations/UnregisterCourse';
+import { Admin } from '../../lib/types';
 
+
+interface Props {
+  admin: Admin
+}
 interface MatchParams {
   id: string;
 }
 
 const { Content } = Layout;
 
-export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
+export const StudentDetails = ({ match, admin }: Props & RouteComponentProps<MatchParams>) => {
   const {
     data: StudentData,
     loading: studentLoading,
@@ -83,6 +88,10 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
     }
   );
 
+  if(!admin.id) {
+    return <Redirect to="/login"/>
+  }
+
   const CoursesRender =
     (
       <Courses
@@ -90,14 +99,16 @@ export const StudentDetails = ({ match }: RouteComponentProps<MatchParams>) => {
         addCourse={addCourse}
         removeCourse={removeCourse}
         courses={CoursesData?.allCourses}
+        registerCourseLoading={registerCourseLoading}
+        unregisterCourseLoading={unregisterCourseLoading}
       />
     ) || null;
 
   if (
     studentLoading ||
-    coursesLoading ||
-    registerCourseLoading ||
-    unregisterCourseLoading
+    coursesLoading 
+    // registerCourseLoading ||
+    // unregisterCourseLoading
   ) {
     return <CourseTableSkeleton />;
   }

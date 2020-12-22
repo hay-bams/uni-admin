@@ -1,5 +1,12 @@
 @import "~antd/dist/antd.css";
 
+:root {
+  --title-color: #676a6c;  
+  --text-color: #676a6c; 
+    /* --title-color: #035d4d;
+  --text-color: #738a86; */ 
+}
+
 .app {
   min-height: 100vh;
   background: #fff;
@@ -30,7 +37,7 @@
   color: #fff;
 }
 
-/*************STUDENTS***************/
+/*************STUDENTS PAGE***************/
 .admin_side_bar {
   margin-top: -1px;
 }
@@ -57,4 +64,109 @@
 
 .registered_courses.ant-col.ant-col-xs-24 {
   margin-bottom: 30px;
+}
+
+
+/*******************LOGIN PAGE *******************/
+.login_form_container {
+  background: #f3f3f4;
+  height: 93vh;
+}
+
+.login_form {
+  width: 20%;
+  margin: 0 auto;
+  margin-top: 100px;
+  border: 1px solid #e7eaec;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* .login_form .ant-input-affix-wrapper:hover,
+.login_form .ant-input-affix-wrapper-focused {
+  border: 1px solid var(--primary-dim);
+  box-shadow: none;
+} */
+
+/* .login_form .login-form-button:focus,
+.login-form-button:focus {
+  background: var(--primary-dim);
+} */
+
+/* .logo_name {
+  font-size: 50px;
+  color: var(--primary-dim);
+  margin: 20px auto 20px auto;
+  width: 30%;
+  letter-spacing: -10px;
+} */
+
+.login_form .login-form-button {
+  display: block;
+  /* background: var(--text-color); */
+  width: 100%;
+}
+
+.login-form-forgot {
+  text-align: center;
+  color: var(--text-color);
+  margin-top: 0;
+  display: block;
+}
+
+.login-in-spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-in-spin .ant-spin-dot-item {
+  background: var(--primary-dim);
+}
+
+.login-in-spin .ant-spin-text {
+  color: var(--primary-dim);
+}
+
+.signin-title {
+  font-size: 35px;
+  color: var(--primary-dim);
+  margin: 20px auto 20px auto;
+  width: 40%;
+}
+
+/* LOGIN MOBILE */
+@media only screen and (max-width: 450px) {
+  .login_form {
+    width: 95%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    height: 90vh;
+    padding-top: 0;
+    border: none;
+    position: absolute;
+    top: 0;
+  }
+
+  .login_form .login-form-button {
+    display: block;
+    /* background: var(--primary-dim); */
+    /* border-color: var(--primary-dim); */
+    width: 100%;
+  }
+
+  .login-form-forgot {
+    text-align: center;
+    color: green;
+    margin-top: 0;
+    display: block;
+  }
+
+  .signin-title {
+    font-size: 40px;
+    margin: 0 auto 20px auto;
+    width: 40%;
+  }
 }
