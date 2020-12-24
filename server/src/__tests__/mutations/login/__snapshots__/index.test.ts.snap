@@ -33,3 +33,18 @@ Object {
   },
 }
 `;
+
+exports[`Admin Login should return throw an if pasword is wrong 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: Wrong Password, Please Try again with the correct password],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

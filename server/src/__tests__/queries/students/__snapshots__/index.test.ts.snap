@@ -97,7 +97,7 @@ Object {
 }
 `;
 
-exports[`Students Queries should return throw an error if student is not found 1`] = `
+exports[`Students Queries should throw an error if student is not found 1`] = `
 Object {
   "data": null,
   "errors": Array [

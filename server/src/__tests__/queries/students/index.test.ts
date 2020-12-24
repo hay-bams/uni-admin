@@ -83,7 +83,7 @@ describe('Students Queries', () => {
     expect(res).toMatchSnapshot();
   });
 
-  test('should return throw an error if student is not found', async () => {
+  test('should throw an error if student is not found', async () => {
     const { query } = createTestServer({
       db: {
         students: {
@@ -97,7 +97,8 @@ describe('Students Queries', () => {
       variables: { id: STUDENT_DATA[0]._id.toString() },
     });
     expect(res.errors?.length).toBeGreaterThan(0);
-    res.errors && expect(res.errors[0]).toHaveProperty('message');
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    expect(res.errors![0]).toHaveProperty('message');
     expect(res).toMatchSnapshot();
   });
 });

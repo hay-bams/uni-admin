@@ -39,6 +39,57 @@ Object {
 }
 `;
 
+exports[`Student Mutation should throw an error if student course registration failed 1`] = `
+Object {
+  "data": Object {
+    "registerCourse": null,
+  },
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: Courses could not be added],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Student Mutation should throw an error if student course removal failed 1`] = `
+Object {
+  "data": Object {
+    "unregisterCourse": null,
+  },
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: Courses could not be removed],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Student Mutation should throw an error if student to be registered does not exist 1`] = `
+Object {
+  "data": Object {
+    "registerCourse": null,
+  },
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: Student not found],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
 exports[`Student Mutation should unregister courses for a student 1`] = `
 Object {
   "data": Object {

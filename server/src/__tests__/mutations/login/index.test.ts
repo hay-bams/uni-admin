@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import bcrypt from 'bcrypt';
 
 import { USER_DATA } from '../../test_data';
@@ -93,7 +94,34 @@ describe('Admin Login', () => {
     });
 
     expect(res.errors?.length).toBeGreaterThan(0);
-    res.errors && expect(res.errors[0]).toHaveProperty('message');
+   expect(res.errors![0]).toHaveProperty('message');
+    expect(res).toMatchSnapshot();
+  });
+
+  test('should return throw an if pasword is wrong', async () => {
+    const { mutate } = createTestServer({
+      db: {
+        users: {
+          findOne: jest.fn(() => USER_DATA[0].username),
+        },
+      },
+    });
+
+    bcryptCompare.mockResolvedValue(false);
+
+    const res = await mutate({
+      mutation: TEST_LOG_IN,
+      variables: {
+        input: {
+          username: 'haybams',
+          password: 'wrongPassword',
+          withCookie: false,
+        },
+      },
+    });
+
+    expect(res.errors?.length).toBeGreaterThan(0);
+    expect(res.errors![0]).toHaveProperty('message');
     expect(res).toMatchSnapshot();
   });
 });

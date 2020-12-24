@@ -45,7 +45,11 @@ export const StudentResolver: IResolvers = {
       }
     },
 
-    unregisterCourse: async (_, args: unregisterCourseArgs, ctx: ICtx): Promise<Student> => {
+    unregisterCourse: async (
+      _,
+      args: unregisterCourseArgs,
+      ctx: ICtx
+    ): Promise<Student> => {
       try {
         const { db } = ctx;
         const { studentId, courseId } = args;
@@ -66,7 +70,7 @@ export const StudentResolver: IResolvers = {
           throw new Error('Courses could not be removed');
         }
 
-        return student.value
+        return student.value;
       } catch (err) {
         throw new Error(`Something went wrong: ${err}`);
       }

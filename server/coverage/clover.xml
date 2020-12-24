@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1608804805980" clover="3.2.0">
+  <project timestamp="1608804805980" name="All files">
+    <metrics statements="133" coveredstatements="122" conditionals="34" coveredconditionals="26" methods="24" coveredmethods="21" elements="191" coveredelements="169" complexity="0" loc="133" ncloc="133" packages="13" files="13" classes="13"/>
+    <package name="__tests__">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="helpers.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/__tests__/helpers.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="15" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="16" count="15" type="stmt"/>
+      </file>
+    </package>
+    <package name="__tests__.mutations">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="mutations.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/__tests__/mutations/mutations.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="__tests__.queries">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="queries.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/__tests__/queries/queries.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="__tests__.test_data">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/__tests__/test_data/index.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="86" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/index.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql.resolvers">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/resolvers/index.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql.resolvers.course">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/resolvers/course/index.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="16" count="20" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql.resolvers.login">
+      <metrics statements="19" coveredstatements="19" conditionals="14" coveredconditionals="13" methods="2" coveredmethods="2"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/resolvers/login/index.ts">
+        <metrics statements="19" coveredstatements="19" conditionals="14" coveredconditionals="13" methods="2" coveredmethods="2"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="33" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="39" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql.resolvers.student">
+      <metrics statements="32" coveredstatements="31" conditionals="8" coveredconditionals="7" methods="7" coveredmethods="7"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/resolvers/student/index.ts">
+        <metrics statements="32" coveredstatements="31" conditionals="8" coveredconditionals="7" methods="7" coveredmethods="7"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="22" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="69" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="81" count="11" type="stmt"/>
+        <line num="83" count="3" type="stmt"/>
+        <line num="84" count="3" type="stmt"/>
+        <line num="85" count="3" type="stmt"/>
+        <line num="89" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="93" count="3" type="stmt"/>
+        <line num="94" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql.resolvers.students">
+      <metrics statements="25" coveredstatements="24" conditionals="6" coveredconditionals="5" methods="4" coveredmethods="4"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/resolvers/students/index.ts">
+        <metrics statements="25" coveredstatements="24" conditionals="6" coveredconditionals="5" methods="4" coveredmethods="4"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="51" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql.resolvers.user">
+      <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/resolvers/user/index.ts">
+        <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="graphql.typeDefs">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/graphql/typeDefs/index.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="11" coveredstatements="3" conditionals="6" coveredconditionals="1" methods="3" coveredmethods="0"/>
+      <file name="cookieHelper.ts" path="/Users/ayobamiadelakun/Documents/projects/uni-admin/server/src/utils/cookieHelper.ts">
+        <metrics statements="11" coveredstatements="3" conditionals="6" coveredconditionals="1" methods="3" coveredmethods="0"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
