@@ -9,7 +9,7 @@ export const CourseResolver: IResolvers = {
       const courses = await db.courses.find({})
 
       return courses.toArray()
-    } 
+    }
   },
   Course: {
     id: (course: Course): string => {

@@ -2,7 +2,7 @@ import { IResolvers } from "apollo-server-express";
 import { Response } from "express";
 import { ICtx } from "../../../lib/types";
 
-import { cookieOptions } from "../../../utils/setCookie";
+import { cookieOptions } from "../../../utils/cookieHelper";
 import { User } from "../login/types";
 
 export const UserResolver: IResolvers = {

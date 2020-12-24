@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Students Queries should return all students 1`] = `
+Object {
+  "data": Object {
+    "students": Object {
+      "results": Array [
+        Object {
+          "id": "5fda72349baf026a892dc1a0",
+        },
+        Object {
+          "id": "5fe36133a29a42f8111cf29c",
+        },
+        Object {
+          "id": "5fe3613b0818b75505901627",
+        },
+        Object {
+          "id": "5fe3617932e06a4c602772d0",
+        },
+      ],
+      "total": 4,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Students Queries should return student details 1`] = `
+Object {
+  "data": Object {
+    "studentDetails": Object {
+      "courses": Array [
+        Object {
+          "id": "5fdab398791e134a5466566f",
+        },
+        Object {
+          "id": "5fdab4b5eed1fb397feaca14",
+        },
+        Object {
+          "id": "5fdab4bd78cc9321b31faf35",
+        },
+        Object {
+          "id": "5fdab4c4fe1aa062abc46096",
+        },
+        Object {
+          "id": "5fdab4ccba6dcf525408412a",
+        },
+      ],
+      "id": "5fda72349baf026a892dc1a0",
+      "name": "Peace Dike",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Students Queries should return students with pagination 1`] = `
+Object {
+  "data": Object {
+    "students": Object {
+      "results": Array [
+        Object {
+          "id": "5fda72349baf026a892dc1a0",
+        },
+        Object {
+          "id": "5fe36133a29a42f8111cf29c",
+        },
+        Object {
+          "id": "5fe3613b0818b75505901627",
+        },
+        Object {
+          "id": "5fe3617932e06a4c602772d0",
+        },
+      ],
+      "total": 4,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Students Queries should return throw an error if student is not found 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: Student not found],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

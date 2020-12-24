@@ -1,23 +1,8 @@
 import { IResolvers } from 'apollo-server-express';
-import { Request, Response } from 'express';
-import { ObjectID } from 'mongodb';
 import bcrypt from 'bcrypt';
-import { Database, ICtx } from '../../../lib/types';
-import { setCookie } from '../../../utils/setCookie';
+import { ICtx } from '../../../lib/types';
+import { cookie } from '../../../utils/cookieHelper';
 import { Loginbody, User } from './types';
-
-const loginViaCookie = async (db: Database, req: Request, res: Response) => {
-  const result = await db.users.findOne({
-    _id: new ObjectID(req.signedCookies.admin),
-  });
-
-  if (!result) {
-    res.clearCookie('admin');
-    return null;
-  }
-
-  return result;
-};
 
 export const LoginResolver: IResolvers = {
   Mutation: {
@@ -26,13 +11,13 @@ export const LoginResolver: IResolvers = {
       args: Loginbody,
       ctx: ICtx
     ): Promise<User> => {
-      const { username, password, withCookie } = args.input
-      const { db, req, res } = ctx
+      const { username, password, withCookie } = args.input;
+      const { db, req, res } = ctx;
       try {
         const result = withCookie
-          ? await loginViaCookie(db, req, res)
+          ? await cookie.loginViaCookie(db, req, res)
           : await db.users.findOne<User>({
-              username
+              username,
             });
 
         if (!result && withCookie) {
@@ -57,9 +42,9 @@ export const LoginResolver: IResolvers = {
             );
         }
 
-        setCookie(result._id, res);
+        cookie.setCookie(result._id, res);
 
-        return result
+        return result;
       } catch (err) {
         throw new Error(`Something went wrong: ${err}`);
       }

@@ -1,11 +1,7 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectID } from 'mongodb';
 import { ICtx, Student } from '../../../lib/types';
-import {
-  StudentsArgs,
-  StudentArgs,
-  StudentsData,
-} from './types';
+import { StudentsArgs, StudentArgs, StudentsData } from './types';
 
 export const StudentsResolver: IResolvers = {
   Query: {
@@ -39,7 +35,11 @@ export const StudentsResolver: IResolvers = {
         throw new Error(`Something went wrong: ${err}`);
       }
     },
-    studentDetails: async (_, args: StudentArgs, ctx: ICtx): Promise<Student> => {
+    studentDetails: async (
+      _,
+      args: StudentArgs,
+      ctx: ICtx
+    ): Promise<Student> => {
       try {
         const { id } = args;
         const { db } = ctx;

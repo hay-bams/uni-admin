@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Admin Login should login admin 1`] = `
+Object {
+  "data": Object {
+    "login": Object {
+      "id": "5fe09161251c8b0a9565108d",
+      "madeRequest": true,
+      "username": "admin",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Admin Login should return an error if user is not found 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: User does not exist, Please confirm your username is correct],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
