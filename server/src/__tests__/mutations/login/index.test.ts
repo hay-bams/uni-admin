@@ -14,7 +14,7 @@ beforeEach(() => {
   bcryptCompare.mockReset();
 });
 
-describe('Admin Login', () => {
+describe('Admin Login Mutation', () => {
   test('should login admin', async () => {
     const { mutate } = createTestServer({
       db: {

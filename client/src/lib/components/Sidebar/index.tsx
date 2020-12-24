@@ -35,12 +35,6 @@ export const Sidebar = () => {
         <Menu.Item key="1" icon={<UserOutlined />}>
           <Link to="/students">All Students</Link>
         </Menu.Item>
-        <Menu.Item key="2" icon={<BookOutlined />}>
-          <Link to="/courses">All Courses</Link>
-        </Menu.Item>
-        <Menu.Item key="3" icon={<FolderAddOutlined />}>
-          <Link to="/courses">Add New Course</Link>
-        </Menu.Item>
       </Menu>
     </Sider>
   );

@@ -1,7 +1,7 @@
 import { createTestServer } from '../../helpers';
 import { TEST_LOG_OUT } from '../mutations';
 
-describe('Admin Logout', () => {
+describe('Admin Logout Mutation', () => {
   test('should logout admin', async () => {
     const { mutate } = createTestServer({
       res: {clearCookie: jest.fn()}

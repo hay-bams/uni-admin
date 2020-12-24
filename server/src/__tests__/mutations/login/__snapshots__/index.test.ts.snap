@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Admin Login should login admin 1`] = `
+exports[`Admin Login Mutation should login admin 1`] = `
 Object {
   "data": Object {
     "login": Object {
@@ -19,7 +19,7 @@ Object {
 }
 `;
 
-exports[`Admin Login should return an error if user is not found 1`] = `
+exports[`Admin Login Mutation should return an error if user is not found 1`] = `
 Object {
   "data": null,
   "errors": Array [
@@ -34,7 +34,7 @@ Object {
 }
 `;
 
-exports[`Admin Login should return throw an if pasword is wrong 1`] = `
+exports[`Admin Login Mutation should return throw an if pasword is wrong 1`] = `
 Object {
   "data": null,
   "errors": Array [

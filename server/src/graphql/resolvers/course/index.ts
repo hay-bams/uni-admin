@@ -4,6 +4,7 @@ import { Course, ICtx } from "../../../lib/types";
 export const CourseResolver: IResolvers = {
   Query: {
     allCourses: async (_, __, ctx: ICtx): Promise<Course[]> => {
+            // TODO: Authorize before user can register course
       const { db } = ctx;
 
       const courses = await db.courses.find({})

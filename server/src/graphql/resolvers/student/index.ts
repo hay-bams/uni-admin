@@ -11,6 +11,7 @@ export const StudentResolver: IResolvers = {
       ctx: ICtx
     ): Promise<Student> => {
       try {
+        // TODO: Authorize before user can register course
         const { studentId, input } = args;
         const { db } = ctx;
         let student = null;
@@ -51,6 +52,7 @@ export const StudentResolver: IResolvers = {
       ctx: ICtx
     ): Promise<Student> => {
       try {
+              // TODO: Authorize before user can register course
         const { db } = ctx;
         const { studentId, courseId } = args;
 
