@@ -66,7 +66,6 @@ export const StudentDetails = ({
     {
       onCompleted: (data) => {
         if (data.registerCourse) {
-          console.log('+++++++++++=======')
           studentRefetch();
           courseRefetch();
           displaySuccessNotification('Course Registered Successfully');

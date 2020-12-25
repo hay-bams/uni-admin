@@ -82,7 +82,6 @@ const App = () => {
         <AppHeader admin={admin} setAdmin={setAdmin} />
         {LoginErrorBanner}
         <Switch>
-          {/* <Route exact path="/students" component={AllStudents} /> */}
            <Route
             exact
             path="/"
@@ -105,7 +104,6 @@ const App = () => {
             path="/students/:id"
             render={(props) => <StudentDetails {...props} admin={admin} />}
           />
-          {/* <Route exact path="/students/:id" component={StudentDetails} /> */}
           <Route component={NotFound} />
         </Switch>
       </Layout>

@@ -7,7 +7,6 @@ import { Login } from '../../pages';
 import { Route, Router } from 'react-router-dom';
 import {
   mockValidLoginMutation,
-  mockInValidLoginMutation,
 } from '../../__mocks__';
 
 const history = createMemoryHistory({
@@ -53,7 +52,6 @@ describe('Login', () => {
 
     const admin = { id: null, username: null, madeRequest: false };
     const setAdmin = jest.fn();
-    const loginMessage = 'Login Success';
 
     const { queryByText } = render(
       <MockedProvider mocks={[loginMock]} addTypename={false}>
