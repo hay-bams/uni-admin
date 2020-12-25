@@ -12,5 +12,3 @@ export const resolvers = merge(
   LoginResolver,
   UserResolver
 );
-
-console.log('Hello')
