@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { COURSES_DATA, STUDENT_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
 import {
   TEST_ALL_STUDENTS_QUERY,
   TEST_STUDENT_DETAILS_QUERY,
 } from '../queries';
+import { GraphQLError } from 'graphql';
 
 describe('Students Queries', () => {
   test('should return all students', async () => {
@@ -97,8 +99,20 @@ describe('Students Queries', () => {
       variables: { id: STUDENT_DATA[0]._id.toString() },
     });
     expect(res.errors?.length).toBeGreaterThan(0);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(res.errors![0]).toHaveProperty('message');
     expect(res).toMatchSnapshot();
+  });
+
+  test('should throw an error if a graphql server error occurs while fetching students', async () => {
+    const { query } = createTestServer({
+      err: new GraphQLError('Some error occured'),
+    });
+
+    const res = await query({
+      query: TEST_ALL_STUDENTS_QUERY,
+      variables: { all: 'all' },
+    });
+
+    expect(res.errors!.length).toBeGreaterThan(0);
   });
 });
