@@ -112,7 +112,7 @@ export const StudentSkeleton = ({ turnSidebarOff }: Props) => {
             <BreadCrumbNav
               paths={[
                 { title: 'Home', link: 'Home' },
-                { title: 'All-Students', link: '/students' },
+                { title: 'All-Students-Loading', link: '/students' },
               ]}
             />
           ) : null}

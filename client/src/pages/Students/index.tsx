@@ -38,14 +38,15 @@ export const AllStudents = ({ admin }: Props) => {
     return <Redirect to="/login"/>
   }
 
+  if (loading) { 
+    return <StudentSkeleton />;
+  }
+
   const StudentsRender =
     data && data.students && data.students.results ? (
       <Students students={data?.students.results} />
     ) : null;
 
-  if (loading) {
-    return <StudentSkeleton />;
-  }
 
   const ErrorBannerElement = error ? (
     <>

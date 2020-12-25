@@ -58,9 +58,11 @@ export const Students = ({ students }: Props) => {
       width: 100,
       render: (view: any, record: any, index: any) => {
         return (
-          <Link to={`/students/${record.id}`}>
-            <Button type="primary">{view}</Button>
-          </Link>
+            <div data-testid="viewbtn">
+              <Link to={`/students/${record.id}`}>
+              <Button type="primary">{view}</Button>
+            </Link>
+            </div>
         );
       },
     },

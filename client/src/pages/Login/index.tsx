@@ -15,7 +15,6 @@ import { Spin, Layout } from 'antd';
 import { ErrorBanner } from '../../lib/components';
 import { Admin } from '../../lib/types';
 
-
 interface Props {
   setAdmin: (user: Admin) => void;
   admin: Admin;
@@ -44,7 +43,10 @@ export const Login = ({ setAdmin, admin }: Props) => {
   const onLogin = (input: LoginInput) => {
     login({
       variables: {
-        input: { ...input, withCookie: false },
+        input: {
+          ...input,
+          withCookie: false,
+        },
       },
     });
   };

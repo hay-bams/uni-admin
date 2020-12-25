@@ -27,9 +27,8 @@ import { displaySuccessNotification } from '../../utils';
 import { UNREGISTER_COURSE } from '../../graphql/mutations/UnregisterCourse';
 import { Admin } from '../../lib/types';
 
-
 interface Props {
-  admin: Admin
+  admin: Admin;
 }
 interface MatchParams {
   id: string;
@@ -37,7 +36,10 @@ interface MatchParams {
 
 const { Content } = Layout;
 
-export const StudentDetails = ({ match, admin }: Props & RouteComponentProps<MatchParams>) => {
+export const StudentDetails = ({
+  match,
+  admin,
+}: Props & RouteComponentProps<MatchParams>) => {
   const {
     data: StudentData,
     loading: studentLoading,
@@ -64,6 +66,7 @@ export const StudentDetails = ({ match, admin }: Props & RouteComponentProps<Mat
     {
       onCompleted: (data) => {
         if (data.registerCourse) {
+          console.log('+++++++++++=======')
           studentRefetch();
           courseRefetch();
           displaySuccessNotification('Course Registered Successfully');
@@ -88,8 +91,8 @@ export const StudentDetails = ({ match, admin }: Props & RouteComponentProps<Mat
     }
   );
 
-  if(!admin.id) {
-    return <Redirect to="/login"/>
+  if (!admin.id) {
+    return <Redirect to="/login" />;
   }
 
   const CoursesRender =
@@ -106,7 +109,7 @@ export const StudentDetails = ({ match, admin }: Props & RouteComponentProps<Mat
 
   if (
     studentLoading ||
-    coursesLoading 
+    coursesLoading
     // registerCourseLoading ||
     // unregisterCourseLoading
   ) {

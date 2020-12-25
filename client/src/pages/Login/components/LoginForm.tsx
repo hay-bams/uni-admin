@@ -36,7 +36,7 @@ export const LoginForm = ({ onLogin, setForm, form }: Props) => {
           onChange={(e) => setForm<string>('password', e.target.value)}
           prefix={<LockOutlined  />}
           type="password"
-          placeholder="Password"
+          placeholder="password"
         />
       </Form.Item>
       <Form.Item>
