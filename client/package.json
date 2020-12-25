@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --collectCoverage ",
+    "test": "react-scripts test --collectCoverage",
     "eject": "react-scripts eject",
     "codegen:schema": "apollo client:download-schema --endpoint=http://localhost:9000/api",
     "codegen:generate": "apollo client:codegen --localSchemaFile=schema.json --includes=src/**/*.ts --globalTypesFile=./src/graphql/globalTypes.ts  --target=typescript"
