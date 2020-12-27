@@ -1,5 +1,5 @@
 import { GraphQLError } from 'graphql';
-import { ADD_NEW_STUDENT, LOG_IN, REGISTER_COURSE, STUDENTS, STUDENT_DETAILS } from '../graphql';
+import { ADD_NEW_STUDENT, LOG_IN, REGISTER_ADMIN, REGISTER_COURSE, STUDENTS, STUDENT_DETAILS } from '../graphql';
 
 export const mockValidStudentQuery = {
   request: {
@@ -99,11 +99,13 @@ export const mockValidLoginMutation = {
     query: LOG_IN,
     variables: {
       input: {
+        username: 'bams',
+        password: 'password',
         withCookie: false,
       },
     },
   },
-  result: {
+  result: jest.fn (() => ({
     data: {
       login: {
         id: '2',
@@ -111,7 +113,28 @@ export const mockValidLoginMutation = {
         madeRequest: true,
       },
     },
+  })),
+};
+
+export const mockValidRegisternMutation = {
+  request: {
+    query: REGISTER_ADMIN,
+    variables: {
+      input: {
+        username: 'bams',
+        password: 'password'
+      },
+    },
   },
+  result: jest.fn (() => ({
+    data: {
+      login: {
+        id: '2',
+        username: 'admin',
+        madeRequest: true,
+      },
+    },
+  })),
 };
 
 export const mockInValidLoginMutation = {

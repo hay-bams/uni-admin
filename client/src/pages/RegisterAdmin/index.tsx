@@ -1,13 +1,13 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
 
-import { LoginForm } from './components/LoginForm';
 import {
-  Login as LoginData,
-  LoginVariables,
-} from '../../graphql/mutations/Login/__generated__/Login';
-import { LOG_IN } from '../../graphql';
-import { LoginInput } from '../../graphql/globalTypes';
+  RegisterAdmin as RegisterAdminData,
+  RegisterAdminVariables,
+} from '../../graphql/mutations/RegisterAdmin/__generated__/RegisterAdmin';
+import { NewAdminForm } from './components/NewAdminForm';
+import { REGISTER_ADMIN } from '../../graphql';
+import { RegisterInput } from '../../graphql/globalTypes';
 import { useForm } from '../../lib/hooks/useForm';
 import { Redirect } from 'react-router-dom';
 import { displaySuccessNotification } from '../../utils';
@@ -22,14 +22,14 @@ interface Props {
 
 const { Content } = Layout;
 
-export const Login = ({ setAdmin, admin }: Props) => {
+export const RegisterAdmin = ({ setAdmin, admin }: Props) => {
   const [
-    login,
-    { data: loginData, loading: loginLoading, error: loginError },
-  ] = useMutation<LoginData, LoginVariables>(LOG_IN, {
+    register,
+    { data, loading, error },
+  ] = useMutation<RegisterAdminData, RegisterAdminVariables>(REGISTER_ADMIN, {
     onCompleted: (data) => {
-      if (data && data.login) {
-        setAdmin(data.login);
+      if (data && data.register) {
+        setAdmin(data.register);
         displaySuccessNotification(
           'Login Success',
           'You are successfully Logged in'
@@ -38,21 +38,22 @@ export const Login = ({ setAdmin, admin }: Props) => {
     },
   });
 
-  const onLogin = (input: LoginInput) => {
-    login({
+  const { form, setValue: setForm } = useForm();
+
+  const onRegister = (input: RegisterInput) => {
+    register({
       variables: {
         input: {
-          ...input,
-          withCookie: false,
+          ...input
         },
       },
     });
   };
 
-  if (loginLoading) {
+  if (loading) {
     return (
       <Content className="login-in-spin">
-        <Spin size="large" tip="Logging you in" />
+        <Spin size="large" tip="Registering you..." />
       </Content>
     );
   }
@@ -62,14 +63,14 @@ export const Login = ({ setAdmin, admin }: Props) => {
     return <Redirect to="/students" />;
   }
 
-  if (loginData && loginData.login.id) {
+  if (data && data.register.id) {
     return <Redirect to={`/students`} />;
   }
 
-  const Error = loginError ? (
+  const Error = error ? (
     <ErrorBanner
       message="Uh oh! Something went wrong :("
-      description={loginError?.message}
+      description={error?.message}
     />
   ) : null;
 
@@ -77,8 +78,8 @@ export const Login = ({ setAdmin, admin }: Props) => {
     <Content>
       {Error}
       <div className="login_form">
-        <h1 className="signin-title">Sign In</h1>
-        <LoginForm onLogin={onLogin} />
+        <h1 className="register-title">Register</h1>
+        <NewAdminForm onRegister={onRegister} />
       </div>
     </Content>
   );

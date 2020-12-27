@@ -18,7 +18,8 @@ import {
   StudentDetails,
   Home,
   NewStudent,
-  NewCourse
+  NewCourse,
+  RegisterAdmin
 } from './pages';
 import { Admin } from './lib/types';
 import {
@@ -65,8 +66,6 @@ const App = () => {
     />
   ) : null;
 
-  // const [pageReload, setPageReload] = useState(true)
-
   if (!admin.madeRequest && !error) {
     return (
       <Layout>
@@ -85,12 +84,6 @@ const App = () => {
         {LoginErrorBanner}
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route
-            exact
-            path="/new-student"
-            render={(props) => <NewStudent {...props} />}
-          /> */}
-
           <Route exact path="/new-student" component={NewStudent} />
 
           <Route exact path="/new-course" component={NewCourse} />
@@ -105,6 +98,13 @@ const App = () => {
             path="/login"
             render={(props) => (
               <Login {...props} setAdmin={setAdmin} admin={admin} />
+            )}
+          />
+           <Route
+            exact
+            path="/register"
+            render={(props) => (
+              <RegisterAdmin {...props} setAdmin={setAdmin} admin={admin} />
             )}
           />
           <Route

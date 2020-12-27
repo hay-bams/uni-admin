@@ -158,3 +158,13 @@
     width: 40%;
   }
 }
+
+
+/** REGISTER***/
+
+.register-title {
+  font-size: 35px;
+  color: var(--primary-dim);
+  margin: 20px auto 20px auto;
+  width: 40%;
+}

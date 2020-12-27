@@ -25,6 +25,11 @@ export interface NewStudentInput {
   name: string;
 }
 
+export interface RegisterInput {
+  username: string;
+  password: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

@@ -2,16 +2,16 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { LoginInput } from '../../../graphql/globalTypes';
+import { RegisterInput } from '../../../graphql/globalTypes';
 import { displayErrorMessage } from '../../../utils';
 
 interface Props {
-  onLogin: (input: LoginInput) => void;
+  onRegister: (input: RegisterInput) => void;
 }
 
-export const LoginForm = ({ onLogin }: Props) => {
+export const NewAdminForm = ({ onRegister }: Props) => {
   const onFinish = (values: any) => {
-    onLogin(values);
+    onRegister(values);
   };
 
   const onFinishFailed = ({ errorFields }: any) => {
@@ -21,9 +21,9 @@ export const LoginForm = ({ onLogin }: Props) => {
   return (
     <Form
       name="normal_login"
-      initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      initialValues={{ remember: true }}
     >
       <Form.Item
         name="username"
@@ -50,13 +50,8 @@ export const LoginForm = ({ onLogin }: Props) => {
           htmlType="submit"
           className="login-form-button"
         >
-          Sign in
+          register
         </Button>
-      </Form.Item>
-      <Form.Item>
-        <Link className="login-form-forgot" to="/">
-          Forgot password
-        </Link>
       </Form.Item>
     </Form>
   );

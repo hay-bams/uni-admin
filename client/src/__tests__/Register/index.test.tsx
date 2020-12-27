@@ -1,17 +1,16 @@
 /* eslint-disable jest/no-mocks-import */
 import React from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import {  render, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { createMemoryHistory } from 'history';
-import { Login } from '../../pages';
+import {  RegisterAdmin } from '../../pages';
 import { Route, Router } from 'react-router-dom';
-import { mockValidLoginMutation } from '../../__mocks__';
 
 const history = createMemoryHistory({
-  initialEntries: ['/login'],
+  initialEntries: ['/register'],
 });
 
-describe('Login', () => {
+describe('Register', () => {
   beforeAll(() => {
     window.matchMedia =
       window.matchMedia ||
@@ -24,7 +23,7 @@ describe('Login', () => {
       };
   });
 
-  test('should render the login page', async () => {
+  test('should render the register page', async () => {
     const admin = { id: null, username: null, madeRequest: false };
     const setAdmin = jest.fn();
 
@@ -32,15 +31,15 @@ describe('Login', () => {
       <MockedProvider mocks={[]}>
         <Router history={history}>
           <Route
-            path="/login"
-            render={(props) => <Login setAdmin={setAdmin} admin={admin} />}
+            path="/register"
+            render={(props) => <RegisterAdmin setAdmin={setAdmin} admin={admin} />}
           />
         </Router>
       </MockedProvider>
     );
 
     await waitFor(() => {
-      expect(queryByText('Sign In')).not.toBe(null);
+      expect(queryByText('register')).not.toBe(null);
       expect(queryByPlaceholderText('username')).not.toBe(null);
     });
   });
