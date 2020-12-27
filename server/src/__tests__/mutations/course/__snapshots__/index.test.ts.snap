@@ -18,3 +18,18 @@ Object {
   },
 }
 `;
+
+exports[`Course Mutation should throw an error if course already exists 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: Course Already Exists],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
