@@ -56,3 +56,15 @@ export const TEST_ADD_NEW_STUDENT = gql`
     }
   }
 `;
+
+
+export const TEST_ADD_NEW_COURSE = gql`
+  mutation TestAddNewCourse($input: NewCourseInput ) {
+    addNewCourse(input: $input) {
+      id
+      name
+      totalSeats
+    }
+  }
+`;
+

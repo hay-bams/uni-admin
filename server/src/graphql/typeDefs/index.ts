@@ -11,6 +11,12 @@ export const typeDefs = gql`
     name: String!
   }
 
+  input NewCourseInput {
+    name: String!
+    totalSeats: Int!
+    status: String!
+  }
+
   input LoginInput {
     username: String
     password: String
@@ -35,7 +41,6 @@ export const typeDefs = gql`
   type Course {
     id: ID!
     name: String!
-    category: String!
     totalSeats: Int!
     status: String!
   }
@@ -63,5 +68,6 @@ export const typeDefs = gql`
     login(input: LoginInput): User!
     logout: User!
     addNewStudent(input: NewStudentInput): Student!
+    addNewCourse(input: NewCourseInput): Course!
   }
 `;

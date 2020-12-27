@@ -5,7 +5,6 @@ import { User } from '../graphql/resolvers/login/types';
 export interface Course {
   _id: ObjectID;
   name: string;
-  category: string;
   totalSeats: number;
   status: string;
 }
