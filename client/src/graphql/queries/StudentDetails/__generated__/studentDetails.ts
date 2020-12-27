@@ -11,7 +11,6 @@ export interface studentDetails_studentDetails_courses {
   __typename: "Course";
   id: string;
   name: string;
-  category: string;
   totalSeats: number;
   status: string;
 }

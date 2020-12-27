@@ -34,13 +34,6 @@ export const StudentSkeleton = ({ turnSidebarOff }: Props) => {
       key: 'email',
     },
     {
-      title: 'Date Of Birth',
-      dataIndex: 'dob',
-      className: 'table_column',
-      width: 100,
-      key: 'dob',
-    },
-    {
       title: 'Country',
       dataIndex: 'country',
       className: 'table_column',
@@ -92,16 +85,7 @@ export const StudentSkeleton = ({ turnSidebarOff }: Props) => {
       dob: <Skeleton paragraph={{ rows: 0 }} />,
       country: <Skeleton paragraph={{ rows: 0 }} />,
       view: <Skeleton paragraph={{ rows: 0 }} />,
-    },
-    {
-      key: '5',
-      name: <Skeleton paragraph={{ rows: 0 }} />,
-      studentID: <Skeleton paragraph={{ rows: 0 }} />,
-      email: <Skeleton paragraph={{ rows: 0 }} />,
-      dob: <Skeleton paragraph={{ rows: 0 }} />,
-      country: <Skeleton paragraph={{ rows: 0 }} />,
-      view: <Skeleton paragraph={{ rows: 0 }} />,
-    },
+    }
   ];
   return (
     <Layout>

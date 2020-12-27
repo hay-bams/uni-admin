@@ -1,5 +1,5 @@
 import { GraphQLError } from 'graphql';
-import { LOG_IN, REGISTER_COURSE, STUDENTS, STUDENT_DETAILS } from '../graphql';
+import { ADD_NEW_STUDENT, LOG_IN, REGISTER_COURSE, STUDENTS, STUDENT_DETAILS } from '../graphql';
 
 export const mockValidStudentQuery = {
   request: {
@@ -124,6 +124,29 @@ export const mockInValidLoginMutation = {
     },
   },
   error: new GraphQLError('Some Graphql Error Occured'),
+};
+
+export const mockAddStudentMutation = {
+  request: {
+    query: ADD_NEW_STUDENT,
+    variables: {
+      input: {
+        name: 'John Doe',
+        email: 'john@gmail.com',
+        country: 'Nigeria',
+      },
+    },
+  },
+  result: {
+    data: {
+      addNewStudent: {
+        id: '2',
+        name: 'John Doe',
+        email: 'john@gmail.com',
+        country: 'Nigeria',
+      },
+    },
+  },
 };
 
 // result: jest.fn(() => ({

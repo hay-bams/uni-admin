@@ -16,7 +16,9 @@ import {
   Login,
   NotFound,
   StudentDetails,
-  Home
+  Home,
+  NewStudent,
+  NewCourse
 } from './pages';
 import { Admin } from './lib/types';
 import {
@@ -29,9 +31,9 @@ import './styles/index.css';
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  uri: 'http://localhost:9000/api',
+  uri: 'http://localhost:9005/api',
   cache,
-  credentials: 'include'
+  credentials: 'include',
 });
 
 const initialUser: Admin = {
@@ -82,11 +84,17 @@ const App = () => {
         <AppHeader admin={admin} setAdmin={setAdmin} />
         {LoginErrorBanner}
         <Switch>
-           <Route
+          <Route exact path="/" component={Home} />
+          {/* <Route
             exact
-            path="/"
-           component={Home}
-          />
+            path="/new-student"
+            render={(props) => <NewStudent {...props} />}
+          /> */}
+
+          <Route exact path="/new-student" component={NewStudent} />
+
+          <Route exact path="/new-course" component={NewCourse} />
+
           <Route
             exact
             path="/students"

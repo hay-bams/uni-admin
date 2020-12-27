@@ -70,6 +70,12 @@
   margin-bottom: 30px;
 }
 
+.add-student-spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*******************LOGIN PAGE *******************/
 .login_form_container {
   background: #f3f3f4;

@@ -5,7 +5,6 @@ export const All_COURSES = gql`
     allCourses {
       id
       name
-      category
       totalSeats
       status
     }

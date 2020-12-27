@@ -11,7 +11,6 @@ export interface Students_students_results {
   __typename: "Student";
   id: string;
   studentID: string;
-  dob: string;
   status: string;
   name: string;
   email: string;

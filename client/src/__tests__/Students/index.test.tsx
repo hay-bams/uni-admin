@@ -91,7 +91,7 @@ describe('Students', () => {
     });
   });
 
-  test('should redirect to  login when admin is not authenticated', async () => {
+  test('should redirect to login when admin is not authenticated', async () => {
     const studentsMock = mockValidStudentQuery;
     const admin = { id: null, username: null, madeRequest: false };
 

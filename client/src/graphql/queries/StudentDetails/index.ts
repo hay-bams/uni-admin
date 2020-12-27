@@ -8,7 +8,6 @@ export const STUDENT_DETAILS = gql`
       courses {
         id
         name
-        category
         totalSeats
         status
       }

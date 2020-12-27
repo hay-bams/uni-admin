@@ -38,13 +38,6 @@ export const Students = ({ students }: Props) => {
       key: 'email',
     },
     {
-      title: 'Date Of Birth',
-      dataIndex: 'dob',
-      className: 'table_column',
-      width: 100,
-      key: 'dob',
-    },
-    {
       title: 'Country',
       dataIndex: 'country',
       className: 'table_column',
@@ -72,7 +65,6 @@ export const Students = ({ students }: Props) => {
     students &&
     students.map((student: Students_students_results) => ({
       ...student,
-      dob: moment(student.dob).format('MMM Do YYYY'),
       key: `${student.id}`,
       view: 'view',
     }));

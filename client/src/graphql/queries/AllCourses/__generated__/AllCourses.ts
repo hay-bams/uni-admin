@@ -11,7 +11,6 @@ export interface AllCourses_allCourses {
   __typename: "Course";
   id: string;
   name: string;
-  category: string;
   totalSeats: number;
   status: string;
 }

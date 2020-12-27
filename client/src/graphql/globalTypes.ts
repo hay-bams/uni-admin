@@ -13,6 +13,18 @@ export interface LoginInput {
   withCookie: boolean;
 }
 
+export interface NewCourseInput {
+  name: string;
+  totalSeats: number;
+  status: string;
+}
+
+export interface NewStudentInput {
+  email: string;
+  country: string;
+  name: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

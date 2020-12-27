@@ -7,7 +7,6 @@ export const STUDENTS = gql`
       results {
         id
         studentID
-        dob
         status
         name
         email
