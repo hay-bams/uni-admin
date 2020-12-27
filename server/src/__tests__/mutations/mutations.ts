@@ -12,7 +12,6 @@ export const TEST_REGISTER_COURSE = gql`
   }
 `;
 
-
 export const TEST_UNREGISTER_COURSE = gql`
   mutation TestUnregisterCourse($studentId: String!, $courseId: String!) {
     unregisterCourse(studentId: $studentId, courseId: $courseId) {
@@ -20,12 +19,12 @@ export const TEST_UNREGISTER_COURSE = gql`
       courses {
         id
         name
-      } 
+      }
     }
   }
-`
+`;
 
-export  const TEST_LOG_IN = gql`
+export const TEST_LOG_IN = gql`
   mutation TestLogin($input: LoginInput) {
     login(input: $input) {
       id
@@ -33,9 +32,9 @@ export  const TEST_LOG_IN = gql`
       madeRequest
     }
   }
-`
+`;
 
-export  const TEST_LOG_OUT = gql`
+export const TEST_LOG_OUT = gql`
   mutation Testlogout {
     logout {
       id
@@ -43,4 +42,17 @@ export  const TEST_LOG_OUT = gql`
       madeRequest
     }
   }
-`
+`;
+
+export const TEST_ADD_NEW_STUDENT = gql`
+  mutation TestAddNewStudent($input: NewStudentInput ) {
+    addNewStudent(input: $input) {
+      id
+      name
+      courses {
+        id
+        name
+      }
+    }
+  }
+`;

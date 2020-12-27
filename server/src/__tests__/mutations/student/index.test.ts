@@ -1,9 +1,42 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { COURSES_DATA, STUDENT_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
-import { TEST_REGISTER_COURSE, TEST_UNREGISTER_COURSE } from '../mutations';
+import { TEST_REGISTER_COURSE, TEST_UNREGISTER_COURSE, TEST_ADD_NEW_STUDENT } from '../mutations';
 
 describe('Student Mutation', () => {
+  test('should add new student', async () => {
+    const { mutate } = createTestServer({
+      db: {
+        students: {
+          insertOne: jest.fn(() => ({ ops: [STUDENT_DATA[0]] })),
+          find: jest.fn(() => ({
+            count: jest.fn(() => STUDENT_DATA),
+          })),
+        },
+        courses: {
+          find: jest.fn(() => ({
+            toArray: jest.fn(() => COURSES_DATA),
+          })),
+        },
+      },
+    });
+
+    const res = await mutate({
+      mutation: TEST_ADD_NEW_STUDENT,
+      variables: {
+        input:  {
+          email: STUDENT_DATA[0].email,
+          name: STUDENT_DATA[0].name,
+          country: STUDENT_DATA[0].country
+        },
+      },
+    });
+
+    expect(res.data.addNewStudent).toHaveProperty('id');
+    expect(res.data.addNewStudent).toHaveProperty('name');
+    expect(res).toMatchSnapshot();
+  })
+
   test('should register courses for a student', async () => {
     const { mutate } = createTestServer({
       db: {

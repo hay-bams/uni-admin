@@ -1,5 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Student Mutation should add new student 1`] = `
+Object {
+  "data": Object {
+    "addNewStudent": Object {
+      "courses": Array [
+        Object {
+          "id": "5fdab398791e134a5466566f",
+          "name": "Aerospace Engineerng",
+        },
+        Object {
+          "id": "5fdab4b5eed1fb397feaca14",
+          "name": "Fashion Technology",
+        },
+        Object {
+          "id": "5fdab4bd78cc9321b31faf35",
+          "name": "Marine Engineerng",
+        },
+        Object {
+          "id": "5fdab4c4fe1aa062abc46096",
+          "name": "Building, Contruction Management",
+        },
+        Object {
+          "id": "5fdab4ccba6dcf525408412a",
+          "name": "Agriculture",
+        },
+      ],
+      "id": "5fda72349baf026a892dc1a0",
+      "name": "Peace Dike",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
 exports[`Student Mutation should register courses for a student 1`] = `
 Object {
   "data": Object {

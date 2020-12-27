@@ -34,6 +34,8 @@ export const StudentResolver: IResolvers = {
           courses: [],
         });
 
+        
+
         return student.ops[0];
       } catch (err) {
         throw new Error(`Something went wrong: ${err}`);

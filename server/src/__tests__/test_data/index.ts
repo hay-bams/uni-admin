@@ -4,7 +4,6 @@ export const STUDENT_DATA = [
   {
     _id: new ObjectID('5fda72349baf026a892dc1a0'),
     studentID: 'ST17238',
-    dob: 'Sunday Dec 16 1990 23:22:01 GMT+0100',
     status: 'active',
     name: 'Peace Dike',
     email: 'peace@gmail.com',
@@ -14,7 +13,6 @@ export const STUDENT_DATA = [
   {
     _id: new ObjectID('5fe36133a29a42f8111cf29c'),
     studentID: 'ST17239',
-    dob: 'Sunday Dec 16 1990 23:22:01 GMT+0100',
     status: 'active',
     name: 'Peace Tola',
     email: 'tola@gmail.com',
@@ -24,7 +22,6 @@ export const STUDENT_DATA = [
   {
     _id: new ObjectID('5fe3613b0818b75505901627'),
     studentID: 'ST17240',
-    dob: 'Sunday Dec 16 1990 23:22:01 GMT+0100',
     status: 'active',
     name: 'john doe',
     email: 'johnd@gmail.com',
@@ -34,7 +31,6 @@ export const STUDENT_DATA = [
   {
     _id: new ObjectID('5fe3617932e06a4c602772d0'),
     studentID: 'ST17242',
-    dob: 'Sunday Dec 16 1990 23:22:01 GMT+0100',
     status: 'active',
     name: 'pemi ola',
     email: 'pemi@gmail.com',
