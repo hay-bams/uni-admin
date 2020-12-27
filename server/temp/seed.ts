@@ -6,6 +6,9 @@ import { connectDatabase } from '../src/database';
 import { User } from '../src/graphql/resolvers/login/types';
 import { Course, Student } from '../src/lib/types';
 
+
+console.log('||||||||||||||||+++++++++++++++++++@@@@@@@@@@@@@@@@@@@@@@###################')
+
 export const students: Student[] = [
   {
     _id: new ObjectID('5fda72349baf026a892dc1a0'),
@@ -306,3 +309,14 @@ const seed = async () => {
 };
 
 seed();
+
+
+// {
+//   "studentID": "ST17241",
+//   "dob": "Sunday Dec 16 1990 23:22:01 GMT+0100",
+//   "status": "active",
+//   "name": "Peace Dike",
+//   "email": "peace@gmail.com",
+//   "country": "Nigeria",
+//   "courses": []
+// }

@@ -1,0 +1,58 @@
+version: '3'
+services:
+  db:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./.data/db/:/data/db/
+
+  # db-clear:
+  #   build: ./server
+  #   command: npm run clear
+  #   environment:
+  #     - MONGO_LOCAL_URI=${MONGO_LOCAL_URI}
+  #   depends_on:
+  #     - db
+
+  # db-seed:
+  #   build: ./server
+  #   command: npm run seed
+  #   environment:
+  #     - MONGO_LOCAL_URI=${MONGO_LOCAL_URI}
+  #   depends_on:
+  #     - server
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    ports:
+      - '3000:3000'
+    restart: on-failure
+    container_name: uni-admin-client
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - '9005:9005'
+    restart: on-failure
+    container_name: uni-admin-server
+    depends_on: 
+      - db
+    volumes:
+      - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
+      - ./server:/app # Look at the server directory and copy everything into the app folder in the container
+    environment:
+      - PORT=${PORT}
+      - MONGO_LOCAL_URI=${MONGO_LOCAL_URI}
+      - DB=${DB}
+      - PUBLIC_URL=${PUBLIC_URL}
+      - SALT_ROUND=${SALT_ROUND}
+      - SECRET=${SECRET}
+      - NODE_ENV=${NODE_ENV}

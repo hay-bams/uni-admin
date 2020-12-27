@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import { USER_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
 import { TEST_LOG_IN } from '../mutations';
 import { cookie } from '../../../utils/cookieHelper';
 
-jest.mock('bcrypt');
+jest.mock('bcryptjs');
 const mockedBcrypt = bcrypt as jest.Mocked<typeof bcrypt>;
 const bcryptCompare = mockedBcrypt.compare;
 
@@ -24,7 +24,12 @@ describe('Admin Login Mutation', () => {
       },
     });
 
-    bcryptCompare.mockResolvedValue(true);
+    
+
+    // bcryptCompare = jest.fn().mockReturnValue(true)
+    // bcryptCompare.mockResolvedValue(true);
+    jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => true))
+
     jest.spyOn(cookie, 'setCookie').mockImplementation(jest.fn());
 
     const res = await mutate({
@@ -98,7 +103,7 @@ describe('Admin Login Mutation', () => {
     expect(res).toMatchSnapshot();
   });
 
-  test('should return throw an if pasword is wrong', async () => {
+  test('should throw an if pasword is wrong', async () => {
     const { mutate } = createTestServer({
       db: {
         users: {
@@ -107,7 +112,9 @@ describe('Admin Login Mutation', () => {
       },
     });
 
-    bcryptCompare.mockResolvedValue(false);
+    jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => false))
+    // bcryptCompare.mockResolvedValue(false);
+    // bcryptCompare = jest.fn().mockReturnValue(true)
 
     const res = await mutate({
       mutation: TEST_LOG_IN,

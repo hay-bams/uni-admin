@@ -1,10 +1,45 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectID } from 'mongodb';
 import { Course, ICtx, Student } from '../../../lib/types';
-import { registerCourseArgs, unregisterCourseArgs } from '../student/types';
+import {
+  registerCourseArgs,
+  unregisterCourseArgs,
+  NewStudentArgs,
+} from '../student/types';
 
 export const StudentResolver: IResolvers = {
   Mutation: {
+    addNewStudent: async (
+      _,
+      args: NewStudentArgs,
+      ctx: ICtx
+    ): Promise<Student> => {
+      try {
+        const { name, email, country } = args.input;
+        const { db } = ctx;
+
+        const cursor = await db.students.find();
+        let count = await cursor.count();
+
+        if (count === 0) count = 1;
+
+        const studentID = `ST${count+1}`;
+
+        const student = await db.students.insertOne({
+          studentID,
+          status: 'Active',
+          name,
+          email,
+          country,
+          courses: [],
+        });
+
+        return student.ops[0];
+      } catch (err) {
+        throw new Error(`Something went wrong: ${err}`);
+      }
+    },
+
     registerCourse: async (
       _,
       args: registerCourseArgs,
@@ -52,7 +87,7 @@ export const StudentResolver: IResolvers = {
       ctx: ICtx
     ): Promise<Student> => {
       try {
-              // TODO: Authorize before user can register course
+        // TODO: Authorize before user can register course
         const { db } = ctx;
         const { studentId, courseId } = args;
 

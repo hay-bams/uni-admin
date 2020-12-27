@@ -34,7 +34,7 @@ Object {
 }
 `;
 
-exports[`Admin Login Mutation should return throw an if pasword is wrong 1`] = `
+exports[`Admin Login Mutation should throw an if pasword is wrong 1`] = `
 Object {
   "data": null,
   "errors": Array [

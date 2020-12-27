@@ -4,6 +4,7 @@ import { connectDatabase } from '../src/database';
 
 const clear = async () => {
   try {
+    // console.log(process.env.MONGO_LOCAL_URI, '+=====================')
     const db = await connectDatabase();
 
     console.log('[clear database] : running...');
@@ -11,6 +12,7 @@ const clear = async () => {
     const users = await db.users.find({}).toArray();
     const students = await db.students.find({}).toArray();
     const courses = await db.courses.find({}).toArray();
+ 
 
     if (users.length > 0) {
       await db.users.drop();

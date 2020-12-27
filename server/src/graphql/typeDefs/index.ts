@@ -5,6 +5,12 @@ export const typeDefs = gql`
     courseId: ID!
   }
 
+  input NewStudentInput {
+    email: String!,
+    country: String!, 
+    name: String!
+  }
+
   input LoginInput {
     username: String
     password: String
@@ -14,7 +20,6 @@ export const typeDefs = gql`
   type Student {
     id: ID!
     studentID: String!
-    dob: String!
     status: String!
     name: String!
     email: String!
@@ -57,5 +62,6 @@ export const typeDefs = gql`
     unregisterCourse(studentId: String!, courseId: String): Student
     login(input: LoginInput): User!
     logout: User!
+    addNewStudent(input: NewStudentInput): Student!
   }
 `;

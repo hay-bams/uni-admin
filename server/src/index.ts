@@ -8,6 +8,11 @@ import { ApolloServer } from 'apollo-server-express';
 import { typeDefs, resolvers } from './graphql';
 import { connectDatabase } from './database';
 
+// console.log(process.env.NODE_ENV, '++++++++===============================')
+// console.log(process.env.DATABASE, '++++++++===============================')
+// console.log(process.env.MONGO_LOCAL_URI, '++++++++===============================')
+
+ 
 const corsOptions = {
   credentials: true,
   origin: 'http://localhost:3000',
@@ -15,8 +20,7 @@ const corsOptions = {
 
 const mount = async (app: Application) => {
   const db = await connectDatabase();
-  console.log(process.env.SECRET)
-
+ 
   app.use(cors(corsOptions))
   app.use(cookieParser(process.env.SECRET))
 

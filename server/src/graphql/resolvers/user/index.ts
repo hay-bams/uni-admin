@@ -1,5 +1,4 @@
 import { IResolvers } from "apollo-server-express";
-import { Response } from "express";
 import { ICtx } from "../../../lib/types";
 
 import { cookieOptions } from "../../../utils/cookieHelper";

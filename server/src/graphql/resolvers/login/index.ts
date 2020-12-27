@@ -1,5 +1,5 @@
 import { IResolvers } from 'apollo-server-express';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { ICtx } from '../../../lib/types';
 import { cookie } from '../../../utils/cookieHelper';
 import { Loginbody, User } from './types';

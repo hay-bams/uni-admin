@@ -7,11 +7,11 @@ export const connectDatabase = async (): Promise<Database> => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  const db = client.db(process.env.DATABASE);
+  const db = client.db(process.env.DB);
 
   return {
     users: db.collection<User>('user'),
     students: db.collection<Student>('student'),
-    courses: db.collection<Course>('course')
+    courses: db.collection<Course>('course'),
   };
 }; 
