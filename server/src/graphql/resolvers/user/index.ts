@@ -1,8 +1,7 @@
 import { IResolvers } from "apollo-server-express";
-import { ICtx } from "../../../lib/types";
+import { ICtx, User } from "../../../lib/types";
 
 import { cookieOptions } from "../../../utils/cookieHelper";
-import { User } from "../login/types";
 
 export const UserResolver: IResolvers = {
   Mutation: {

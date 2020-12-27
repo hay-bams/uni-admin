@@ -23,6 +23,11 @@ export const typeDefs = gql`
     withCookie: Boolean!
   }
 
+  input RegisterInput {
+    username: String!
+    password: String!
+  }
+
   type Student {
     id: ID!
     studentID: String!
@@ -67,6 +72,7 @@ export const typeDefs = gql`
     unregisterCourse(studentId: String!, courseId: String): Student
     login(input: LoginInput): User!
     logout: User!
+    register(input: RegisterInput): User!
     addNewStudent(input: NewStudentInput): Student!
     addNewCourse(input: NewCourseInput): Course!
   }

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Admin Register Mutation should register admin 1`] = `
+Object {
+  "data": Object {
+    "register": Object {
+      "id": "5fe09161251c8b0a9565108d",
+      "username": "admin",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Admin Register Mutation should throw an error if user already exists 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: user already exists],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

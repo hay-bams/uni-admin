@@ -34,6 +34,15 @@ export const TEST_LOG_IN = gql`
   }
 `;
 
+export const TEST_REGISTER = gql`
+  mutation TestRegister($input: RegisterInput) {
+    register(input: $input) {
+      id
+      username
+    }
+  }
+`;
+
 export const TEST_LOG_OUT = gql`
   mutation Testlogout {
     logout {
@@ -67,4 +76,6 @@ export const TEST_ADD_NEW_COURSE = gql`
     }
   }
 `;
+
+
 

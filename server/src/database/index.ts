@@ -1,6 +1,5 @@
 import { MongoClient } from 'mongodb'
-import { User } from '../graphql/resolvers/login/types';
-import { Course, Database, Student } from '../lib/types';
+import { Course, Database, Student, User } from '../lib/types';
 
 export const connectDatabase = async (): Promise<Database> => {
   const client = await MongoClient.connect(`${process.env.MONGO_LOCAL_URI}`, {

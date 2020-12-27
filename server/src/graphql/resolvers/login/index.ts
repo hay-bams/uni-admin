@@ -1,8 +1,8 @@
 import { IResolvers } from 'apollo-server-express';
 import bcrypt from 'bcryptjs';
-import { ICtx } from '../../../lib/types';
+import { ICtx, User } from '../../../lib/types';
 import { cookie } from '../../../utils/cookieHelper';
-import { Loginbody, User } from './types';
+import { Loginbody } from './types';
 
 export const LoginResolver: IResolvers = {
   Mutation: {

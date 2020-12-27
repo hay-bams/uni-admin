@@ -32,7 +32,7 @@ describe('Course Mutation', () => {
   })
 
 
-  test.only('should throw an error if course already exists', async () => {
+  test('should throw an error if course already exists', async () => {
     const { mutate } = createTestServer({
       db: {
         courses: {

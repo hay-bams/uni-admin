@@ -24,11 +24,9 @@ describe('Admin Login Mutation', () => {
       },
     });
 
-    
-
     // bcryptCompare = jest.fn().mockReturnValue(true)
     // bcryptCompare.mockResolvedValue(true);
-    jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => true))
+    jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => true));
 
     jest.spyOn(cookie, 'setCookie').mockImplementation(jest.fn());
 
@@ -59,7 +57,7 @@ describe('Admin Login Mutation', () => {
       },
     });
 
-    jest.spyOn(cookie, 'loginViaCookie').mockImplementation(jest.fn()); 
+    jest.spyOn(cookie, 'loginViaCookie').mockImplementation(jest.fn());
 
     const res = await mutate({
       mutation: TEST_LOG_IN,
@@ -99,7 +97,7 @@ describe('Admin Login Mutation', () => {
     });
 
     expect(res.errors?.length).toBeGreaterThan(0);
-   expect(res.errors![0]).toHaveProperty('message');
+    expect(res.errors![0]).toHaveProperty('message');
     expect(res).toMatchSnapshot();
   });
 
@@ -112,7 +110,7 @@ describe('Admin Login Mutation', () => {
       },
     });
 
-    jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => false))
+    jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => false));
     // bcryptCompare.mockResolvedValue(false);
     // bcryptCompare = jest.fn().mockReturnValue(true)
 
