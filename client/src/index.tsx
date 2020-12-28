@@ -23,6 +23,7 @@ import {
   NewCourse,
   RegisterAdmin,
   AllCourses,
+  UpdateCourse,
 } from './pages';
 import { Admin } from './lib/types';
 import {
@@ -121,6 +122,12 @@ const App = () => {
             exact
             path="/new-course"
             render={(props) => <NewCourse {...props} admin={admin} />}
+          />
+
+          <Route
+            exact
+            path="/courses/:id"
+            render={(props) => <UpdateCourse {...props} admin={admin} />}
           />
 
           <Route

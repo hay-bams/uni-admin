@@ -11,7 +11,7 @@ export const STUDENT_DATA = [
     courses: ['5fe08e904540b3208e7e61a3'],
   },
   {
-    _id: new ObjectID('5fe36133a29a42f8111cf29c'),
+    _id: '5fe36133a29a42f8111cf29c',
     studentID: 'ST17239',
     status: 'active',
     name: 'Peace Tola',

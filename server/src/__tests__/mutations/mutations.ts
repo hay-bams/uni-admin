@@ -68,6 +68,17 @@ export const TEST_ADD_NEW_STUDENT = gql`
   }
 `;
 
+export const TEST_UPDATE_COURSE = gql`
+  mutation TestUpdateStudent($courseId: ID!, $input: UpdateCourseInput! ) {
+    updateCourse(courseId: $courseId, input: $input) {
+      id
+      name
+      totalSeats
+    }
+  }
+`;
+
+
 
 export const TEST_ADD_NEW_COURSE = gql`
   mutation TestAddNewCourse($input: NewCourseInput ) {

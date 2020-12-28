@@ -17,6 +17,12 @@ export const typeDefs = gql`
     status: String!
   }
 
+  input UpdateCourseInput {
+    name: String!
+    totalSeats: Int!
+    status: String!
+  }
+
   input LoginInput {
     username: String
     password: String
@@ -71,6 +77,7 @@ export const typeDefs = gql`
     students(all: String, limit: Int, page: Int): Students!
     studentDetails(id: ID!): Student!
     allCourses(all: String, limit: Int, page: Int): Courses!
+    courseDetails(courseId: ID!): Course!
   }
 
   type Mutation {
@@ -81,5 +88,6 @@ export const typeDefs = gql`
     register(input: RegisterInput): User!
     addNewStudent(input: NewStudentInput): Student!
     addNewCourse(input: NewCourseInput): Course!
+    updateCourse(courseId: ID!, input: UpdateCourseInput): Course!
   }
 `;

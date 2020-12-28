@@ -1,7 +1,13 @@
 import { IResolvers } from 'apollo-server-express';
+import { ObjectID, ObjectId } from 'mongodb';
 import { Course, ICtx } from '../../../lib/types';
 import { Authenticated } from '../../../utils/authenticate';
-import { CoursesData, NewCourseArgs, CoursesArgs } from './types';
+import {
+  CoursesData,
+  NewCourseArgs,
+  CoursesArgs,
+  UpdateCourseArgs,
+} from './types';
 
 export const CourseResolver: IResolvers = {
   Query: {
@@ -33,6 +39,26 @@ export const CourseResolver: IResolvers = {
         }
       }
     ),
+    courseDetails: Authenticated(
+      async (_: null, args: { courseId: string }, ctx: ICtx): Promise<Course> => {
+        try {
+          const { courseId } = args;
+          const { db } = ctx;
+
+          const course = await db.courses.findOne({
+            _id: new ObjectID(courseId),
+          });
+
+          if (!course) {
+            throw new Error('Course not found');
+          }
+
+          return course;
+        } catch (err) {
+          throw new Error(`Something went wrong: ${err}`);
+        }
+      }
+    ),
   },
   Mutation: {
     addNewCourse: Authenticated(
@@ -57,6 +83,38 @@ export const CourseResolver: IResolvers = {
           });
 
           return course.ops[0];
+        } catch (err) {
+          throw new Error(`Something went wrong: ${err}`);
+        }
+      }
+    ),
+    updateCourse: Authenticated(
+      async (
+        _: undefined,
+        args: UpdateCourseArgs,
+        ctx: ICtx
+      ): Promise<Course | undefined> => {
+        try {
+          const { courseId, input } = args;
+          const { db } = ctx;
+
+          const updateRes = await db.courses.findOneAndUpdate(
+            { _id: new ObjectId(courseId) },
+            {
+              $set: {
+                name: input.name,
+                totalSeats: input.totalSeats,
+                status: input.status,
+              },
+            },
+            { returnOriginal: false }
+          );
+
+          if (!updateRes) {
+            throw new Error('Course not found');
+          }
+
+          return updateRes.value;
         } catch (err) {
           throw new Error(`Something went wrong: ${err}`);
         }

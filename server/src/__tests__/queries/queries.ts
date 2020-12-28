@@ -33,3 +33,15 @@ export const TEST_All_COURSES_QUERY = gql`
     }
   }
 `;
+
+export const TEST_SINGLE_COURSE_QUERY = gql`
+  query CourseDetails($courseId: ID!) {
+    courseDetails(courseId: $courseId) {
+      id
+      name
+    }
+  }
+`;
+
+
+

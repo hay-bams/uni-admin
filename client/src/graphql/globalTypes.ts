@@ -30,6 +30,12 @@ export interface RegisterInput {
   password: string;
 }
 
+export interface UpdateCourseInput {
+  name: string;
+  totalSeats: number;
+  status: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

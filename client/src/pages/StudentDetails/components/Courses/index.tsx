@@ -14,7 +14,7 @@ interface Props {
   unregisterCourseLoading: boolean;
 }
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 export const Courses = ({
   student,
@@ -185,7 +185,16 @@ export const Courses = ({
             rowClassName="table_row"
             scroll={{ x: '50vw', y: '50vh' }}
             className="registered_course_table"
-            title={() => <Title level={5}>Registered Courses</Title>}
+            title={() => (
+              <div>
+                {' '}
+                <Title level={3}>Registered Courses</Title>
+                <Text type="secondary">
+                  Scroll right to see the other columns of the table
+                </Text>
+                <Text type="secondary"></Text>
+              </div>
+            )}
           />
         </Col>
 
@@ -197,7 +206,15 @@ export const Courses = ({
             loading={registerCourseLoading}
             rowClassName="table_row"
             scroll={{ x: '50vw', y: '50vh' }}
-            title={() => <Title level={5}>Unregistered Courses</Title>}
+            title={() => (
+              <div>
+                {' '}
+                <Title level={3}>Registered Courses</Title>
+                <Text type="secondary">
+                  Scroll right to see the other columns of the table
+                </Text>
+              </div>
+            )}
           />
         </Col>
       </Row>

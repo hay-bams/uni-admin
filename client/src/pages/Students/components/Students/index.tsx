@@ -10,7 +10,7 @@ interface Props {
   students: Students_students['results'];
 }
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 export const Students = ({ students }: Props) => {
   const columns = [
@@ -50,11 +50,11 @@ export const Students = ({ students }: Props) => {
       width: 100,
       render: (view: any, record: any, index: any) => {
         return (
-            <div data-testid="viewbtn">
-              <Link to={`/students/${record.id}`}>
+          <div data-testid="viewbtn">
+            <Link to={`/students/${record.id}`}>
               <Button type="primary">{view}</Button>
             </Link>
-            </div>
+          </div>
         );
       },
     },
@@ -75,8 +75,16 @@ export const Students = ({ students }: Props) => {
         dataSource={data}
         rowClassName="table_row"
         scroll={{ x: '50vw' }}
-        pagination = {{ pageSize: 6 }}
-        title={() => <Title level={3}>All Students</Title>}
+        pagination={{ pageSize: 6 }}
+        title={(): JSX.Element => (
+          <div>
+            {' '}
+            <Title level={3}>All Students</Title>
+            <Text type="secondary">
+             In this table is a list of all the students in the university.
+            </Text>{' '}
+          </div>
+        )}
       />
     </div>
   );

@@ -9,7 +9,6 @@ export const StudentsResolver: IResolvers = {
     students: Authenticated(
       async (_: null, args: StudentsArgs, ctx: ICtx): Promise<StudentsData> => {
         try {
-          // TODO: Authorize before user can register course
           const { db } = ctx;
           const { all, limit, page } = args;
 
@@ -38,7 +37,6 @@ export const StudentsResolver: IResolvers = {
     studentDetails: Authenticated(
       async (_: null, args: StudentArgs, ctx: ICtx): Promise<Student> => {
         try {
-          // TODO: Authorize before user can register course
           const { id } = args;
           const { db } = ctx;
 

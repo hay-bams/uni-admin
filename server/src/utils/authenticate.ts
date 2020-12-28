@@ -18,9 +18,9 @@ export const Authenticated =  <T=any, K=any> (next: any) => async (
   //   throw new Error('This may be a CSRF attack, please sign in')
   // }
 
-  const admin = await db.users.findOne({
-    _id: new ObjectID(id_cookie),
-  });
+  // const admin = await db.users.findOne({
+  //   _id: new ObjectID(id_cookie),
+  // });
 
   // if (!admin) {
   //   res.clearCookie('admin');

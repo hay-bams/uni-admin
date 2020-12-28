@@ -33,3 +33,37 @@ Object {
   },
 }
 `;
+
+exports[`Course Mutation should throw an error if course to be updarted is not found 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: Something went wrong: Error: Course not found],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Course Mutation should update a course 1`] = `
+Object {
+  "data": Object {
+    "updateCourse": Object {
+      "id": "5fdab398791e134a5466566f",
+      "name": "Aerospace Engineerng",
+      "totalSeats": 25,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

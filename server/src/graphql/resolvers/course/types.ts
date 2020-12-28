@@ -19,3 +19,8 @@ export interface CoursesArgs {
   page: number;
   limit: number;
 }
+
+export interface UpdateCourseArgs {
+  courseId: string;
+  input: CourseInfo
+}

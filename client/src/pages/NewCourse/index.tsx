@@ -55,14 +55,14 @@ if (loading) {
     <Layout>
        <Sidebar />
        <Content className="add-student-spin">
-      <Spin size="large" tip="Adding Student..." />
+      <Spin size="large" tip="Creating Course..." />
     </Content>
     </Layout>
   );
 }
 
 if (data && data.addNewCourse) {
-  return <Redirect to={`/students`} />;
+  return <Redirect to={`/courses`} />;
 }
 
   return (
