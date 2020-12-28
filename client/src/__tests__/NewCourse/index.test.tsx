@@ -24,10 +24,15 @@ describe('New Course', () => {
   });
 
   test('should render the add new course page', async () => {
+    const admin = { id: '1', username: 'ggg', madeRequest: true };
+
     const { queryByText, queryByPlaceholderText } = render(
       <MockedProvider mocks={[]}>
         <Router history={history}>
-          <Route path="/new-course" component={NewCourse} />
+          <Route
+            path="/new-course"
+            render={(props) => <NewCourse admin={admin} />}
+          />
         </Router>
       </MockedProvider>
     );

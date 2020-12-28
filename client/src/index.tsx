@@ -19,7 +19,7 @@ import {
   Home,
   NewStudent,
   NewCourse,
-  RegisterAdmin
+  RegisterAdmin,
 } from './pages';
 import { Admin } from './lib/types';
 import {
@@ -84,9 +84,18 @@ const App = () => {
         {LoginErrorBanner}
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/new-student" component={NewStudent} />
 
-          <Route exact path="/new-course" component={NewCourse} />
+          <Route
+            exact
+            path="/new-student"
+            render={(props) => <NewStudent {...props} admin={admin} />}
+          />
+
+          <Route
+            exact
+            path="/new-course"
+            render={(props) => <NewCourse {...props} admin={admin} />}
+          />
 
           <Route
             exact
@@ -100,7 +109,7 @@ const App = () => {
               <Login {...props} setAdmin={setAdmin} admin={admin} />
             )}
           />
-           <Route
+          <Route
             exact
             path="/register"
             render={(props) => (

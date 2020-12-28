@@ -22,7 +22,7 @@ describe('Home', () => {
       };
   });
 
-  test.only('should redirect to the login page', async () => {
+  test('should redirect to the login page', async () => {
     const { queryByText } = render(
       <MockedProvider mocks={[]}>
         <Router history={history}>

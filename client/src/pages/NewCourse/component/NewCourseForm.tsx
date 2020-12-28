@@ -31,7 +31,7 @@ export const NewCourseForm = ({ addCourse }: Props) => {
   };
 
   return (
-    <Content className="new-student-content" style={{ width: '50%' }}>
+    <Content className="new-course-content">
       <Form
         layout="vertical"
         onFinish={onFinish}

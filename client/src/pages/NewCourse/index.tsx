@@ -45,6 +45,10 @@ const addCourse = (input: NewCourseInput) => {
   })
 }
 
+if(!admin.id) {
+  return <Redirect to="/login"/>
+}
+
 
 if (loading) {
   return (

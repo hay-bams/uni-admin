@@ -168,3 +168,25 @@
   margin: 20px auto 20px auto;
   width: 40%;
 }
+
+/*** ADD NEW STUDENT PAGE *****/
+.ant-layout-content.new-student-content {
+  width: 50%;
+}
+@media only screen and (max-width: 450px) {
+  .ant-layout-content.new-student-content {
+    width: 100%;
+  }
+}
+
+
+
+/*** ADD NEW COURSE PAGE *****/
+.ant-layout-content.new-course-content {
+  width: 50%;
+}
+@media only screen and (max-width: 450px) {
+  .ant-layout-content.new-course-content {
+    width: 100%;
+  }
+}

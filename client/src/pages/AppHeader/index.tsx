@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Layout, Menu } from 'antd';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { Admin } from '../../lib/types';
@@ -17,7 +17,6 @@ const { Header } = Layout;
 
 export const AppHeader = ({ admin, setAdmin }: Props) => {
   const location = useLocation();
-  console.log(location.pathname, '+++++=========');
   const [logout] = useMutation<LogoutData>(LOG_OUT, {
     onCompleted: (data) => {
       if (data && data.logout) {
@@ -60,38 +59,36 @@ export const AppHeader = ({ admin, setAdmin }: Props) => {
         </div>
       ) : (
         <Menu
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={['1']}
-        className="app_header_menu"
-      >
-        <Menu.Item key="7">
-          <div>
-            <Link
-              to={
-                location.pathname === '/login'
-                  ? '/register'
-                  : location.pathname === '/register'
-                  ? '/login'
-                  : ''
-              }
-            >
-              <Button type="primary">
-                {location.pathname === '/login'
-                  ? 'Create New Admin'
-                  : location.pathname === '/register'
-                  ? 'Sign in'
-                  : null}
-              </Button>
-            </Link>
-          </div>
-        </Menu.Item>
-      </Menu>
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['1']}
+          className="app_header_menu"
+        >
+          <Menu.Item key="7">
+            <div>
+              <Link
+                to={
+                  location.pathname === '/login'
+                    ? '/register'
+                    : location.pathname === '/register'
+                    ? '/login'
+                    : ''
+                }
+              >
+                <Button type="primary">
+                  {location.pathname === '/login'
+                    ? 'Create New Admin'
+                    : location.pathname === '/register'
+                    ? 'Sign in'
+                    : null}
+                </Button>
+              </Link>
+            </div>
+          </Menu.Item>
+        </Menu>
       )}
 
-      {
-       
-      }
+      {}
     </Header>
   );
 };

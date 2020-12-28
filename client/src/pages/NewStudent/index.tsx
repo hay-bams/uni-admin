@@ -46,6 +46,10 @@ const addStudent = (input: NewStudentInput) => {
   })
 }
 
+if(!admin.id) {
+  return <Redirect to="/login"/>
+}
+
 
 if (loading) {
   return (
