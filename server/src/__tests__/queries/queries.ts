@@ -26,7 +26,10 @@ export const TEST_STUDENT_DETAILS_QUERY = gql`
 export const TEST_All_COURSES_QUERY = gql`
   query AllCourses {
     allCourses {
-      id
+      total
+      results {
+        id
+      }
     }
   }
 `;

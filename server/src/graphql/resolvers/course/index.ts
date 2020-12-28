@@ -1,17 +1,36 @@
 import { IResolvers } from 'apollo-server-express';
 import { Course, ICtx } from '../../../lib/types';
 import { Authenticated } from '../../../utils/authenticate';
-import { NewCourseArgs } from './types';
+import { CoursesData, NewCourseArgs, CoursesArgs } from './types';
 
 export const CourseResolver: IResolvers = {
   Query: {
     allCourses: Authenticated(
-      async (_: null, __: null, ctx: ICtx): Promise<Course[]> => {
-        const { db } = ctx;
+      async (_: null, args: CoursesArgs, ctx: ICtx): Promise<CoursesData> => {
+        try {
+          const { db } = ctx;
+          const { all, limit, page } = args;
 
-        const courses = await db.courses.find({});
+          const data: CoursesData = {
+            total: 0,
+            results: [],
+          };
 
-        return courses.toArray();
+          let cursor = null;
+          cursor = await db.courses.find({});
+
+          if (!all) {
+            cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+            cursor = cursor.limit(limit);
+          }
+
+          data.total = await cursor.count();
+          data.results = await cursor.toArray();
+
+          return data;
+        } catch (err) {
+          throw new Error(`Something went wrong: ${err}`);
+        }
       }
     ),
   },

@@ -1,3 +1,5 @@
+import { Course } from "../../../lib/types";
+
 export interface CourseInfo {
   name: string;
   totalSeats: number;
@@ -6,4 +8,14 @@ export interface CourseInfo {
 
 export interface NewCourseArgs {
   input: CourseInfo;
+}
+export interface CoursesData {
+  total: number;
+  results: Course[];
+}
+
+export interface CoursesArgs {
+  all: string;
+  page: number;
+  limit: number;
 }

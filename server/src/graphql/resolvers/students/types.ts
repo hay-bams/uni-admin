@@ -1,6 +1,4 @@
-import { Request, Response } from 'express';
-import { ObjectID } from 'mongodb';
-import { Course, Database, Student } from '../../../lib/types';
+import { Course, Student } from '../../../lib/types';
 
 export interface StudentsArgs {
   all: string;

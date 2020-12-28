@@ -43,6 +43,11 @@ export const typeDefs = gql`
     results: [Student!]!
   }
 
+  type Courses {
+    total: Int
+    results: [Course!]!
+  }
+
   type Course {
     id: ID!
     name: String!
@@ -65,7 +70,7 @@ export const typeDefs = gql`
   type Query {
     students(all: String, limit: Int, page: Int): Students!
     studentDetails(id: ID!): Student!
-    allCourses: [Course!]!
+    allCourses(all: String, limit: Int, page: Int): Courses!
   }
 
   type Mutation {

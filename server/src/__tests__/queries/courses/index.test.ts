@@ -9,9 +9,17 @@ describe('Courses Queries', () => {
       db: {
         courses: {
           find: jest.fn(() => ({
-            count: jest.fn(() => 4),
-            toArray: jest.fn(() => COURSES_DATA),
+            skip: jest.fn(() => ({
+              limit: jest.fn(() => ({
+                count: jest.fn(() => 4),
+                toArray: jest.fn(() => COURSES_DATA),
+              })),
+            })),
           })),
+          // find: jest.fn(() => ({
+          //   count: jest.fn(() => 4),
+          //   toArray: jest.fn(() => COURSES_DATA),
+          // })),
         },
         users: {
           findOne: jest.fn(() => USER_DATA[0]),
@@ -36,8 +44,8 @@ describe('Courses Queries', () => {
 
     const res = await query({ query: TEST_All_COURSES_QUERY });
 
-    expect(res.data.allCourses.length).toBe(COURSES_DATA.length);
-    expect(res.data.allCourses[0]).toHaveProperty('id');
+    expect(res.data.allCourses.results.length).toBe(COURSES_DATA.length);
+    expect(res.data.allCourses.results[0]).toHaveProperty('id');
     expect(res).toMatchSnapshot();
   });
 });
