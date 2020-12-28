@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import jwt from 'jsonwebtoken';
 import { COURSES_DATA, STUDENT_DATA, USER_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
 import {
@@ -27,6 +28,7 @@ describe('Student Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -35,6 +37,12 @@ describe('Student Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_ADD_NEW_STUDENT,
@@ -71,6 +79,7 @@ describe('Student Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -79,6 +88,12 @@ describe('Student Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_REGISTER_COURSE,
@@ -104,6 +119,7 @@ describe('Student Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -112,6 +128,12 @@ describe('Student Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_REGISTER_COURSE,
@@ -145,6 +167,7 @@ describe('Student Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -153,6 +176,12 @@ describe('Student Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_REGISTER_COURSE,
@@ -185,6 +214,7 @@ describe('Student Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -193,6 +223,12 @@ describe('Student Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_UNREGISTER_COURSE,
@@ -220,6 +256,7 @@ describe('Student Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -228,6 +265,12 @@ describe('Student Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_UNREGISTER_COURSE,

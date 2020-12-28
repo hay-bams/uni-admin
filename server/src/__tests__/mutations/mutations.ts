@@ -29,6 +29,7 @@ export const TEST_LOG_IN = gql`
     login(input: $input) {
       id
       username
+      token
       madeRequest
     }
   }
@@ -48,6 +49,7 @@ export const TEST_LOG_OUT = gql`
     logout {
       id
       username
+      token
       madeRequest
     }
   }

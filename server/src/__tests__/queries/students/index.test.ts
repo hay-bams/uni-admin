@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import jwt from 'jsonwebtoken';
 import { COURSES_DATA, STUDENT_DATA, USER_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
 import {
@@ -22,6 +23,7 @@ describe('Students Queries', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -30,6 +32,12 @@ describe('Students Queries', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await query({
       query: TEST_ALL_STUDENTS_QUERY,
@@ -60,6 +68,7 @@ describe('Students Queries', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -68,6 +77,12 @@ describe('Students Queries', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await query({
       query: TEST_ALL_STUDENTS_QUERY,
@@ -98,6 +113,7 @@ describe('Students Queries', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -106,6 +122,12 @@ describe('Students Queries', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await query({
       query: TEST_STUDENT_DETAILS_QUERY,
@@ -129,6 +151,7 @@ describe('Students Queries', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -137,6 +160,12 @@ describe('Students Queries', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await query({
       query: TEST_STUDENT_DETAILS_QUERY,

@@ -6,6 +6,7 @@ Object {
     "login": Object {
       "id": "5fe09161251c8b0a9565108d",
       "madeRequest": true,
+      "token": "kkdj",
       "username": "admin",
     },
   },

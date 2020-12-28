@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken'
 
 import { USER_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
@@ -27,7 +28,7 @@ describe('Admin Login Mutation', () => {
     // bcryptCompare = jest.fn().mockReturnValue(true)
     // bcryptCompare.mockResolvedValue(true);
     jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => true));
-
+    jest.spyOn(jwt, 'sign').mockImplementation(jest.fn(() => 'kkdj'));
     jest.spyOn(cookie, 'setCookie').mockImplementation(jest.fn());
 
     const res = await mutate({
@@ -58,6 +59,7 @@ describe('Admin Login Mutation', () => {
     });
 
     jest.spyOn(cookie, 'loginViaCookie').mockImplementation(jest.fn());
+    jest.spyOn(jwt, 'sign').mockImplementation(jest.fn(() => 'kkdj'));
 
     const res = await mutate({
       mutation: TEST_LOG_IN,

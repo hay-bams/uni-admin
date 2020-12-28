@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import jwt from 'jsonwebtoken';
 import { COURSES_DATA, USER_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
 import { TEST_ADD_NEW_COURSE } from '../mutations';
@@ -16,6 +17,7 @@ describe('Course Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -24,6 +26,12 @@ describe('Course Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_ADD_NEW_COURSE,
@@ -35,8 +43,6 @@ describe('Course Mutation', () => {
         },
       },
     });
-
-    // console.log(res, '+=====================')
 
     expect(res.data.addNewCourse).toHaveProperty('id');
     expect(res.data.addNewCourse).toHaveProperty('name');
@@ -55,6 +61,7 @@ describe('Course Mutation', () => {
         },
       },
       req: {
+        get: jest.fn(() => 'skskkdkdk'),
         signedCookies: {
           admin: USER_DATA[0]._id,
         },
@@ -63,6 +70,12 @@ describe('Course Mutation', () => {
         clearCookie: jest.fn(),
       },
     });
+
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn(() => ({
+        admin: USER_DATA[0]._id,
+      }))
+    );
 
     const res = await mutate({
       mutation: TEST_ADD_NEW_COURSE,

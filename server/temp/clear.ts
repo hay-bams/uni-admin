@@ -4,7 +4,6 @@ import { connectDatabase } from '../src/database';
 
 const clear = async () => {
   try {
-    // console.log(process.env.MONGO_LOCAL_URI, '+=====================')
     const db = await connectDatabase();
 
     console.log('[clear database] : running...');
