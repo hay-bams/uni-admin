@@ -24,7 +24,7 @@ describe('Register', () => {
   });
 
   test('should render the register page', async () => {
-    const admin = { id: null, username: null, madeRequest: false };
+    const admin = { id: null, username: null, madeRequest: false, token: '' };
     const setAdmin = jest.fn();
 
     const { queryByText, queryByPlaceholderText } = render(

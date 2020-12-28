@@ -36,6 +36,8 @@ interface MatchParams {
 
 const { Content } = Layout;
 
+const LIMIT = 2
+
 export const StudentDetails = ({
   match,
   admin,
@@ -56,7 +58,13 @@ export const StudentDetails = ({
     loading: coursesLoading,
     error: CoursesError,
     refetch: courseRefetch,
-  } = useQuery<AllCoursesData>(All_COURSES);
+  } = useQuery<AllCoursesData>(All_COURSES, {
+    variables: {
+      all: 'all',
+      limit: LIMIT,
+      page: 1,
+    },
+  });
 
   const [
     addCourse,
@@ -100,7 +108,7 @@ export const StudentDetails = ({
         student={StudentData?.studentDetails}
         addCourse={addCourse}
         removeCourse={removeCourse}
-        courses={CoursesData?.allCourses}
+        courses={CoursesData?.allCourses.results}
         registerCourseLoading={registerCourseLoading}
         unregisterCourseLoading={unregisterCourseLoading}
       />

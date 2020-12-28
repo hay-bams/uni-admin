@@ -22,6 +22,7 @@ import {
   NewStudent,
   NewCourse,
   RegisterAdmin,
+  AllCourses,
 } from './pages';
 import { Admin } from './lib/types';
 import {
@@ -39,20 +40,20 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from session storage if it exists
-  const token = sessionStorage.getItem('token')
+  const token = sessionStorage.getItem('token');
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
       'X-CSRF-TOKEN': token || '',
-    }
-  }
+    },
+  };
 });
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  link:  authLink.concat(httpLink),
-  cache
+  link: authLink.concat(httpLink),
+  cache,
 });
 
 const initialUser: Admin = {
@@ -127,6 +128,13 @@ const App = () => {
             path="/students"
             render={(props) => <AllStudents {...props} admin={admin} />}
           />
+
+          <Route
+            exact
+            path="/courses"
+            render={(props) => <AllCourses {...props} admin={admin} />}
+          />
+
           <Route
             exact
             path="/login"

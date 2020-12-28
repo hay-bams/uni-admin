@@ -1,5 +1,5 @@
 import { GraphQLError } from 'graphql';
-import { ADD_NEW_STUDENT, LOG_IN, REGISTER_ADMIN, REGISTER_COURSE, STUDENTS, STUDENT_DETAILS } from '../graphql';
+import { ADD_NEW_STUDENT, All_COURSES, LOG_IN, REGISTER_ADMIN, REGISTER_COURSE, STUDENTS, STUDENT_DETAILS } from '../graphql';
 
 export const mockValidStudentQuery = {
   request: {
@@ -29,6 +29,7 @@ export const mockValidStudentQuery = {
     },
   },
 };
+
 
 export const mockErroredStudentQuery = {
   request: {
@@ -170,6 +171,45 @@ export const mockAddStudentMutation = {
       },
     },
   },
+};
+
+
+export const mockValidCourseQuery = {
+  request: {
+    query: All_COURSES,
+    variables: {
+      all: 'all',
+      limit: 1,
+      page: 1,
+    },
+  },
+  result: {
+    data: {
+      courses: {
+        total: 2,
+        results: [
+          {
+            id: '1234',
+            name: '5678',
+            totalSeats: '93',
+            status: 'active'
+          },
+        ],
+      },
+    },
+  },
+};
+
+export const mockErroredCourseQuery = {
+  request: {
+    query: All_COURSES,
+    variables: {
+      all: 'all',
+      limit: 1,
+      page: 1,
+    },
+  },
+  error: new Error('Some error occured'),
 };
 
 // result: jest.fn(() => ({

@@ -1,4 +1,5 @@
 export * from './Students'
+export * from './Courses'
 export * from './StudentDetails'
 export * from './NotFound'
 export * from './AppHeader'

@@ -4,14 +4,14 @@ import {
   studentDetails_studentDetails,
   studentDetails_studentDetails_courses,
 } from '../../../../graphql/queries/StudentDetails/__generated__/studentDetails';
-import { AllCourses_allCourses } from '../../../../graphql/queries/AllCourses/__generated__/AllCourses';
+import { AllCourses_allCourses_results } from '../../../../graphql/queries/AllCourses/__generated__/AllCourses';
 interface Props {
   student?: studentDetails_studentDetails;
-  courses?: AllCourses_allCourses[];
-  addCourse: any,
-  removeCourse: any,
-  registerCourseLoading:  boolean,
-  unregisterCourseLoading: boolean
+  courses?: AllCourses_allCourses_results[];
+  addCourse: any;
+  removeCourse: any;
+  registerCourseLoading: boolean;
+  unregisterCourseLoading: boolean;
 }
 
 const { Title } = Typography;
@@ -22,7 +22,7 @@ export const Courses = ({
   addCourse,
   removeCourse,
   registerCourseLoading,
-  unregisterCourseLoading
+  unregisterCourseLoading,
 }: Props) => {
   const registerCourse = (studentId: string, courseId: string) => {
     addCourse({
@@ -77,7 +77,7 @@ export const Courses = ({
         index: number
       ) => {
         return (
-          <Tag color={'green'} key={status}>
+          <Tag color={status === 'active' ? 'green' : 'red'} key={status}>
             {status.toUpperCase()}
           </Tag>
         );
@@ -110,8 +110,7 @@ export const Courses = ({
         return removeButton;
       },
     },
-
-  ]
+  ];
 
   const unregisteredTableColumns = [
     ...columns,
@@ -147,7 +146,7 @@ export const Courses = ({
           (course: studentDetails_studentDetails_courses) => ({
             ...course,
             key: `${course.id}`,
-            remove: 'remove'
+            remove: 'remove',
           })
         )
       : [];

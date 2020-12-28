@@ -24,7 +24,7 @@ describe('Login', () => {
   });
 
   test('should render the login page', async () => {
-    const admin = { id: null, username: null, madeRequest: false };
+    const admin = { id: null, username: null, madeRequest: false, token: '' };
     const setAdmin = jest.fn();
 
     const { queryByText, queryByPlaceholderText } = render(

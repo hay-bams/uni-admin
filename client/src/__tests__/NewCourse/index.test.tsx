@@ -24,7 +24,7 @@ describe('New Course', () => {
   });
 
   test('should render the add new course page', async () => {
-    const admin = { id: '1', username: 'ggg', madeRequest: true };
+    const admin = { id: '1', username: 'ggg', madeRequest: true, token: '' };
 
     const { queryByText, queryByPlaceholderText } = render(
       <MockedProvider mocks={[]}>

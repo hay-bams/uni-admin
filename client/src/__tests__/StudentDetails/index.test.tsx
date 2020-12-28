@@ -28,7 +28,7 @@ describe('Student Details', () => {
   });
 
   test('should render student details loading state', async () => {
-    const admin = { id: '1', username: null, madeRequest: false };
+    const admin = { id: '1', username: null, madeRequest: false, token: '' };
 
     const { queryByText } = render(
       <MockedProvider mocks={[]}>
@@ -49,7 +49,7 @@ describe('Student Details', () => {
 
   test('should render student details when query is successful', async () => {
     const studentDetailsMock = mockValidStudentDetails;
-    const admin = { id: '1', username: null, madeRequest: false };
+    const admin = { id: '1', username: null, madeRequest: false, token: '' };
 
     const { queryByText } = render(
       <MockedProvider mocks={[studentDetailsMock]}>
@@ -73,7 +73,7 @@ describe('Student Details', () => {
     const errorMessage =
       'Some error occured fetching the student details. Please try again soon!';
 
-    const admin = { id: '1', username: null, madeRequest: false };
+    const admin = { id: '1', username: null, madeRequest: false, token: '' };
     const { queryByText } = render(
       <MockedProvider mocks={[studentsDetailsMock]} addTypename={false}>
         <Router history={history}>
@@ -92,7 +92,7 @@ describe('Student Details', () => {
 
   test('should redirect to login when admin is not authenticated', async () => {
     const studentsDetailsMock = mockErroredStudentDetailsQuery;
-    const admin = { id: null, username: null, madeRequest: false };
+    const admin = { id: null, username: null, madeRequest: false, token: '' };
 
     render(
       <MockedProvider mocks={[studentsDetailsMock]} addTypename={false}>

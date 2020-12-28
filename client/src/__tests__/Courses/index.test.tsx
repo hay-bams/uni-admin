@@ -3,18 +3,18 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { createMemoryHistory } from 'history';
-import { AllStudents } from '../../pages';
+import { AllCourses } from '../../pages';
 import { Route, Router } from 'react-router-dom';
 import {
-  mockValidStudentQuery,
-  mockErroredStudentQuery,
+  mockValidCourseQuery,
+  mockErroredCourseQuery,
 } from '../../__mocks__';
 
 const history = createMemoryHistory({
-  initialEntries: ['/students'],
+  initialEntries: ['/courses'],
 });
 
-describe('Students', () => {
+describe('Courses', () => {
   beforeAll(() => {
     window.matchMedia =
       window.matchMedia ||
@@ -27,51 +27,51 @@ describe('Students', () => {
       };
   });
 
-  test('should render all students loading state', async () => {
+  test('should render all courses loading state', async () => {
     const admin = { id: '1', username: null, madeRequest: false, token: '' };
     const { queryByText } = render(
       <MockedProvider mocks={[]}>
         <Router history={history}>
           <Route
-            path="/students"
-            render={(props) => <AllStudents {...props} admin={admin} />}
+            path="/courses"
+            render={(props) => <AllCourses {...props} admin={admin} />}
           />
         </Router>
       </MockedProvider>
     );
 
     await waitFor(() => {
-      expect(queryByText('All-Students-Loading')).not.toBe(null);
-      expect(queryByText('All-Students')).toBe(null);
+      expect(queryByText('All-Courses-Loading')).not.toBe(null);
+      expect(queryByText('All-Courses')).toBe(null);
     });
   });
 
-  test('should render all students when query is successful', async () => {
-    const studentsMock = mockValidStudentQuery;
+  test('should render all courses when query is successful', async () => {
+    const studentsMock = mockValidCourseQuery;
     const admin = { id: '1', username: null, madeRequest: false, token: '' };
 
     const { queryByText } = render(
       <MockedProvider mocks={[studentsMock]} addTypename={false}>
         <Router history={history}>
           <Route
-            path="/students"
-            render={(props) => <AllStudents {...props} admin={admin} />}
+            path="/courses"
+            render={(props) => <AllCourses {...props} admin={admin} />}
           />
         </Router>
       </MockedProvider>
     );
 
     await waitFor(() => {
-      expect(queryByText('All-Students')).not.toBe(null);
-      expect(queryByText('All-Students-Loading')).toBe(null);
+      expect(queryByText('All-Courses')).not.toBe(null);
+      expect(queryByText('All-Courses-Loading')).toBe(null);
     });
   });
 
   test('should render an error message when the query has an error', async () => {
-    const studentsMock = mockErroredStudentQuery;
+    const studentsMock = mockErroredCourseQuery;
 
     const errorMessage =
-      'Some error occured fetching the student lists. Please try again soon!';
+      'Some error occured fetching the courses lists. Please try again soon!';
 
     const admin = { id: '1', username: null, madeRequest: false, token: '' };
 
@@ -79,8 +79,8 @@ describe('Students', () => {
       <MockedProvider mocks={[studentsMock]} addTypename={false}>
         <Router history={history}>
           <Route
-            path="/students"
-            render={(props) => <AllStudents {...props} admin={admin} />}
+            path="/courses"
+            render={(props) => <AllCourses {...props} admin={admin} />}
           />
         </Router>
       </MockedProvider>
@@ -92,15 +92,15 @@ describe('Students', () => {
   });
 
   test('should redirect to login when admin is not authenticated', async () => {
-    const studentsMock = mockValidStudentQuery;
+    const studentsMock = mockValidCourseQuery;
     const admin = { id: null, username: null, madeRequest: false, token: '' };
 
     render(
       <MockedProvider mocks={[studentsMock]} addTypename={false}>
         <Router history={history}>
           <Route
-            path="/students"
-            render={(props) => <AllStudents {...props} admin={admin} />}
+            path="/courses"
+            render={(props) => <AllCourses {...props} admin={admin} />}
           />
         </Router>
       </MockedProvider>

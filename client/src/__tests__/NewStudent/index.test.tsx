@@ -24,7 +24,7 @@ describe('New Student', () => {
   });
 
   test('should render the add new student page', async () => {
-    const admin = { id: '1', username: 'admin', madeRequest: true };
+    const admin = { id: '1', username: 'admin', madeRequest: true, token: '' };
     const { queryByText, queryByPlaceholderText } = render(
       <MockedProvider mocks={[]}>
         <Router history={history}>
