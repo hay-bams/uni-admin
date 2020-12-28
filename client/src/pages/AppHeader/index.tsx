@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Layout, Menu } from 'antd';
-import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { Admin } from '../../lib/types';

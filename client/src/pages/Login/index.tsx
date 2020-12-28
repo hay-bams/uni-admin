@@ -8,7 +8,6 @@ import {
 } from '../../graphql/mutations/Login/__generated__/Login';
 import { LOG_IN } from '../../graphql';
 import { LoginInput } from '../../graphql/globalTypes';
-import { useForm } from '../../lib/hooks/useForm';
 import { Redirect } from 'react-router-dom';
 import { displaySuccessNotification } from '../../utils';
 import { Spin, Layout } from 'antd';

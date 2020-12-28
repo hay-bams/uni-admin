@@ -117,8 +117,6 @@ export const StudentDetails = ({
   if (
     studentLoading ||
     coursesLoading
-    // registerCourseLoading ||
-    // unregisterCourseLoading
   ) {
     return <CourseTableSkeleton />;
   }

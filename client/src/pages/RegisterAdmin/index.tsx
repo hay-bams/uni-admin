@@ -8,7 +8,6 @@ import {
 import { NewAdminForm } from './components/NewAdminForm';
 import { REGISTER_ADMIN } from '../../graphql';
 import { RegisterInput } from '../../graphql/globalTypes';
-import { useForm } from '../../lib/hooks/useForm';
 import { Redirect } from 'react-router-dom';
 import { displaySuccessNotification } from '../../utils';
 import { Spin, Layout } from 'antd';
@@ -38,8 +37,6 @@ export const RegisterAdmin = ({ setAdmin, admin }: Props) => {
       }
     },
   });
-
-  const { form, setValue: setForm } = useForm();
 
   const onRegister = (input: RegisterInput) => {
     register({
