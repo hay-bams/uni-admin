@@ -5,6 +5,7 @@ export  const REGISTER_ADMIN = gql`
     register(input: $input) {
       id
       username
+      token
       madeRequest
     }
   }

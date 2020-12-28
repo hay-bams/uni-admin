@@ -1,11 +1,10 @@
 /* eslint-disable jest/no-mocks-import */
 import React from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { createMemoryHistory } from 'history';
 import { Login } from '../../pages';
 import { Route, Router } from 'react-router-dom';
-import { mockValidLoginMutation } from '../../__mocks__';
 
 const history = createMemoryHistory({
   initialEntries: ['/login'],

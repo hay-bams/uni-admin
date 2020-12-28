@@ -5,6 +5,7 @@ export  const LOG_IN = gql`
     login(input: $input) {
       id
       username
+      token
       madeRequest
     }
   }

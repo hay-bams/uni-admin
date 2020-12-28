@@ -2,7 +2,6 @@ import { Students_students_results } from "../graphql/queries/Students/__generat
 
 export const formatTableData = (data: any | undefined) => {
   return data && data.map((datum: any) => {
-    console.log(datum)
     return {
       ...datum,
       key: `${datum.id}`,

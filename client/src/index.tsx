@@ -5,9 +5,11 @@ import {
   InMemoryCache,
   ApolloProvider,
   useMutation,
+  createHttpLink,
 } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout, Spin } from 'antd';
+import { setContext } from '@apollo/client/link/context';
 
 import reportWebVitals from './reportWebVitals';
 import {
@@ -30,16 +32,33 @@ import { LOG_IN } from './graphql';
 import { AppHeaderSkeleton, ErrorBanner } from './lib/components';
 import './styles/index.css';
 
+const httpLink = createHttpLink({
+  uri: 'http://localhost:9005/api',
+  credentials: 'include',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from session storage if it exists
+  const token = sessionStorage.getItem('token')
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      'X-CSRF-TOKEN': token || '',
+    }
+  }
+});
+
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  uri: 'http://localhost:9005/api',
-  cache,
-  credentials: 'include',
+  link:  authLink.concat(httpLink),
+  cache
 });
 
 const initialUser: Admin = {
   id: null,
   username: null,
+  token: null,
   madeRequest: false,
 };
 
@@ -48,6 +67,12 @@ const App = () => {
     onCompleted: (data) => {
       if (data && data.login) {
         setAdmin(data.login);
+
+        if (data.login.token) {
+          sessionStorage.setItem('token', data.login.token);
+        } else {
+          sessionStorage.removeItem('token');
+        }
       }
     },
   });

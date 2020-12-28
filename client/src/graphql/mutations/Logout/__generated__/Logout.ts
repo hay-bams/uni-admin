@@ -11,6 +11,7 @@ export interface Logout_logout {
   __typename: "User";
   id: string | null;
   username: string | null;
+  token: string | null;
   madeRequest: boolean | null;
 }
 

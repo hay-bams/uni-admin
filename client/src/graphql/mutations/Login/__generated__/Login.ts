@@ -13,6 +13,7 @@ export interface Login_login {
   __typename: "User";
   id: string | null;
   username: string | null;
+  token: string | null;
   madeRequest: boolean | null;
 }
 

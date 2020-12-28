@@ -22,7 +22,6 @@ const { Item } = Form;
 
 export const NewCourseForm = ({ addCourse }: Props) => {
   const onFinish = (values: any) => {
-    console.log(values);
     addCourse(values);
   };
 

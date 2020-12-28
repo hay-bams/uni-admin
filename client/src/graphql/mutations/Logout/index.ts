@@ -5,6 +5,7 @@ export  const LOG_OUT = gql`
     logout {
       id
       username
+      token
       madeRequest
     }
   }

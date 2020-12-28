@@ -30,6 +30,7 @@ export const RegisterAdmin = ({ setAdmin, admin }: Props) => {
     onCompleted: (data) => {
       if (data && data.register) {
         setAdmin(data.register);
+        sessionStorage.setItem('token', data.register.token || '');
         displaySuccessNotification(
           'Login Success',
           'You are successfully Logged in'

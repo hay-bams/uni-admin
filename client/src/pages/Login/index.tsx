@@ -28,8 +28,9 @@ export const Login = ({ setAdmin, admin }: Props) => {
     { data: loginData, loading: loginLoading, error: loginError },
   ] = useMutation<LoginData, LoginVariables>(LOG_IN, {
     onCompleted: (data) => {
-      if (data && data.login) {
+      if (data && data.login && data.login.token) {
         setAdmin(data.login);
+        sessionStorage.setItem('token', data.login.token);
         displaySuccessNotification(
           'Login Success',
           'You are successfully Logged in'
