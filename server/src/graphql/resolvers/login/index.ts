@@ -23,6 +23,7 @@ export const LoginResolver: IResolvers = {
         if (!result && withCookie) {
           return {};
         }
+    
 
         if (!result) {
           throw new Error(
@@ -51,3 +52,11 @@ export const LoginResolver: IResolvers = {
     },
   },
 };
+
+
+
+// updateSettings: authenticated(
+//   (_, {input}, {user, models}) =>{
+//   return models.Settings.updateOne({user: user.id}, input)
+// }
+// ),

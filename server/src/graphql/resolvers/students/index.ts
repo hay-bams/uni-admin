@@ -1,63 +1,60 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectID } from 'mongodb';
 import { ICtx, Student } from '../../../lib/types';
+import { Authenticated } from '../../../utils/authenticate';
 import { StudentsArgs, StudentArgs, StudentsData } from './types';
 
 export const StudentsResolver: IResolvers = {
   Query: {
-    students: async (
-      _,
-      args: StudentsArgs,
-      ctx: ICtx
-    ): Promise<StudentsData> => {
-      try {
-              // TODO: Authorize before user can register course
-        const { db } = ctx;
-        const { all, limit, page } = args;
+    students: Authenticated(
+      async (_: null, args: StudentsArgs, ctx: ICtx): Promise<StudentsData> => {
+        try {
+          // TODO: Authorize before user can register course
+          const { db } = ctx;
+          const { all, limit, page } = args;
 
-        const data: StudentsData = {
-          total: 0,
-          results: [],
-        };
+          const data: StudentsData = {
+            total: 0,
+            results: [],
+          };
 
-        let cursor = null;
-        cursor = await db.students.find();
+          let cursor = null;
+          cursor = await db.students.find();
 
-        if (!all) {
-          cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
-          cursor = cursor.limit(limit);
+          if (!all) {
+            cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+            cursor = cursor.limit(limit);
+          }
+
+          data.total = await cursor.count();
+          data.results = await cursor.toArray();
+
+          return data;
+        } catch (err) {
+          throw new Error(`Something went wrong: ${err}`);
         }
-
-        data.total = await cursor.count();
-        data.results = await cursor.toArray();
-
-        return data;
-      } catch (err) {
-        throw new Error(`Something went wrong: ${err}`);
       }
-    },
-    studentDetails: async (
-      _,
-      args: StudentArgs,
-      ctx: ICtx
-    ): Promise<Student> => {
-      try {
-              // TODO: Authorize before user can register course
-        const { id } = args;
-        const { db } = ctx;
+    ),
+    studentDetails: Authenticated(
+      async (_: null, args: StudentArgs, ctx: ICtx): Promise<Student> => {
+        try {
+          // TODO: Authorize before user can register course
+          const { id } = args;
+          const { db } = ctx;
 
-        const student = await db.students.findOne({
-          _id: new ObjectID(id),
-        });
+          const student = await db.students.findOne({
+            _id: new ObjectID(id),
+          });
 
-        if (!student) {
-          throw new Error('Student not found');
+          if (!student) {
+            throw new Error('Student not found');
+          }
+
+          return student;
+        } catch (err) {
+          throw new Error(`Something went wrong: ${err}`);
         }
-
-        return student;
-      } catch (err) {
-        throw new Error(`Something went wrong: ${err}`);
       }
-    },
+    ),
   },
 };

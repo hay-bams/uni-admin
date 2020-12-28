@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { COURSES_DATA, STUDENT_DATA } from '../../test_data';
+import { COURSES_DATA, STUDENT_DATA, USER_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
 import {
   TEST_ALL_STUDENTS_QUERY,
@@ -17,6 +17,17 @@ describe('Students Queries', () => {
             toArray: jest.fn(() => STUDENT_DATA),
           })),
         },
+        users: {
+          findOne: jest.fn(() => USER_DATA[0]),
+        },
+      },
+      req: {
+        signedCookies: {
+          admin: USER_DATA[0]._id,
+        },
+      },
+      res: {
+        clearCookie: jest.fn(),
       },
     });
 
@@ -44,6 +55,17 @@ describe('Students Queries', () => {
             })),
           })),
         },
+        users: {
+          findOne: jest.fn(() => USER_DATA[0]),
+        },
+      },
+      req: {
+        signedCookies: {
+          admin: USER_DATA[0]._id,
+        },
+      },
+      res: {
+        clearCookie: jest.fn(),
       },
     });
 
@@ -66,11 +88,22 @@ describe('Students Queries', () => {
             () => new Promise((resolve) => resolve(STUDENT_DATA[0]))
           ),
         },
+        users: {
+          findOne: jest.fn(() => USER_DATA[0]),
+        },
         courses: {
           find: jest.fn(() => ({
             toArray: jest.fn(() => COURSES_DATA),
           })),
         },
+      },
+      req: {
+        signedCookies: {
+          admin: USER_DATA[0]._id,
+        },
+      },
+      res: {
+        clearCookie: jest.fn(),
       },
     });
 
@@ -91,6 +124,17 @@ describe('Students Queries', () => {
         students: {
           findOne: jest.fn(() => null),
         },
+        users: {
+          findOne: jest.fn(() => USER_DATA[0]),
+        },
+      },
+      req: {
+        signedCookies: {
+          admin: USER_DATA[0]._id,
+        },
+      },
+      res: {
+        clearCookie: jest.fn(),
       },
     });
 

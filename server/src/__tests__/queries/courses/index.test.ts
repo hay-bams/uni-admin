@@ -1,6 +1,6 @@
-import { COURSES_DATA } from '../../test_data';
+import { COURSES_DATA, USER_DATA } from '../../test_data';
 import { createTestServer } from '../../helpers';
-import { TEST_All_COURSES_QUERY } from '../queries'
+import { TEST_All_COURSES_QUERY } from '../queries';
 
 describe('Courses Queries', () => {
   test('should return all courses', async () => {
@@ -12,6 +12,17 @@ describe('Courses Queries', () => {
             toArray: jest.fn(() => COURSES_DATA),
           })),
         },
+        users: {
+          findOne: jest.fn(() => USER_DATA[0]),
+        },
+      },
+      req: {
+        signedCookies: {
+          admin: USER_DATA[0]._id,
+        },
+      },
+      res: {
+        clearCookie: jest.fn(),
       },
     });
 
@@ -19,6 +30,6 @@ describe('Courses Queries', () => {
 
     expect(res.data.allCourses.length).toBe(COURSES_DATA.length);
     expect(res.data.allCourses[0]).toHaveProperty('id');
-    expect(res).toMatchSnapshot(); 
+    expect(res).toMatchSnapshot();
   });
 });

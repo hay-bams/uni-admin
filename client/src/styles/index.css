@@ -43,9 +43,6 @@
 }
 
 /*************STUDENTS PAGE***************/
-.admin_side_bar {
-  margin-top: -1px;
-}
 
 .table_container {
   width: 100%;
@@ -189,4 +186,15 @@
   .ant-layout-content.new-course-content {
     width: 100%;
   }
+}
+
+
+/********SIDEBAR ***********/
+.admin_side_bar {
+  margin-top: -1px;
+}
+
+.admin_side_bar .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: none;
+  border-top: 1px solid #272744;
 }
