@@ -4,7 +4,7 @@ import { Sidebar } from '../../lib/components/Sidebar';
 import { BreadCrumbNav } from '../../lib/components/BreadCrumbNav';
 
 import { useMutation } from '@apollo/client';
-import { ADD_NEW_STUDENT } from '../../graphql';
+import { ADD_NEW_STUDENT, STUDENTS } from '../../graphql';
 import { Admin } from '../../lib/types';
 import { Redirect } from 'react-router-dom';
 import { NewStudentForm } from './component/NewStudentForm';
@@ -35,6 +35,18 @@ export const NewStudent = ({ admin }: Props) => {
       "Sorry! We weren't able to add this student. Please try again later."
     );
   },
+  refetchQueries: () => (
+    [
+      {
+        query: STUDENTS,
+          variables: {
+            all: 'all',
+            limit: 1,
+            page: 1,
+          },
+      },
+    ]
+  ),
 });
 
 const addStudent = (input: NewStudentInput) => {

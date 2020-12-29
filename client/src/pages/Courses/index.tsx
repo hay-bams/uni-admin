@@ -19,18 +19,16 @@ interface Props {
 
 const { Content } = Layout;
 
-const LIMIT = 2;
 
 export const AllCourses = ({ admin }: Props) => {
-  const [page] = useState(1);
   const { data, loading, error } = useQuery<CoursesData, AllCoursesVariables>(
     All_COURSES,
     {
       variables: {
         all: 'all',
-        limit: LIMIT,
-        page: page,
-      },
+        limit: 1,
+        page: 1,
+      }
     }
   );
 

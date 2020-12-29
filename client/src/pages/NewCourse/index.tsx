@@ -13,57 +13,69 @@ import {
 } from '../../utils/index';
 import { NewCourseInput } from '../../graphql/globalTypes';
 import { ADD_NEW_COURSE } from '../../graphql/mutations/AddNewCourse';
-import { AddNewCourse as AddNewCourseData, AddNewCourseVariables } from '../../graphql/mutations/AddNewCourse/__generated__/AddNewCourse';
+import {
+  AddNewCourse as AddNewCourseData,
+  AddNewCourseVariables,
+} from '../../graphql/mutations/AddNewCourse/__generated__/AddNewCourse';
+import { All_COURSES } from '../../graphql';
 
 interface Props {
-  admin: Admin
+  admin: Admin;
 }
 
 const { Content } = Layout;
 
-
 export const NewCourse = ({ admin }: Props) => {
   const [addNewCourse, { loading, data }] = useMutation<
-  AddNewCourseData,
-  AddNewCourseVariables
->(ADD_NEW_COURSE, {
-  onCompleted: () => {
-    displaySuccessNotification("New course added successfully!");
-  },
-  onError: () => {
-    displayErrorMessage(
-      "Sorry! We weren't able to add this course. Please try again later."
+    AddNewCourseData,
+    AddNewCourseVariables
+  >(ADD_NEW_COURSE, {
+    onCompleted: () => {
+      displaySuccessNotification('New course added successfully!');
+    },
+    onError: () => {
+      displayErrorMessage(
+        "Sorry! We weren't able to add this course. Please try again later."
+      );
+    },
+    refetchQueries: [
+      {
+        query: All_COURSES,
+        variables: {
+          all: 'all',
+          limit: 1,
+          page: 1,
+        },
+      },
+    ],
+  });
+
+  const addCourse = (input: NewCourseInput) => {
+    addNewCourse({
+      variables: {
+        input,
+      },
+    });
+  };
+
+  if (!admin.id) {
+    return <Redirect to="/login" />;
+  }
+
+  if (loading) {
+    return (
+      <Layout>
+        <Sidebar />
+        <Content className="add-student-spin">
+          <Spin size="large" tip="Creating Course..." />
+        </Content>
+      </Layout>
     );
-  },
-});
+  }
 
-const addCourse = (input: NewCourseInput) => {
-  addNewCourse({
-    variables: {
-      input
-    }
-  })
-}
-
-if(!admin.id) {
-  return <Redirect to="/login"/>
-}
-
-
-if (loading) {
-  return (
-    <Layout>
-       <Sidebar />
-       <Content className="add-student-spin">
-      <Spin size="large" tip="Creating Course..." />
-    </Content>
-    </Layout>
-  );
-}
-
-if (data && data.addNewCourse) {
-  return <Redirect to={`/courses`} />;
-}
+  if (data && data.addNewCourse) {
+    return <Redirect to={`/courses`} />;
+  }
 
   return (
     <Layout>
