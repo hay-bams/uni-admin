@@ -73,7 +73,7 @@ export const CourseResolver: IResolvers = {
           });
 
           if (course) {
-            throw new Error('Course already exists');
+            throw new Error('Course Already Exists');
           }
 
           course = await db.courses.insertOne({
