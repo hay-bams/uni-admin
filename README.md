@@ -4,12 +4,12 @@
 
 ## Introduction
 
-UNI-ADMIN is a simple application where the admins of an imaginary institution can register students for the imaginary company and also register courses for them
+UNI-ADMIN is a simple application where the admins of an imaginary institution can register students for the imaginary institution and also register courses for them
 
 ---
 
 ## API Documentation
-This application uses GraphQL which is automatically documented, you should click on the docs button on your GraphQL playoground to see the documentation [here](https://purpose-more-recipes.herokuapp.com/api-docs)
+This application uses GraphQL which is automatically documented, you should click on the docs button on your GraphQL playoground to see the documentation.
 ## Application Features
 * Admins can be created
 * Admins can log in
@@ -55,8 +55,8 @@ This application uses GraphQL which is automatically documented, you should clic
    - SECRET=YOUR SECRET, it can be anything
    - DB=YOUR DATABASE NAME
    - NODE_ENV=development
-   - MONGO_LOCAL_URI=mongodb://db:27017 You can change the port if it is not available
-   - PUBLIC_URL= http://localhost:3000  You can change the port if it is not available
+   - MONGO_LOCAL_URI=mongodb://db:27017
+   - PUBLIC_URL= http://localhost:3000
    - REACT_APP_API_URL=http://localhost:9005/api  - please change this port to you server listening port specified above    
 
 ```
