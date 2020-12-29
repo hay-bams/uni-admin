@@ -28,8 +28,8 @@ services:
       context: ./client
       dockerfile: Dockerfile
     volumes:
-      - /app/node_modules
       - ./client:/app
+      - ./app/node_modules
     ports:
       - '3000:3000'
     restart: on-failure
@@ -48,8 +48,8 @@ services:
     depends_on: 
       - db
     volumes:
-      - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
       - ./server:/app # Look at the server directory and copy everything into the app folder in the container
+      - ./app/node_modules # Inside the container, don't try to override this folder, just leave as is
     environment:
       - PORT=${PORT}
       - MONGO_LOCAL_URI=${MONGO_LOCAL_URI}
