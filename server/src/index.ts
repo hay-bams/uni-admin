@@ -11,7 +11,7 @@ import { connectDatabase } from './database';
  
 const corsOptions = {
   credentials: true,
-  origin: 'http://localhost:3000',
+  origin: `${process.env.PUBLIC_URL}`,
 }
 
 const mount = async (app: Application) => {

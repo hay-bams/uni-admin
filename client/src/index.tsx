@@ -35,7 +35,7 @@ import { AppHeaderSkeleton, ErrorBanner } from './lib/components';
 import './styles/index.css';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:9005/api',
+  uri: `${process.env.REACT_APP_API_URL}/api`,
   credentials: 'include',
 });
 

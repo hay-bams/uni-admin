@@ -16,7 +16,7 @@ import {
   UpdateCourseVariables,
 } from '../../graphql/mutations/UpdateCourse/__generated__/UpdateCourse';
 import { UPDATE_COURSE } from '../../graphql/mutations/UpdateCourse';
-import { UpdateCourseForm } from './components/UpdateCourseForm';
+import { UpdateCourseForm } from './UpdateCourseForm';
 import { COURSE_DETAILS } from '../../graphql/queries/CourseDetails';
 import {
   courseDetails as courseDetailsData,
