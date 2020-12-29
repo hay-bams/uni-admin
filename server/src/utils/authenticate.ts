@@ -24,7 +24,7 @@ export const Authenticated =  <T=any, K=any> (next: any) => async (
 
   if (!admin) {
     res.clearCookie('admin');
-    throw new Error('User not authenticated, please sign in first');
+    throw new Error('user not authenticated, please sign in first');
   }
 
   return next(root, args, ctx);
