@@ -209,7 +209,7 @@ export const Courses = ({
             title={() => (
               <div>
                 {' '}
-                <Title level={3}>Registered Courses</Title>
+                <Title level={3}>Unregistered Courses</Title>
                 <Text type="secondary">
                   Scroll right to see the other columns of the table
                 </Text>
