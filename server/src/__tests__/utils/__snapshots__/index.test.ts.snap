@@ -4,7 +4,7 @@ exports[`Utils should return an error if user is not authenticated 1`] = `
 Object {
   "data": null,
   "errors": Array [
-    [GraphQLError: Something went wrong: TypeError: cursor.skip is not a function],
+    [GraphQLError: This may be a CSRF attack, please sign in],
   ],
   "extensions": undefined,
   "http": Object {
@@ -19,7 +19,7 @@ exports[`Utils should return an error if user is not found in the database 1`] =
 Object {
   "data": null,
   "errors": Array [
-    [GraphQLError: Something went wrong: TypeError: cursor.skip is not a function],
+    [GraphQLError: This may be a CSRF attack, please sign in],
   ],
   "extensions": undefined,
   "http": Object {
