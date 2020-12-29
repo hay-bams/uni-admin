@@ -7,22 +7,6 @@ services:
     volumes:
       - ./.data/db/:/data/db/
 
-  # db-clear:
-  #   build: ./server
-  #   command: npm run clear
-  #   environment:
-  #     - MONGO_LOCAL_URI=${MONGO_LOCAL_URI}
-  #   depends_on:
-  #     - db
-
-  # db-seed:
-  #   build: ./server
-  #   command: npm run seed
-  #   environment:
-  #     - MONGO_LOCAL_URI=${MONGO_LOCAL_URI}
-  #   depends_on:
-  #     - server
-
   client:
     build:
       context: ./client

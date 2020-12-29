@@ -74,7 +74,7 @@ if (loading) {
 }
 
 if (data && data.addNewStudent) {
-  return <Redirect to={`/students/${data.addNewStudent.id}`} />;
+  return <Redirect to={`/students`} />;
 }
 
   return (

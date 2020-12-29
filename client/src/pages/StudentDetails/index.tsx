@@ -36,8 +36,6 @@ interface MatchParams {
 
 const { Content } = Layout;
 
-const LIMIT = 2
-
 export const StudentDetails = ({
   match,
   admin,
@@ -61,7 +59,7 @@ export const StudentDetails = ({
   } = useQuery<AllCoursesData>(All_COURSES, {
     variables: {
       all: 'all',
-      limit: LIMIT,
+      limit: 1,
       page: 1,
     },
   });
@@ -114,10 +112,7 @@ export const StudentDetails = ({
       />
     ) || null;
 
-  if (
-    studentLoading ||
-    coursesLoading
-  ) {
+  if (studentLoading || coursesLoading) {
     return <CourseTableSkeleton />;
   }
 
