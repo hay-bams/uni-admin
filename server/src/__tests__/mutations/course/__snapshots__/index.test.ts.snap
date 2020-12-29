@@ -23,7 +23,7 @@ exports[`Course Mutation should throw an error if course already exists 1`] = `
 Object {
   "data": null,
   "errors": Array [
-    [GraphQLError: Something went wrong: Error: Course Already Exists],
+    [GraphQLError: Something went wrong: Error: Course already exists],
   ],
   "extensions": undefined,
   "http": Object {
