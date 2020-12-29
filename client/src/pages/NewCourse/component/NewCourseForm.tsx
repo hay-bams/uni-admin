@@ -37,7 +37,7 @@ export const NewCourseForm = ({ addCourse }: Props) => {
         onFinishFailed={onFinishFailed}
       >
         <div className="student-form-header">
-          <Title level={3} className="student-title">
+          <Title className="table-title" level={3}>
             New Course Form
           </Title>
           <Text type="secondary">

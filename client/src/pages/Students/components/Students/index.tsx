@@ -79,7 +79,7 @@ export const Students = ({ students }: Props) => {
         title={(): JSX.Element => (
           <div>
             {' '}
-            <Title level={3}>All Students</Title>
+            <Title className="table-title" level={3}>All Students</Title>
             <Text type="secondary">
              In this table is a list of all the students in the university.
             </Text>{' '}

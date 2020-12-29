@@ -48,6 +48,20 @@
   width: 100%;
 }
 
+.registered_courses.ant-col.ant-col-xs-24 {
+  margin-bottom: 30px;
+}
+
+.add-student-spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3.ant-typography.table-title {
+  color: #1d226c;
+}
+
 @media only screen and (max-width: 400px) {
   .table_container .ant-table {
     width: 100%;
@@ -61,16 +75,6 @@
   .table_container .ant-table {
     font-size: 10px;
   }
-}
-
-.registered_courses.ant-col.ant-col-xs-24 {
-  margin-bottom: 30px;
-}
-
-.add-student-spin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /*******************LOGIN PAGE *******************/
@@ -90,7 +94,6 @@
 
 .login_form .login-form-button {
   display: block;
-  /* background: var(--text-color); */
   width: 100%;
 }
 
@@ -197,4 +200,9 @@
 .admin_side_bar .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
   background: none;
   border-top: 1px solid #272744;
+}
+
+/********** FORM TITLE ***************/
+.student-form-header h3.ant-typography {
+  color: #1d226c;
 }

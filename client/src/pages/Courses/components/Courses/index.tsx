@@ -82,7 +82,7 @@ export const Courses = ({ courses }: Props) => {
         pagination = {{ pageSize: 6 }}
         title={() => <div>
           {' '}
-          <Title level={3}>All Courses</Title>
+          <Title className="table-title" level={3}>All Courses</Title>
           <Text type="secondary">
            In this table is a list of all the students in the university.
           </Text>{' '}

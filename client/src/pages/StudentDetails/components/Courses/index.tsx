@@ -174,7 +174,7 @@ export const Courses = ({
 
   return (
     <div className="table_container">
-      <Title level={3}>{student?.name}</Title>
+      <Title className="table-title" level={3}>{student?.name}</Title>
       <Row gutter={24} justify="space-between" className="courses">
         <Col xs={24} lg={12} className="registered_courses">
           <Table
@@ -188,7 +188,7 @@ export const Courses = ({
             title={() => (
               <div>
                 {' '}
-                <Title level={3}>Registered Courses</Title>
+                <Title className="table-title" level={3}>Registered Courses</Title>
                 <Text type="secondary">
                   Scroll right to see the other columns of the table
                 </Text>
@@ -209,7 +209,7 @@ export const Courses = ({
             title={() => (
               <div>
                 {' '}
-                <Title level={3}>Unregistered Courses</Title>
+                <Title className="table-title" level={3}>Unregistered Courses</Title>
                 <Text type="secondary">
                   Scroll right to see the other columns of the table
                 </Text>
