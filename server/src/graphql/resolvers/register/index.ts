@@ -1,10 +1,9 @@
 import { IResolvers } from 'apollo-server-express';
 import bcrypt from 'bcryptjs';
-import { Response } from 'express';
+
 import { ICtx, User } from '../../../lib/types';
 import { cookie } from '../../../utils/cookieHelper';
 import { userExist } from '../../../utils/userExists';
-
 import { RegisterBody } from './types';
 
 export const RegisterResolver: IResolvers = {

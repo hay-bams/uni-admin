@@ -24,6 +24,11 @@ const mount = async (app: Application) => {
     typeDefs,
     resolvers,
     context: ({ req, res }) => ({ db, req, res }),
+    playground: {
+      settings: {
+        'request.credentials': 'include',
+      }
+    }
   });
   server.applyMiddleware({ app, path: '/api', cors: false });
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Layout, Spin } from 'antd';
+import { Redirect } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+
 import { Sidebar } from '../../lib/components/Sidebar';
 import { BreadCrumbNav } from '../../lib/components/BreadCrumbNav';
-
-import { useMutation } from '@apollo/client';
 import { Admin } from '../../lib/types';
-import { Redirect } from 'react-router-dom';
+import { All_COURSES } from '../../graphql';
 import { NewCourseForm } from './component/NewCourseForm';
 import {
   displayErrorMessage,
@@ -17,7 +18,6 @@ import {
   AddNewCourse as AddNewCourseData,
   AddNewCourseVariables,
 } from '../../graphql/mutations/AddNewCourse/__generated__/AddNewCourse';
-import { All_COURSES } from '../../graphql';
 
 interface Props {
   admin: Admin;

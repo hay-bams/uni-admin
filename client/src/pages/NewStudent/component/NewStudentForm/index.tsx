@@ -68,7 +68,7 @@ export const NewStudentForm = ({ addStudent }: Props) => {
           rules={[
             {
               required: true,
-              message: "Please enter student's email address!",
+              type: "email",
             },
           ]}
         >

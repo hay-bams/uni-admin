@@ -1,8 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { ObjectID } from 'mongodb';
 import jwt from 'jsonwebtoken'
+
 import {  ICtx } from '../lib/types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Authenticated =  <T=any, K=any> (next: any) => async (
   root: T,
   args: K,

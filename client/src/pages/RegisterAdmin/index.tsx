@@ -1,5 +1,7 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
+import { Spin, Layout } from 'antd';
+import { Redirect } from 'react-router-dom';
 
 import {
   RegisterAdmin as RegisterAdminData,
@@ -8,9 +10,7 @@ import {
 import { NewAdminForm } from './components/NewAdminForm';
 import { REGISTER_ADMIN } from '../../graphql';
 import { RegisterInput } from '../../graphql/globalTypes';
-import { Redirect } from 'react-router-dom';
 import { displaySuccessNotification } from '../../utils';
-import { Spin, Layout } from 'antd';
 import { ErrorBanner } from '../../lib/components';
 import { Admin } from '../../lib/types';
 

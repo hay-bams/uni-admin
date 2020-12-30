@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
+import { Redirect } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+
 import { Sidebar } from '../../lib/components/Sidebar';
 import { BreadCrumbNav } from '../../lib/components/BreadCrumbNav';
 import { Courses } from './components/Courses';
-import { useQuery } from '@apollo/client';
 import { All_COURSES } from '../../graphql';
 import {
   AllCoursesVariables,
@@ -11,7 +13,6 @@ import {
 } from '../../graphql/queries/AllCourses/__generated__/AllCourses';
 import { ErrorBanner, AllCoursesSkeleton } from '../../lib/components';
 import { Admin } from '../../lib/types';
-import { Redirect } from 'react-router-dom';
 
 interface Props {
   admin: Admin;

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
+import { useQuery } from '@apollo/client';
+
 import { Sidebar } from '../../lib/components/Sidebar';
 import { BreadCrumbNav } from '../../lib/components/BreadCrumbNav';
 import { Students } from './components/Students';
-import { useQuery } from '@apollo/client';
 import { STUDENTS } from '../../graphql';
 import {
   StudentsVariables,
@@ -11,7 +13,6 @@ import {
 } from '../../graphql/queries/Students/__generated__/Students';
 import { ErrorBanner, StudentSkeleton } from '../../lib/components';
 import { Admin } from '../../lib/types';
-import { Redirect } from 'react-router-dom';
 
 interface Props {
   admin: Admin

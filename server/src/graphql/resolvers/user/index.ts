@@ -1,7 +1,7 @@
 import { IResolvers } from "apollo-server-express";
 import jwt from 'jsonwebtoken'
-import { ICtx, User } from "../../../lib/types";
 
+import { ICtx, User } from "../../../lib/types";
 import { cookieOptions } from "../../../utils/cookieHelper";
 
 export const UserResolver: IResolvers = {

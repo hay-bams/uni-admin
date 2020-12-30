@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Table, Tag, Typography } from 'antd';
+import { Link } from 'react-router-dom';
+
 import {
   AllCourses_allCourses,
   AllCourses_allCourses_results,
 } from '../../../../graphql/queries/AllCourses/__generated__/AllCourses';
-import { Link } from 'react-router-dom';
 
 interface Props {
   courses: AllCourses_allCourses['results']

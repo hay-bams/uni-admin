@@ -9,6 +9,7 @@ import {
   Typography,
 } from 'antd';
 import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+
 import { UpdateCourseInput } from '../../../graphql/globalTypes';
 import { displayErrorMessage } from '../../../utils';
 import { courseDetails_courseDetails } from '../../../graphql/queries/CourseDetails/__generated__/courseDetails';

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Layout } from 'antd';
+import { useMutation, useQuery } from '@apollo/client';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
+
 import { Sidebar } from '../../lib/components/Sidebar';
 import {
   BreadCrumbNav,
@@ -7,8 +10,6 @@ import {
   ErrorBanner,
 } from '../../lib/components';
 import { Courses } from './components/Courses';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
 import { STUDENT_DETAILS, All_COURSES, REGISTER_COURSE } from '../../graphql';
 import {
   studentDetailsVariables,

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Layout, Spin } from 'antd';
+import { useMutation, useQuery } from '@apollo/client';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
+
 import { Sidebar } from '../../lib/components/Sidebar';
 import { BreadCrumbNav } from '../../lib/components/BreadCrumbNav';
-
-import { useMutation, useQuery } from '@apollo/client';
 import { Admin } from '../../lib/types';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
 import {
   displayErrorMessage,
   displaySuccessNotification,

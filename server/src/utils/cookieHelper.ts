@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { ObjectID } from "mongodb"
+
 import { Database } from "../lib/types"
 
 export const cookieOptions = {

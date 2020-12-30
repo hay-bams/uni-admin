@@ -1,9 +1,9 @@
 import React from 'react';
 import { Layout, Spin } from 'antd';
+import { useMutation } from '@apollo/client';
+
 import { Sidebar } from '../../lib/components/Sidebar';
 import { BreadCrumbNav } from '../../lib/components/BreadCrumbNav';
-
-import { useMutation } from '@apollo/client';
 import { ADD_NEW_STUDENT, STUDENTS } from '../../graphql';
 import { Admin } from '../../lib/types';
 import { Redirect } from 'react-router-dom';

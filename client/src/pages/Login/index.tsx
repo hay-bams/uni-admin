@@ -1,5 +1,7 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
+import { Spin, Layout } from 'antd';
+import { Redirect } from 'react-router-dom';
 
 import { LoginForm } from './components/LoginForm';
 import {
@@ -8,9 +10,7 @@ import {
 } from '../../graphql/mutations/Login/__generated__/Login';
 import { LOG_IN } from '../../graphql';
 import { LoginInput } from '../../graphql/globalTypes';
-import { Redirect } from 'react-router-dom';
 import { displaySuccessNotification } from '../../utils';
-import { Spin, Layout } from 'antd';
 import { ErrorBanner } from '../../lib/components';
 import { Admin } from '../../lib/types';
 
