@@ -36,6 +36,9 @@ export const Login = ({ setAdmin, admin }: Props) => {
         );
       }
     },
+    onError: () => {
+      console.log('Some Error occured')
+    }
   });
 
   const onLogin = (input: LoginInput) => {

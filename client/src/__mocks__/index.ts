@@ -1,5 +1,16 @@
 import { GraphQLError } from 'graphql';
-import { ADD_NEW_STUDENT, All_COURSES, LOG_IN, REGISTER_ADMIN, REGISTER_COURSE, STUDENTS, STUDENT_DETAILS } from '../graphql';
+import {
+  ADD_NEW_STUDENT,
+  All_COURSES,
+  LOG_IN,
+  LOG_OUT,
+  REGISTER_ADMIN,
+  REGISTER_COURSE,
+  STUDENTS,
+  STUDENT_DETAILS,
+} from '../graphql';
+import { ADD_NEW_COURSE } from '../graphql/mutations/AddNewCourse';
+import { UPDATE_COURSE } from '../graphql/mutations/UpdateCourse';
 
 export const mockValidStudentQuery = {
   request: {
@@ -29,7 +40,6 @@ export const mockValidStudentQuery = {
     },
   },
 };
-
 
 export const mockErroredStudentQuery = {
   request: {
@@ -69,7 +79,7 @@ export const mockValidStudentDetails = {
   },
 };
 
-export const mockValidStudentCourseRegistraton= {
+export const mockValidStudentCourseRegistraton = {
   request: {
     query: REGISTER_COURSE,
     variables: {
@@ -79,7 +89,7 @@ export const mockValidStudentCourseRegistraton= {
   result: {
     data: {
       registerCourse: {
-        id: '123'
+        id: '123',
       },
     },
   },
@@ -106,15 +116,30 @@ export const mockValidLoginMutation = {
       },
     },
   },
-  result: jest.fn (() => ({
+  result: {
     data: {
       login: {
         id: '2',
         username: 'admin',
         madeRequest: true,
+        token: 'wwksksk',
       },
     },
-  })),
+  },
+};
+
+export const mockErroredLoginMutation = {
+  request: {
+    query: LOG_IN,
+    variables: {
+      input: {
+        username: 'bams',
+        password: 'password',
+        withCookie: false,
+      },
+    },
+  },
+ error: new Error('Some error occured')
 };
 
 export const mockValidRegisternMutation = {
@@ -123,31 +148,19 @@ export const mockValidRegisternMutation = {
     variables: {
       input: {
         username: 'bams',
-        password: 'password'
+        password: 'password',
       },
     },
   },
-  result: jest.fn (() => ({
+  result: {
     data: {
-      login: {
+      register: {
         id: '2',
         username: 'admin',
         madeRequest: true,
       },
     },
-  })),
-};
-
-export const mockInValidLoginMutation = {
-  request: {
-    query: LOG_IN,
-    variables: {
-      input: {
-        withCookie: false,
-      },
-    },
   },
-  error: new GraphQLError('Some Graphql Error Occured'),
 };
 
 export const mockAddStudentMutation = {
@@ -173,7 +186,6 @@ export const mockAddStudentMutation = {
   },
 };
 
-
 export const mockValidCourseQuery = {
   request: {
     query: All_COURSES,
@@ -192,7 +204,7 @@ export const mockValidCourseQuery = {
             id: '1234',
             name: '5678',
             totalSeats: '93',
-            status: 'active'
+            status: 'active',
           },
         ],
       },
@@ -212,12 +224,65 @@ export const mockErroredCourseQuery = {
   error: new Error('Some error occured'),
 };
 
-// result: jest.fn(() => ({
-//   data: {
-//     login: {
-//       id: '2',
-//       username: 'admin',
-//       madeRequest: true,
-//     },
-//   },
-// })),
+export const mockLogoutQuery = {
+  request: {
+    query: LOG_OUT,
+  },
+  result: {
+    data: {
+      logout: {
+        id: null,
+        username: null,
+        token: null,
+        madeRequest: false,
+      },
+    },
+  },
+};
+
+export const mockInvalidLogoutQuery = {
+  request: {
+    query: LOG_OUT,
+  },
+  error: new Error('Some error occured'),
+};
+
+export const mockAddCourseMutation = {
+  request: {
+    query: ADD_NEW_COURSE,
+    variables: {
+      input: {
+        name: 'Chemistry',
+        totalSeats: 200,
+        status: 'active',
+      },
+    },
+  },
+  result: {
+    data: {
+      addNewCourse: {
+        id: '2',
+      },
+    },
+  },
+};
+
+export const mockUpdateCourseMutation = {
+  request: {
+    query: UPDATE_COURSE,
+    variables: {
+      input: {
+        name: 'Chemistry',
+        totalSeats: 200,
+        status: 'active',
+      },
+    },
+  },
+  result: {
+    data: {
+      updateCourse: {
+        id: '2',
+      },
+    },
+  },
+};

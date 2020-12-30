@@ -47,11 +47,11 @@ describe('Courses', () => {
   });
 
   test('should render all courses when query is successful', async () => {
-    const studentsMock = mockValidCourseQuery;
+    const courseMock = mockValidCourseQuery;
     const admin = { id: '1', username: null, madeRequest: false, token: '' };
 
     const { queryByText } = render(
-      <MockedProvider mocks={[studentsMock]} addTypename={false}>
+      <MockedProvider mocks={[courseMock]} addTypename={false}>
         <Router history={history}>
           <Route
             path="/courses"
@@ -68,7 +68,7 @@ describe('Courses', () => {
   });
 
   test('should render an error message when the query has an error', async () => {
-    const studentsMock = mockErroredCourseQuery;
+    const courseMock = mockErroredCourseQuery;
 
     const errorMessage =
       'Some error occured fetching the courses lists. Please try again soon!';
@@ -76,7 +76,7 @@ describe('Courses', () => {
     const admin = { id: '1', username: null, madeRequest: false, token: '' };
 
     const { queryByText } = render(
-      <MockedProvider mocks={[studentsMock]} addTypename={false}>
+      <MockedProvider mocks={[courseMock]} addTypename={false}>
         <Router history={history}>
           <Route
             path="/courses"
@@ -92,11 +92,11 @@ describe('Courses', () => {
   });
 
   test('should redirect to login when admin is not authenticated', async () => {
-    const studentsMock = mockValidCourseQuery;
+    const courseMock = mockValidCourseQuery;
     const admin = { id: null, username: null, madeRequest: false, token: '' };
 
     render(
-      <MockedProvider mocks={[studentsMock]} addTypename={false}>
+      <MockedProvider mocks={[courseMock]} addTypename={false}>
         <Router history={history}>
           <Route
             path="/courses"

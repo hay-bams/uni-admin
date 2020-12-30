@@ -12,7 +12,6 @@ export const ErrorBanner = ({
 }: Props) => {
   return (
     <Alert
-      // style={{width: "70%", marginLeft: "20%"}}
       banner
       closable
       message={message}

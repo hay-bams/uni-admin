@@ -47,12 +47,6 @@ export const NewCourse = ({ admin }: Props) => {
           page: 1,
         },
       },
-      // {
-      //   query: '',
-      //   variables: {
-      //     id: match.params.id,
-      //   },
-      // }
     ],
   });
 

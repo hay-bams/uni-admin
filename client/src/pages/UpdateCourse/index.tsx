@@ -51,6 +51,7 @@ export const UpdateCourse = ({
     { loading: updateCourseLoading },
   ] = useMutation<UpdateCourseData, UpdateCourseVariables>(UPDATE_COURSE, {
     onCompleted: () => {
+      console.log('+++++++++++++++++++++++++++')
       displaySuccessNotification('course updated successfully!');
       refetch();
     },
@@ -95,10 +96,6 @@ export const UpdateCourse = ({
       </Layout>
     );
   }
-
-  // if (updateCourseData && updateCourseData.updateCourse) {
-  //   return <Redirect to={`/courses/${data.courseDetails.id}`} />;
-  // }
 
   const courseDetails = data && data.courseDetails ? data.courseDetails : null;
 

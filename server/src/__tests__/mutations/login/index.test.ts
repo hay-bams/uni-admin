@@ -7,14 +7,6 @@ import { createTestServer } from '../../helpers';
 import { TEST_LOG_IN } from '../mutations';
 import { cookie } from '../../../utils/cookieHelper';
 
-jest.mock('bcryptjs');
-const mockedBcrypt = bcrypt as jest.Mocked<typeof bcrypt>;
-const bcryptCompare = mockedBcrypt.compare;
-
-beforeEach(() => {
-  bcryptCompare.mockReset();
-});
-
 describe('Admin Login Mutation', () => {
   test('should login admin', async () => {
     const { mutate } = createTestServer({
@@ -25,8 +17,6 @@ describe('Admin Login Mutation', () => {
       },
     });
 
-    // bcryptCompare = jest.fn().mockReturnValue(true)
-    // bcryptCompare.mockResolvedValue(true);
     jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => true));
     jest.spyOn(jwt, 'sign').mockImplementation(jest.fn(() => 'kkdj'));
     jest.spyOn(cookie, 'setCookie').mockImplementation(jest.fn());
@@ -113,8 +103,6 @@ describe('Admin Login Mutation', () => {
     });
 
     jest.spyOn(bcrypt, 'compare').mockImplementation(jest.fn(() => false));
-    // bcryptCompare.mockResolvedValue(false);
-    // bcryptCompare = jest.fn().mockReturnValue(true)
 
     const res = await mutate({
       mutation: TEST_LOG_IN,

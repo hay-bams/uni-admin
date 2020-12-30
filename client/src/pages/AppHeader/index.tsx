@@ -51,7 +51,7 @@ export const AppHeader = ({ admin, setAdmin }: Props) => {
             className="app_header_menu"
           >
             <Menu.Item key="7">
-              <div onClick={handleLogout}>
+              <div data-testid="signoutBtn" onClick={handleLogout}>
                 <Button type="primary">Sign Out</Button>
               </div>
             </Menu.Item>

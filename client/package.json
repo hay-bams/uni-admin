@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "codegen:schema": "apollo client:download-schema --endpoint=http://localhost:9005/api",
     "codegen:generate": "apollo client:codegen --localSchemaFile=schema.json --includes=src/**/*.ts --globalTypesFile=./src/graphql/globalTypes.ts  --target=typescript"
@@ -49,7 +49,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }, 
+  },
   "jest": {
     "coveragePathIgnorePatterns": [
       "/node_modules/",

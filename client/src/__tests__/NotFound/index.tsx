@@ -3,13 +3,14 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { createMemoryHistory } from 'history';
-import { Home, Login } from '../../pages';
-import { Route, Router } from 'react-router-dom';
+import { NotFound } from '../../pages';
+import {  Router } from 'react-router-dom';
+
 const history = createMemoryHistory({
-  initialEntries: ['/'],
+  initialEntries: ['/not-found'],
 });
 
-describe('Home', () => {
+describe('Not Found', () => {
   beforeAll(() => {
     window.matchMedia =
       window.matchMedia ||
@@ -22,19 +23,17 @@ describe('Home', () => {
       };
   });
 
-  test('should redirect to the login page', async () => {
+  test('should render the not found page', async () => {
     const { queryByText } = render(
-      <MockedProvider mocks={[]}>
-        <Router history={history}>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Router>
-      </MockedProvider>
+      <MockedProvider mocks={[]} addTypename={false}>
+      <Router history={history}>
+        <NotFound />
+      </Router>
+    </MockedProvider> 
     );
 
     await waitFor(() => {
-       expect(history.location.pathname).toBe('/students');
+      expect(queryByText('Go to Home')).not.toBe(null);
     });
   });
 });
