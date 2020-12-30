@@ -1,4 +1,4 @@
-export * from './queries/Students'
+export * from './queries/students'
 export * from './queries/StudentDetails'
 export * from './queries/AllCourses'
 export * from './mutations/RegisterCourse'

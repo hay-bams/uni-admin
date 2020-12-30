@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import {
   Students_students,
   Students_students_results,
-} from '../../../../graphql/queries/Students/__generated__/Students';
+} from '../../../../graphql/queries/students/__generated__/Students';
 
 interface Props {
   students: Students_students['results'];

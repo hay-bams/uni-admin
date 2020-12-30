@@ -10,7 +10,7 @@ import { STUDENTS } from '../../graphql';
 import {
   StudentsVariables,
   Students as StudentsData,
-} from '../../graphql/queries/Students/__generated__/Students';
+} from '../../graphql/queries/students/__generated__/Students';
 import { ErrorBanner, StudentSkeleton } from '../../lib/components';
 import { Admin } from '../../lib/types';
 
