@@ -76,3 +76,7 @@ This application uses GraphQL which is automatically documented, you should clic
 ---
 ## Author
 Ayobami Adelakun
+
+---
+## LICENSE
+This is licensed for your use, modification and distribution under the [MIT LICENSE](https://github.com/hay-bams/uni-admin/blob/master/LICENSE)
