@@ -43,6 +43,12 @@ This application uses GraphQL which is automatically documented, you should clic
 > git clone https://github.com/hay-bams/uni-admin.git
 ```
 
+* navigate to the application folder
+
+```
+> cd uni-admin
+```
+
 * create a .env file at the root of your application
 ```
 > touch .env
