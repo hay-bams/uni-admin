@@ -18,11 +18,9 @@ export const StudentResolver: IResolvers = {
           const { db } = ctx;
 
           const cursor = await db.students.find();
-          let count = await cursor.count();
+          const count = await cursor.count();
 
-          if (count === 0) count = 1;
-
-          const studentID = `ST${count + 1}`;
+          const studentID = count === 0 ? `ST${1}` : `ST${count + 1}`;
 
           const student = await db.students.insertOne({
             studentID,
